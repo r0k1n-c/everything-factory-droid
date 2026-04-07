@@ -1,7 +1,9 @@
 **Language:** English | [Português (Brasil)](docs/pt-BR/README.md) | [简体中文](docs/zh-CN/README.md) | [繁體中文](docs/zh-TW/README.md) | [日本語](docs/ja-JP/README.md) | [한국어](docs/ko-KR/README.md) | [Türkçe](docs/tr/README.md)
 > Fork Notice: This project is forked and adapted from [everything-claude-code](https://github.com/affaan-m/everything-claude-code) for Factory Droid usage.
 
-> Fork 通知：本项目是从 everything-claude-code 分支并改编而来，用于 Factory Droid。
+> Fork 通知：本项目是从 [everything-claude-code](https://github.com/affaan-m/everything-claude-code) 分支并改编而来，用于 Factory Droid。
+
+
 # Everything Factory Droid
 
 [![Stars](https://img.shields.io/github/stars/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/stargazers)

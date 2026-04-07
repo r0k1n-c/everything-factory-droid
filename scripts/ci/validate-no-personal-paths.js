@@ -20,7 +20,9 @@ const TARGETS = [
 
 const BLOCK_PATTERNS = [
   /\/Users\/affoon\b/g,
+  /\/Users\/r0\b/g,
   /C:\\Users\\affoon\b/gi,
+  /C:\\Users\\r0\b/gi,
 ];
 
 function collectFiles(targetPath, out) {

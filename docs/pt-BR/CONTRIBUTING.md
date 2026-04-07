@@ -51,7 +51,7 @@ Comandos slash que invocam fluxos de trabalho úteis:
 
 ```bash
 # 1. Fork e clone
-gh repo fork affaan-m/everything-factory-droid --clone
+gh repo fork r0k1n-c/everything-factory-droid --clone
 cd everything-factory-droid
 
 # 2. Criar uma branch
@@ -417,7 +417,7 @@ Como você testou isso.
 
 ## Dúvidas?
 
-- **Issues:** [github.com/affaan-m/everything-factory-droid/issues](https://github.com/affaan-m/everything-factory-droid/issues)
+- **Issues:** [github.com/r0k1n-c/everything-factory-droid/issues](https://github.com/r0k1n-c/everything-factory-droid/issues)
 - **X/Twitter:** [@affaanmustafa](https://x.com/affaanmustafa)
 
 ---

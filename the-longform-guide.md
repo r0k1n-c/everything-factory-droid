@@ -15,7 +15,7 @@ This longform guide goes into the techniques that separate productive sessions f
 
 The themes here: token economics, memory persistence, verification patterns, parallelization strategies, and the compound effects of building reusable workflows. These are the patterns I've refined over 10+ months of daily use that make the difference between being plagued by context rot within the first hour, versus maintaining productive sessions for hours.
 
-Everything covered in the shorthand and longform guides is available on GitHub: `github.com/affaan-m/everything-factory-droid`
+Everything covered in the shorthand and longform guides is available on GitHub: `github.com/r0k1n-c/everything-factory-droid`
 
 ---
 
@@ -40,7 +40,7 @@ With lazy loading, the context window issue is mostly solved. But token usage an
 For sharing memory across sessions, a skill or command that summarizes and checks in on progress then saves to a `.tmp` file in your `.factory` folder and appends to it until the end of your session is the best bet. The next day it can use that as context and pick up where you left off, create a new file for each session so you don't pollute old context into new work.
 
 ![Session Storage File Tree](./assets/images/longform/03-session-storage.png)
-*Example of session storage -> <https://github.com/affaan-m/everything-factory-droid/tree/main/examples/sessions>*
+*Example of session storage -> <https://github.com/r0k1n-c/everything-factory-droid/tree/main/examples/sessions>*
 
 Droid creates a file summarizing current state. Review it, ask for edits if needed, then start fresh. For the new conversation, just provide the file path. Particularly useful when you're hitting context limits and need to continue complex work. These files should contain:
 - What approaches worked (verifiably with evidence)
@@ -82,7 +82,7 @@ There are hooks most people don't know about that help with memory:
 - **Stop Hook (Session End)**: On session end, persist learnings to a file
 - **SessionStart Hook**: On new session, load previous context automatically
 
-I've built these hooks and they're in the repo at `github.com/affaan-m/everything-factory-droid/tree/main/hooks/memory-persistence`
+I've built these hooks and they're in the repo at `github.com/r0k1n-c/everything-factory-droid/tree/main/hooks/memory-persistence`
 
 ---
 
@@ -94,7 +94,7 @@ If you've had to repeat a prompt multiple times and Droid ran into the same prob
 
 **The Solution:** When Factory Droid discovers something that isn't trivial - a debugging technique, a workaround, some project-specific pattern - it saves that knowledge as a new skill. Next time a similar problem comes up, the skill gets loaded automatically.
 
-I've built a continuous learning skill that does this: `github.com/affaan-m/everything-factory-droid/tree/main/skills/continuous-learning`
+I've built a continuous learning skill that does this: `github.com/r0k1n-c/everything-factory-droid/tree/main/skills/continuous-learning`
 
 **Why Stop Hook (Not UserPromptSubmit):**
 
@@ -351,4 +351,4 @@ alias q='cd ~/Desktop/projects'
 
 ---
 
-*Everything covered in both guides is available on GitHub at [everything-factory-droid](https://github.com/affaan-m/everything-factory-droid)*
+*Everything covered in both guides is available on GitHub at [everything-factory-droid](https://github.com/r0k1n-c/everything-factory-droid)*

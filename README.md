@@ -1,10 +1,10 @@
 **Language:** English | [Português (Brasil)](docs/pt-BR/README.md) | [简体中文](docs/zh-CN/README.md) | [繁體中文](docs/zh-TW/README.md) | [日本語](docs/ja-JP/README.md) | [한국어](docs/ko-KR/README.md) | [Türkçe](docs/tr/README.md)
-
+> Fork Notice: This project is forked and adapted from [everything-claude-code](https://github.com/affaan-m/everything-claude-code) for Factory Droid usage.
 # Everything Factory Droid
 
-[![Stars](https://img.shields.io/github/stars/affaan-m/everything-factory-droid?style=flat)](https://github.com/affaan-m/everything-factory-droid/stargazers)
-[![Forks](https://img.shields.io/github/forks/affaan-m/everything-factory-droid?style=flat)](https://github.com/affaan-m/everything-factory-droid/network/members)
-[![Contributors](https://img.shields.io/github/contributors/affaan-m/everything-factory-droid?style=flat)](https://github.com/affaan-m/everything-factory-droid/graphs/contributors)
+[![Stars](https://img.shields.io/github/stars/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/stargazers)
+[![Forks](https://img.shields.io/github/forks/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/network/members)
+[![Contributors](https://img.shields.io/github/contributors/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/graphs/contributors)
 [![npm efd-universal](https://img.shields.io/npm/dw/efd-universal?label=efd-universal%20weekly%20downloads&logo=npm)](https://www.npmjs.com/package/efd-universal)
 [![npm efd-agentshield](https://img.shields.io/npm/dw/efd-agentshield?label=efd-agentshield%20weekly%20downloads&logo=npm)](https://www.npmjs.com/package/efd-agentshield)
 [![GitHub App Install](https://img.shields.io/badge/GitHub%20App-150%20installs-2ea44f?logo=github)](https://github.com/marketplace/efd-tools)
@@ -88,7 +88,7 @@ Get up and running in under 2 minutes:
 
 ```bash
 # Add marketplace
-/plugin marketplace add affaan-m/everything-factory-droid
+/plugin marketplace add r0k1n-c/everything-factory-droid
 
 # Install plugin
 /plugin install everything-factory-droid@everything-factory-droid
@@ -100,7 +100,7 @@ Get up and running in under 2 minutes:
 
 ```bash
 # Clone the repo first
-git clone https://github.com/affaan-m/everything-factory-droid.git
+git clone https://github.com/r0k1n-c/everything-factory-droid.git
 cd everything-factory-droid
 
 # Install dependencies (pick your package manager)
@@ -523,7 +523,7 @@ Factory Droid v2.1+ **automatically loads** `hooks/hooks.json` from installed EF
 Duplicate hooks file detected: ./hooks/hooks.json resolves to already-loaded file
 ```
 
-**History:** This has caused repeated fix/revert cycles in this repo ([#29](https://github.com/affaan-m/everything-factory-droid/issues/29), [#52](https://github.com/affaan-m/everything-factory-droid/issues/52), [#103](https://github.com/affaan-m/everything-factory-droid/issues/103)). The behavior changed between Factory Droid versions, leading to confusion. We now have a regression test to prevent this from being reintroduced.
+**History:** This has caused repeated fix/revert cycles in this repo ([#29](https://github.com/r0k1n-c/everything-factory-droid/issues/29), [#52](https://github.com/r0k1n-c/everything-factory-droid/issues/52), [#103](https://github.com/r0k1n-c/everything-factory-droid/issues/103)). The behavior changed between Factory Droid versions, leading to confusion. We now have a regression test to prevent this from being reintroduced.
 
 ---
 
@@ -535,7 +535,7 @@ The easiest way to use this repo - install as a Factory Droid plugin:
 
 ```bash
 # Add this repo as a marketplace
-/plugin marketplace add affaan-m/everything-factory-droid
+/plugin marketplace add r0k1n-c/everything-factory-droid
 
 # Install the plugin
 /plugin install everything-factory-droid@everything-factory-droid
@@ -549,7 +549,7 @@ Or add directly to your `~/.factory/settings.json`:
     "everything-factory-droid": {
       "source": {
         "source": "github",
-        "repo": "affaan-m/everything-factory-droid"
+        "repo": "r0k1n-c/everything-factory-droid"
       }
     }
   },
@@ -565,7 +565,7 @@ This gives you instant access to all commands, agents, skills, and hooks.
 >
 > ```bash
 > # Clone the repo first
-> git clone https://github.com/affaan-m/everything-factory-droid.git
+> git clone https://github.com/r0k1n-c/everything-factory-droid.git
 >
 > # Option A: User-level rules (applies to all projects)
 > mkdir -p ~/.factory/rules
@@ -589,7 +589,7 @@ If you prefer manual control over what's installed:
 
 ```bash
 # Clone the repo
-git clone https://github.com/affaan-m/everything-factory-droid.git
+git clone https://github.com/r0k1n-c/everything-factory-droid.git
 
 # Copy agents to your Factory Droid config
 cp everything-factory-droid/agents/*.md ~/.factory/droids/
@@ -756,7 +756,7 @@ This shows all available agents, commands, and skills from the plugin.
 <details>
 <summary><b>My hooks aren't working / I see "Duplicate hooks file" errors</b></summary>
 
-This is the most common issue. **Do NOT add a second hooks declaration outside `hooks/hooks.json`.** Factory Droid v2.1+ automatically loads `hooks/hooks.json` from installed EFD content. Duplicating that configuration causes duplicate-hook errors. See [#29](https://github.com/affaan-m/everything-factory-droid/issues/29), [#52](https://github.com/affaan-m/everything-factory-droid/issues/52), [#103](https://github.com/affaan-m/everything-factory-droid/issues/103).
+This is the most common issue. **Do NOT add a second hooks declaration outside `hooks/hooks.json`.** Factory Droid v2.1+ automatically loads `hooks/hooks.json` from installed EFD content. Duplicating that configuration causes duplicate-hook errors. See [#29](https://github.com/r0k1n-c/everything-factory-droid/issues/29), [#52](https://github.com/r0k1n-c/everything-factory-droid/issues/52), [#103](https://github.com/r0k1n-c/everything-factory-droid/issues/103).
 </details>
 
 <details>
@@ -1007,7 +1007,7 @@ This project is free and open source. Sponsors help keep it maintained and growi
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=affaan-m/everything-factory-droid&type=Date)](https://star-history.com/#affaan-m/everything-factory-droid&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=r0k1n-c/everything-factory-droid&type=Date)](https://star-history.com/#r0k1n-c/everything-factory-droid&Date)
 
 ---
 

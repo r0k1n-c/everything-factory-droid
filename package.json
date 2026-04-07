@@ -26,11 +26,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/affaan-m/everything-factory-droid.git"
+    "url": "git+https://github.com/r0k1n-c/everything-factory-droid.git"
   },
-  "homepage": "https://github.com/affaan-m/everything-factory-droid#readme",
+  "homepage": "https://github.com/r0k1n-c/everything-factory-droid#readme",
   "bugs": {
-    "url": "https://github.com/affaan-m/everything-factory-droid/issues"
+    "url": "https://github.com/r0k1n-c/everything-factory-droid/issues"
   },
   "files": [
     ".factory/droids/",
@@ -80,7 +80,7 @@
     "efd-install": "scripts/install-apply.js"
   },
   "scripts": {
-    "postinstall": "echo '\n  efd-universal installed!\n  Run: npx efd typescript\n  Compat: npx efd-install --profile core\n  Docs: https://github.com/affaan-m/everything-factory-droid\n'",
+    "postinstall": "echo '\n  efd-universal installed!\n  Run: npx efd typescript\n  Compat: npx efd-install --profile core\n  Docs: https://github.com/r0k1n-c/everything-factory-droid\n'",
     "catalog:check": "node scripts/ci/catalog.js --text",
     "catalog:sync": "node scripts/ci/catalog.js --write --text",
     "lint": "eslint . && markdownlint '**/*.md' --ignore node_modules",

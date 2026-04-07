@@ -2,9 +2,9 @@
 
 # Everything Factory Droid
 
-[![Stars](https://img.shields.io/github/stars/affaan-m/everything-factory-droid?style=flat)](https://github.com/affaan-m/everything-factory-droid/stargazers)
-[![Forks](https://img.shields.io/github/forks/affaan-m/everything-factory-droid?style=flat)](https://github.com/affaan-m/everything-factory-droid/network/members)
-[![Contributors](https://img.shields.io/github/contributors/affaan-m/everything-factory-droid?style=flat)](https://github.com/affaan-m/everything-factory-droid/graphs/contributors)
+[![Stars](https://img.shields.io/github/stars/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/stargazers)
+[![Forks](https://img.shields.io/github/forks/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/network/members)
+[![Contributors](https://img.shields.io/github/contributors/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/graphs/contributors)
 [![npm efd-universal](https://img.shields.io/npm/dw/efd-universal?label=efd-universal%20weekly%20downloads\&logo=npm)](https://www.npmjs.com/package/efd-universal)
 [![npm efd-agentshield](https://img.shields.io/npm/dw/efd-agentshield?label=efd-agentshield%20weekly%20downloads\&logo=npm)](https://www.npmjs.com/package/efd-agentshield)
 [![GitHub App Install](https://img.shields.io/badge/GitHub%20App-150%20installs-2ea44f?logo=github)](https://github.com/marketplace/efd-tools)
@@ -87,7 +87,7 @@
 
 ```bash
 # Add marketplace
-/plugin marketplace add affaan-m/everything-factory-droid
+/plugin marketplace add r0k1n-c/everything-factory-droid
 
 # Install plugin
 /plugin install everything-factory-droid@everything-factory-droid
@@ -99,7 +99,7 @@
 
 ```bash
 # Clone the repo first
-git clone https://github.com/affaan-m/everything-factory-droid.git
+git clone https://github.com/r0k1n-c/everything-factory-droid.git
 cd everything-factory-droid
 
 # Install dependencies (pick your package manager)
@@ -468,7 +468,7 @@ Factory Droid v2.1+ **会自动加载** 已安装 EFD 内容中的 `hooks/hooks.
 重复的钩子文件检测到：./hooks/hooks.json 解析到已加载的文件
 ```
 
-**历史背景：** 这已导致此仓库中多次修复/还原循环（[#29](https://github.com/affaan-m/everything-factory-droid/issues/29), [#52](https://github.com/affaan-m/everything-factory-droid/issues/52), [#103](https://github.com/affaan-m/everything-factory-droid/issues/103)）。Factory Droid 版本之间的行为发生了变化，导致了混淆。我们现在有一个回归测试来防止这种情况再次发生。
+**历史背景：** 这已导致此仓库中多次修复/还原循环（[#29](https://github.com/r0k1n-c/everything-factory-droid/issues/29), [#52](https://github.com/r0k1n-c/everything-factory-droid/issues/52), [#103](https://github.com/r0k1n-c/everything-factory-droid/issues/103)）。Factory Droid 版本之间的行为发生了变化，导致了混淆。我们现在有一个回归测试来防止这种情况再次发生。
 
 ***
 
@@ -480,7 +480,7 @@ Factory Droid v2.1+ **会自动加载** 已安装 EFD 内容中的 `hooks/hooks.
 
 ```bash
 # Add this repo as a marketplace
-/plugin marketplace add affaan-m/everything-factory-droid
+/plugin marketplace add r0k1n-c/everything-factory-droid
 
 # Install the plugin
 /plugin install everything-factory-droid@everything-factory-droid
@@ -494,7 +494,7 @@ Factory Droid v2.1+ **会自动加载** 已安装 EFD 内容中的 `hooks/hooks.
     "everything-factory-droid": {
       "source": {
         "source": "github",
-        "repo": "affaan-m/everything-factory-droid"
+        "repo": "r0k1n-c/everything-factory-droid"
       }
     }
   },
@@ -510,7 +510,7 @@ Factory Droid v2.1+ **会自动加载** 已安装 EFD 内容中的 `hooks/hooks.
 >
 > ```bash
 > # 首先克隆仓库
-> git clone https://github.com/affaan-m/everything-factory-droid.git
+> git clone https://github.com/r0k1n-c/everything-factory-droid.git
 >
 > # 选项 A：用户级规则（适用于所有项目）
 > mkdir -p ~/.factory/rules
@@ -534,7 +534,7 @@ Factory Droid v2.1+ **会自动加载** 已安装 EFD 内容中的 `hooks/hooks.
 
 ```bash
 # Clone the repo
-git clone https://github.com/affaan-m/everything-factory-droid.git
+git clone https://github.com/r0k1n-c/everything-factory-droid.git
 
 # Copy agents into your Factory Droid config
 cp everything-factory-droid/agents/*.md ~/.factory/droids/
@@ -702,7 +702,7 @@ rules/
 <details>
 <summary><b>我的钩子不工作 / 我看到“重复钩子文件”错误</b></summary>
 
-这是最常见的问题。**不要在 `hooks/hooks.json` 之外重复声明 hooks。** Factory Droid v2.1+ 会自动加载 `hooks/hooks.json`；再次声明会导致重复检测错误。参见 [#29](https://github.com/affaan-m/everything-factory-droid/issues/29), [#52](https://github.com/affaan-m/everything-factory-droid/issues/52), [#103](https://github.com/affaan-m/everything-factory-droid/issues/103)。
+这是最常见的问题。**不要在 `hooks/hooks.json` 之外重复声明 hooks。** Factory Droid v2.1+ 会自动加载 `hooks/hooks.json`；再次声明会导致重复检测错误。参见 [#29](https://github.com/r0k1n-c/everything-factory-droid/issues/29), [#52](https://github.com/r0k1n-c/everything-factory-droid/issues/52), [#103](https://github.com/r0k1n-c/everything-factory-droid/issues/103)。
 
 </details>
 
@@ -950,7 +950,7 @@ node tests/hooks/hooks.test.js
 
 ## Star 历史
 
-[![Star History Chart](https://api.star-history.com/svg?repos=affaan-m/everything-factory-droid\&type=Date)](https://star-history.com/#affaan-m/everything-factory-droid\&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=r0k1n-c/everything-factory-droid\&type=Date)](https://star-history.com/#r0k1n-c/everything-factory-droid\&Date)
 
 ***
 

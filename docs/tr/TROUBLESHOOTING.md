@@ -266,7 +266,7 @@ droid --version
 # Factory Droid 2.0+ gerektirir
 
 # Manuel kurulum (marketplace başarısız olursa)
-git clone https://github.com/affaan-m/everything-factory-droid.git
+git clone https://github.com/r0k1n-c/everything-factory-droid.git
 cp -r everything-factory-droid ~/.factory/plugins/efd
 ```
 
@@ -398,7 +398,7 @@ find ~/.factory/plugins -name "*.sh" -exec dos2unix {} \;
 
 Hala sorunlar yaşıyorsanız:
 
-1. **GitHub Issues'ı Kontrol Edin**: [github.com/affaan-m/everything-factory-droid/issues](https://github.com/affaan-m/everything-factory-droid/issues)
+1. **GitHub Issues'ı Kontrol Edin**: [github.com/r0k1n-c/everything-factory-droid/issues](https://github.com/r0k1n-c/everything-factory-droid/issues)
 2. **Debug Logging'i Etkinleştirin**:
    ```bash
    export CLAUDE_DEBUG=1

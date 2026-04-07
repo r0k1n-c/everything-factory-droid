@@ -173,4 +173,4 @@ src/
 
 ***
 
-*属于 [Everything Factory Droid](https://github.com/affaan-m/everything-factory-droid)*
+*属于 [Everything Factory Droid](https://github.com/r0k1n-c/everything-factory-droid)*

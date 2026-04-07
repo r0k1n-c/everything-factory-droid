@@ -282,7 +282,7 @@ droid --version
 # Requires Factory Droid 2.0+
 
 # Manual install (if marketplace fails)
-git clone https://github.com/affaan-m/everything-factory-droid.git
+git clone https://github.com/r0k1n-c/everything-factory-droid.git
 cp -r everything-factory-droid ~/.factory/plugins/efd
 ```
 
@@ -420,7 +420,7 @@ find ~/.factory/plugins -name "*.sh" -exec dos2unix {} \;
 
 如果您仍然遇到问题：
 
-1. **检查 GitHub Issues**：[github.com/affaan-m/everything-factory-droid/issues](https://github.com/affaan-m/everything-factory-droid/issues)
+1. **检查 GitHub Issues**：[github.com/r0k1n-c/everything-factory-droid/issues](https://github.com/r0k1n-c/everything-factory-droid/issues)
 2. **启用调试日志记录**：
    ```bash
    export CLAUDE_DEBUG=1

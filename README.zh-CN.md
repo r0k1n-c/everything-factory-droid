@@ -1,6 +1,6 @@
 # Everything Factory Droid
 
-[![Stars](https://img.shields.io/github/stars/affaan-m/everything-factory-droid?style=flat)](https://github.com/affaan-m/everything-factory-droid/stargazers)
+[![Stars](https://img.shields.io/github/stars/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/stargazers)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Shell](https://img.shields.io/badge/-Shell-4EAA25?logo=gnu-bash&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white)
@@ -23,6 +23,8 @@
 **面向现代工程团队的完整 Factory Droid 工作流系统。**
 
 一个为 Factory Droid 准备的精选集合，涵盖 agents、skills、hooks、rules、MCP 配置、安装器与命令兼容层，用于支持规划、实现、评审、安全、研究与运维工作流。
+
+\> Fork Notice: This project is forked and adapted from [everything-claude-code](https://github.com/affaan-m/everything-claude-code) for Factory Droid usage.
 
 此项目现已收敛为仅支持 **Factory Droid** 的版本。
 
@@ -70,7 +72,7 @@
 
 ```bash
 # 添加市场
-/plugin marketplace add affaan-m/everything-factory-droid
+/plugin marketplace add r0k1n-c/everything-factory-droid
 
 # 安装插件
 /plugin install everything-factory-droid@everything-factory-droid
@@ -82,7 +84,7 @@
 
 ```bash
 # 首先克隆仓库
-git clone https://github.com/affaan-m/everything-factory-droid.git
+git clone https://github.com/r0k1n-c/everything-factory-droid.git
 
 # 复制规则目录（通用 + 语言特定）
 mkdir -p ~/.factory/rules
@@ -339,7 +341,7 @@ everything-factory-droid/
 
 ```bash
 # 将此仓库添加为市场
-/plugin marketplace add affaan-m/everything-factory-droid
+/plugin marketplace add r0k1n-c/everything-factory-droid
 
 # 安装插件
 /plugin install everything-factory-droid@everything-factory-droid
@@ -353,7 +355,7 @@ everything-factory-droid/
     "everything-factory-droid": {
       "source": {
         "source": "github",
-        "repo": "affaan-m/everything-factory-droid"
+        "repo": "r0k1n-c/everything-factory-droid"
       }
     }
   },
@@ -369,7 +371,7 @@ everything-factory-droid/
 >
 > ```bash
 > # 首先克隆仓库
-> git clone https://github.com/affaan-m/everything-factory-droid.git
+> git clone https://github.com/r0k1n-c/everything-factory-droid.git
 >
 > # 选项 A：用户级规则（应用于所有项目）
 > mkdir -p ~/.factory/rules
@@ -396,7 +398,7 @@ everything-factory-droid/
 
 ```bash
 # 克隆仓库
-git clone https://github.com/affaan-m/everything-factory-droid.git
+git clone https://github.com/r0k1n-c/everything-factory-droid.git
 
 # 将代理复制到你的 Factory Droid 配置
 cp everything-factory-droid/agents/*.md ~/.factory/droids/
@@ -557,7 +559,7 @@ node tests/hooks/hooks.test.js
 
 ## Star 历史
 
-[![Star History Chart](https://api.star-history.com/svg?repos=affaan-m/everything-factory-droid&type=Date)](https://star-history.com/#affaan-m/everything-factory-droid&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=r0k1n-c/everything-factory-droid&type=Date)](https://star-history.com/#r0k1n-c/everything-factory-droid&Date)
 
 ---
 

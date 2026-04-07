@@ -2,9 +2,9 @@
 
 # Everything Factory Droid
 
-[![Stars](https://img.shields.io/github/stars/affaan-m/everything-factory-droid?style=flat)](https://github.com/affaan-m/everything-factory-droid/stargazers)
-[![Forks](https://img.shields.io/github/forks/affaan-m/everything-factory-droid?style=flat)](https://github.com/affaan-m/everything-factory-droid/network/members)
-[![Contributors](https://img.shields.io/github/contributors/affaan-m/everything-factory-droid?style=flat)](https://github.com/affaan-m/everything-factory-droid/graphs/contributors)
+[![Stars](https://img.shields.io/github/stars/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/stargazers)
+[![Forks](https://img.shields.io/github/forks/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/network/members)
+[![Contributors](https://img.shields.io/github/contributors/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/graphs/contributors)
 [![npm efd-universal](https://img.shields.io/npm/dw/efd-universal?label=efd-universal%20weekly%20downloads&logo=npm)](https://www.npmjs.com/package/efd-universal)
 [![npm efd-agentshield](https://img.shields.io/npm/dw/efd-agentshield?label=efd-agentshield%20weekly%20downloads&logo=npm)](https://www.npmjs.com/package/efd-agentshield)
 [![GitHub App Install](https://img.shields.io/badge/GitHub%20App-150%20installs-2ea44f?logo=github)](https://github.com/marketplace/efd-tools)
@@ -86,7 +86,7 @@ Comece em menos de 2 minutos:
 
 ```bash
 # Adicionar marketplace
-/plugin marketplace add affaan-m/everything-factory-droid
+/plugin marketplace add r0k1n-c/everything-factory-droid
 
 # Instalar plugin
 /plugin install everything-factory-droid@everything-factory-droid
@@ -98,7 +98,7 @@ Comece em menos de 2 minutos:
 
 ```bash
 # Clone o repositório primeiro
-git clone https://github.com/affaan-m/everything-factory-droid.git
+git clone https://github.com/r0k1n-c/everything-factory-droid.git
 cd everything-factory-droid
 
 # Instalar dependências (escolha seu gerenciador de pacotes)
@@ -243,7 +243,7 @@ droid --version
 
 ```bash
 # Adicionar este repositório como marketplace
-/plugin marketplace add affaan-m/everything-factory-droid
+/plugin marketplace add r0k1n-c/everything-factory-droid
 
 # Instalar o plugin
 /plugin install everything-factory-droid@everything-factory-droid
@@ -257,7 +257,7 @@ Ou adicione diretamente ao seu `~/.factory/settings.json`:
     "everything-factory-droid": {
       "source": {
         "source": "github",
-        "repo": "affaan-m/everything-factory-droid"
+        "repo": "r0k1n-c/everything-factory-droid"
       }
     }
   },
@@ -271,7 +271,7 @@ Ou adicione diretamente ao seu `~/.factory/settings.json`:
 >
 > ```bash
 > # Clone o repositório primeiro
-> git clone https://github.com/affaan-m/everything-factory-droid.git
+> git clone https://github.com/r0k1n-c/everything-factory-droid.git
 >
 > # Opção A: Regras no nível do usuário (aplica a todos os projetos)
 > mkdir -p ~/.factory/rules
@@ -289,7 +289,7 @@ Ou adicione diretamente ao seu `~/.factory/settings.json`:
 
 ```bash
 # Clonar o repositório
-git clone https://github.com/affaan-m/everything-factory-droid.git
+git clone https://github.com/r0k1n-c/everything-factory-droid.git
 
 # Copiar agentes para sua config do Factory Droid
 cp everything-factory-droid/agents/*.md ~/.factory/droids/

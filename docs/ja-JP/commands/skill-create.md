@@ -171,4 +171,4 @@ src/
 
 ---
 
-*[Everything Factory Droid](https://github.com/affaan-m/everything-factory-droid)の一部*
+*[Everything Factory Droid](https://github.com/r0k1n-c/everything-factory-droid)の一部*

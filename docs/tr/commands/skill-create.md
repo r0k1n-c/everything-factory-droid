@@ -171,4 +171,4 @@ Gelişmiş özellikler için (10k+ commit, ekip paylaşımı, otomatik PR'lar), 
 
 ---
 
-*[Everything Factory Droid](https://github.com/affaan-m/everything-factory-droid)'un bir parçası*
+*[Everything Factory Droid](https://github.com/r0k1n-c/everything-factory-droid)'un bir parçası*

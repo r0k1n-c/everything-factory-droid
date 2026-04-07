@@ -59,7 +59,7 @@
 
 ```bash
 # 1. Fork and clone
-gh repo fork affaan-m/everything-factory-droid --clone
+gh repo fork r0k1n-c/everything-factory-droid --clone
 cd everything-factory-droid
 
 # 2. Create a branch
@@ -454,7 +454,7 @@ docs: 完善贡献指南
 
 ## 有问题吗？
 
-* **问题：** [github.com/affaan-m/everything-factory-droid/issues](https://github.com/affaan-m/everything-factory-droid/issues)
+* **问题：** [github.com/r0k1n-c/everything-factory-droid/issues](https://github.com/r0k1n-c/everything-factory-droid/issues)
 * **X/Twitter：** [@affaanmustafa](https://x.com/affaanmustafa)
 
 ***

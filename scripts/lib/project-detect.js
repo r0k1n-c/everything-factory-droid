@@ -4,7 +4,7 @@
  * Cross-platform (Windows, macOS, Linux) project type detection
  * by inspecting files in the working directory.
  *
- * Resolves: https://github.com/affaan-m/everything-factory-droid/issues/293
+ * Resolves: https://github.com/r0k1n-c/everything-factory-droid/issues/293
  */
 
 const fs = require('fs');

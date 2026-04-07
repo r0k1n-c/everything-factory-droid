@@ -29,7 +29,7 @@ Before any installation, clone the latest EFD source to `/tmp`:
 
 ```bash
 rm -rf /tmp/everything-factory-droid
-git clone https://github.com/affaan-m/everything-factory-droid.git /tmp/everything-factory-droid
+git clone https://github.com/r0k1n-c/everything-factory-droid.git /tmp/everything-factory-droid
 ```
 
 Set `EFD_ROOT=/tmp/everything-factory-droid` as the source for all subsequent copy operations.

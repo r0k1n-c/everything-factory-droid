@@ -1,6 +1,6 @@
 # Everything Factory Droid
 
-[![Stars](https://img.shields.io/github/stars/affaan-m/everything-factory-droid?style=flat)](https://github.com/affaan-m/everything-factory-droid/stargazers)
+[![Stars](https://img.shields.io/github/stars/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/stargazers)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](../../LICENSE)
 ![Shell](https://img.shields.io/badge/-Shell-4EAA25?logo=gnu-bash&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white)
@@ -67,7 +67,7 @@
 
 ```bash
 # 新增市集
-/plugin marketplace add affaan-m/everything-factory-droid
+/plugin marketplace add r0k1n-c/everything-factory-droid
 
 # 安裝外掛程式
 /plugin install everything-factory-droid@everything-factory-droid
@@ -79,7 +79,7 @@
 
 ```bash
 # 首先複製儲存庫
-git clone https://github.com/affaan-m/everything-factory-droid.git
+git clone https://github.com/r0k1n-c/everything-factory-droid.git
 
 # 複製規則（應用於所有專案）
 cp -r everything-factory-droid/rules/* ~/.factory/rules/
@@ -268,7 +268,7 @@ everything-factory-droid/
 
 ```bash
 # 將此儲存庫新增為市集
-/plugin marketplace add affaan-m/everything-factory-droid
+/plugin marketplace add r0k1n-c/everything-factory-droid
 
 # 安裝外掛程式
 /plugin install everything-factory-droid@everything-factory-droid
@@ -282,7 +282,7 @@ everything-factory-droid/
     "everything-factory-droid": {
       "source": {
         "source": "github",
-        "repo": "affaan-m/everything-factory-droid"
+        "repo": "r0k1n-c/everything-factory-droid"
       }
     }
   },
@@ -302,7 +302,7 @@ everything-factory-droid/
 
 ```bash
 # 複製儲存庫
-git clone https://github.com/affaan-m/everything-factory-droid.git
+git clone https://github.com/r0k1n-c/everything-factory-droid.git
 
 # 將代理程式複製到您的 Factory Droid 設定
 cp everything-factory-droid/agents/*.md ~/.factory/droids/
@@ -457,7 +457,7 @@ node tests/hooks/hooks.test.js
 
 ## Star 歷史
 
-[![Star History Chart](https://api.star-history.com/svg?repos=affaan-m/everything-factory-droid&type=Date)](https://star-history.com/#affaan-m/everything-factory-droid&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=r0k1n-c/everything-factory-droid&type=Date)](https://star-history.com/#r0k1n-c/everything-factory-droid&Date)
 
 ---
 

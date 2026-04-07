@@ -2,7 +2,7 @@
 
 Community-reported workarounds for current Factory Droid bugs that can affect EFD users.
 
-These are project source Factory Droid behaviors, not EFD bugs. The entries below summarize the production-tested workarounds collected in [issue #644](https://github.com/affaan-m/everything-factory-droid/issues/644) on Factory Droid `v2.1.79` (macOS, heavy hook usage, MCP connectors enabled). Treat them as pragmatic stopgaps until project source fixes land.
+These are project source Factory Droid behaviors, not EFD bugs. The entries below summarize the production-tested workarounds collected in [issue #644](https://github.com/r0k1n-c/everything-factory-droid/issues/644) on Factory Droid `v2.1.79` (macOS, heavy hook usage, MCP connectors enabled). Treat them as pragmatic stopgaps until project source fixes land.
 
 ## Community Workarounds For Open Factory Droid Bugs
 
@@ -71,4 +71,4 @@ exit 2
 
 - [hooks/README.md](../hooks/README.md) for EFD's documented hook lifecycle and exit-code behavior.
 - [token-optimization.md](./token-optimization.md) for cost and context management settings.
-- [issue #644](https://github.com/affaan-m/everything-factory-droid/issues/644) for the original report and tested environment.
+- [issue #644](https://github.com/r0k1n-c/everything-factory-droid/issues/644) for the original report and tested environment.

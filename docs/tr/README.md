@@ -1,8 +1,8 @@
 # Everything Factory Droid
 
-[![Stars](https://img.shields.io/github/stars/affaan-m/everything-factory-droid?style=flat)](https://github.com/affaan-m/everything-factory-droid/stargazers)
-[![Forks](https://img.shields.io/github/forks/affaan-m/everything-factory-droid?style=flat)](https://github.com/affaan-m/everything-factory-droid/network/members)
-[![Contributors](https://img.shields.io/github/contributors/affaan-m/everything-factory-droid?style=flat)](https://github.com/affaan-m/everything-factory-droid/graphs/contributors)
+[![Stars](https://img.shields.io/github/stars/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/stargazers)
+[![Forks](https://img.shields.io/github/forks/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/network/members)
+[![Contributors](https://img.shields.io/github/contributors/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/graphs/contributors)
 [![npm efd-universal](https://img.shields.io/npm/dw/efd-universal?label=efd-universal%20haftalık%20indirme&logo=npm)](https://www.npmjs.com/package/efd-universal)
 [![npm efd-agentshield](https://img.shields.io/npm/dw/efd-agentshield?label=efd-agentshield%20haftalık%20indirme&logo=npm)](https://www.npmjs.com/package/efd-agentshield)
 [![GitHub App Install](https://img.shields.io/badge/GitHub%20App-150%20kurulum-2ea44f?logo=github)](https://github.com/marketplace/efd-tools)
@@ -85,7 +85,7 @@ Bu repository yalnızca ham kodu içerir. Rehberler her şeyi açıklıyor.
 
 ```bash
 # Marketplace ekle
-/plugin marketplace add affaan-m/everything-factory-droid
+/plugin marketplace add r0k1n-c/everything-factory-droid
 
 # Plugin'i kur
 /plugin install everything-factory-droid@everything-factory-droid
@@ -97,7 +97,7 @@ Bu repository yalnızca ham kodu içerir. Rehberler her şeyi açıklıyor.
 
 ```bash
 # Önce repo'yu klonlayın
-git clone https://github.com/affaan-m/everything-factory-droid.git
+git clone https://github.com/r0k1n-c/everything-factory-droid.git
 cd everything-factory-droid
 
 # Bağımlılıkları kurun (paket yöneticinizi seçin)
@@ -288,7 +288,7 @@ Bu, plugin'den mevcut tüm agent'ları, command'ları ve skill'leri gösterir.
 <details>
 <summary><b>Hook'larım çalışmıyor / "Duplicate hooks file" hatası alıyorum</b></summary>
 
-Bu en yaygın sorundur. `hooks/hooks.json` dışına **tekrarlı hook tanımı EKLEMEYİN**. Factory Droid v2.1+ `hooks/hooks.json`'ı otomatik yükler; aynı hook'ları tekrar tanımlamak duplicate algılama hatalarına neden olur. Bkz. [#29](https://github.com/affaan-m/everything-factory-droid/issues/29), [#52](https://github.com/affaan-m/everything-factory-droid/issues/52), [#103](https://github.com/affaan-m/everything-factory-droid/issues/103).
+Bu en yaygın sorundur. `hooks/hooks.json` dışına **tekrarlı hook tanımı EKLEMEYİN**. Factory Droid v2.1+ `hooks/hooks.json`'ı otomatik yükler; aynı hook'ları tekrar tanımlamak duplicate algılama hatalarına neden olur. Bkz. [#29](https://github.com/r0k1n-c/everything-factory-droid/issues/29), [#52](https://github.com/r0k1n-c/everything-factory-droid/issues/52), [#103](https://github.com/r0k1n-c/everything-factory-droid/issues/103).
 </details>
 
 <details>

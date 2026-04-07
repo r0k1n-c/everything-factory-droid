@@ -106,5 +106,18 @@ if (test('fails when tracked files contain blocked personal paths', () => {
   }
 })) passed++; else failed++;
 
+if (test('fails when tracked files contain the current maintainer path', () => {
+  const rootDir = createTempDir('efd-no-personal-paths-');
+
+  try {
+    fs.writeFileSync(path.join(rootDir, 'README.md'), 'bad path: /Users/r0/Desktop/AIProjects/demo\n', 'utf8');
+    const result = runValidatorWithRoot(rootDir);
+    assert.strictEqual(result.code, 1, result.stderr);
+    assert.ok(result.stderr.includes('personal path detected in README.md'), result.stderr);
+  } finally {
+    cleanup(rootDir);
+  }
+})) passed++; else failed++;
+
 console.log(`\nResults: Passed: ${passed}, Failed: ${failed}`);
 process.exit(failed > 0 ? 1 : 0);

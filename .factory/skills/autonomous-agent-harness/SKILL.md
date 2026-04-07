@@ -87,7 +87,7 @@ Use Factory Droid's scheduled tasks to create recurring agent operations.
 mcp__scheduled-tasks__create_scheduled_task({
   name: "daily-pr-review",
   schedule: "0 9 * * 1-5",  # 9 AM weekdays
-  prompt: "Review all open PRs in affaan-m/everything-factory-droid. For each: check CI status, review changes, flag issues. Post summary to memory.",
+  prompt: "Review all open PRs in r0k1n-c/everything-factory-droid. For each: check CI status, review changes, flag issues. Post summary to memory.",
   project_dir: "/path/to/repo"
 })
 

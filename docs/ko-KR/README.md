@@ -2,9 +2,9 @@
 
 # Everything Factory Droid
 
-[![Stars](https://img.shields.io/github/stars/affaan-m/everything-factory-droid?style=flat)](https://github.com/affaan-m/everything-factory-droid/stargazers)
-[![Forks](https://img.shields.io/github/forks/affaan-m/everything-factory-droid?style=flat)](https://github.com/affaan-m/everything-factory-droid/network/members)
-[![Contributors](https://img.shields.io/github/contributors/affaan-m/everything-factory-droid?style=flat)](https://github.com/affaan-m/everything-factory-droid/graphs/contributors)
+[![Stars](https://img.shields.io/github/stars/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/stargazers)
+[![Forks](https://img.shields.io/github/forks/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/network/members)
+[![Contributors](https://img.shields.io/github/contributors/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/graphs/contributors)
 [![npm efd-universal](https://img.shields.io/npm/dw/efd-universal?label=efd-universal%20weekly%20downloads&logo=npm)](https://www.npmjs.com/package/efd-universal)
 [![npm efd-agentshield](https://img.shields.io/npm/dw/efd-agentshield?label=efd-agentshield%20weekly%20downloads&logo=npm)](https://www.npmjs.com/package/efd-agentshield)
 [![GitHub App Install](https://img.shields.io/badge/GitHub%20App-150%20installs-2ea44f?logo=github)](https://github.com/marketplace/efd-tools)
@@ -80,7 +80,7 @@
 
 ```bash
 # 마켓플레이스 추가
-/plugin marketplace add affaan-m/everything-factory-droid
+/plugin marketplace add r0k1n-c/everything-factory-droid
 
 # 플러그인 설치
 /plugin install everything-factory-droid@everything-factory-droid
@@ -92,7 +92,7 @@
 
 ```bash
 # 먼저 저장소 클론
-git clone https://github.com/affaan-m/everything-factory-droid.git
+git clone https://github.com/r0k1n-c/everything-factory-droid.git
 cd everything-factory-droid
 
 # 권장: 설치 스크립트 사용 (common + 언어별 룰을 안전하게 처리)
@@ -324,7 +324,7 @@ Factory Droid v2.1+는 설치된 EFD 콘텐츠의 `hooks/hooks.json`을 **자동
 
 ```bash
 # 마켓플레이스 추가
-/plugin marketplace add affaan-m/everything-factory-droid
+/plugin marketplace add r0k1n-c/everything-factory-droid
 
 # 플러그인 설치
 /plugin install everything-factory-droid@everything-factory-droid
@@ -338,7 +338,7 @@ Factory Droid v2.1+는 설치된 EFD 콘텐츠의 `hooks/hooks.json`을 **자동
     "everything-factory-droid": {
       "source": {
         "source": "github",
-        "repo": "affaan-m/everything-factory-droid"
+        "repo": "r0k1n-c/everything-factory-droid"
       }
     }
   },
@@ -351,7 +351,7 @@ Factory Droid v2.1+는 설치된 EFD 콘텐츠의 `hooks/hooks.json`을 **자동
 > **참고:** Factory Droid 플러그인 시스템은 `rules`를 플러그인으로 배포하는 것을 지원하지 않습니다. 룰은 수동으로 설치해야 합니다:
 >
 > ```bash
-> git clone https://github.com/affaan-m/everything-factory-droid.git
+> git clone https://github.com/r0k1n-c/everything-factory-droid.git
 >
 > # 옵션 A: 사용자 레벨 룰 (모든 프로젝트에 적용)
 > mkdir -p ~/.factory/rules
@@ -371,7 +371,7 @@ Factory Droid v2.1+는 설치된 EFD 콘텐츠의 `hooks/hooks.json`을 **자동
 
 ```bash
 # 저장소 클론
-git clone https://github.com/affaan-m/everything-factory-droid.git
+git clone https://github.com/r0k1n-c/everything-factory-droid.git
 
 # 에이전트 복사
 cp everything-factory-droid/agents/*.md ~/.factory/droids/
@@ -672,7 +672,7 @@ Factory Droid 사용 비용이 부담된다면 토큰 소비를 관리해야 합
 
 ## Star 히스토리
 
-[![Star History Chart](https://api.star-history.com/svg?repos=affaan-m/everything-factory-droid&type=Date)](https://star-history.com/#affaan-m/everything-factory-droid&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=r0k1n-c/everything-factory-droid&type=Date)](https://star-history.com/#r0k1n-c/everything-factory-droid&Date)
 
 ---
 

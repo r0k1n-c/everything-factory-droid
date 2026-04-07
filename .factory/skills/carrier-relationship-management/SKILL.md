@@ -9,7 +9,7 @@ description: >
   carrier performance, or building freight strategies.
 license: Apache-2.0
 version: 1.0.0
-homepage: https://github.com/affaan-m/everything-factory-droid
+homepage: https://github.com/r0k1n-c/everything-factory-droid
 origin: EFD
 metadata:
   author: evos

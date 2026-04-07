@@ -53,7 +53,7 @@
 
 ```bash
 # 1. Fork とクローン
-gh repo fork affaan-m/everything-factory-droid --clone
+gh repo fork r0k1n-c/everything-factory-droid --clone
 cd everything-factory-droid
 
 # 2. ブランチを作成
@@ -422,7 +422,7 @@ docs: improve contributing guide
 
 ## 質問がありますか？
 
-- **Issues:** [github.com/affaan-m/everything-factory-droid/issues](https://github.com/affaan-m/everything-factory-droid/issues)
+- **Issues:** [github.com/r0k1n-c/everything-factory-droid/issues](https://github.com/r0k1n-c/everything-factory-droid/issues)
 - **X/Twitter:** [@affaanmustafa](https://x.com/affaanmustafa)
 
 ---

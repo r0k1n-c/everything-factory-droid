@@ -171,4 +171,4 @@ For advanced features (10k+ commits, team sharing, auto-PRs), use the [Skill Cre
 
 ---
 
-*Part of [Everything Factory Droid](https://github.com/affaan-m/everything-factory-droid)*
+*Part of [Everything Factory Droid](https://github.com/r0k1n-c/everything-factory-droid)*

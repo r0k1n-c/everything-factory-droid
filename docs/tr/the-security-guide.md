@@ -450,5 +450,5 @@ Kurulumunuzu tarayın: [github.com/affaan-m/agentshield](https://github.com/affa
 > [Factory Droid'un Her Şeyine Dair Uzun Kılavuz](https://x.com/affaanmustafa/status/2014040193557471352)
 
 gidip yapın ve ayrıca bu repo'ları kaydedin:
-- [github.com/affaan-m/everything-factory-droid](https://github.com/affaan-m/everything-factory-droid)
+- [github.com/r0k1n-c/everything-factory-droid](https://github.com/r0k1n-c/everything-factory-droid)
 - [github.com/affaan-m/agentshield](https://github.com/affaan-m/agentshield)

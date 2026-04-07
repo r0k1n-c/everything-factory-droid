@@ -1,0 +1,111 @@
+{
+  "name": "efd-universal",
+  "version": "1.9.0",
+  "description": "Complete collection of Factory Droid configs — droids, skills, hooks, rules, and command shims for modern engineering workflows.",
+  "keywords": [
+    "factory-droid",
+    "factory",
+    "droid",
+    "ai",
+    "agents",
+    "droids",
+    "skills",
+    "hooks",
+    "mcp",
+    "rules",
+    "tdd",
+    "code-review",
+    "security",
+    "automation",
+    "best-practices"
+  ],
+  "author": {
+    "name": "Affaan Mustafa",
+    "url": "https://x.com/affaanmustafa"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/affaan-m/everything-factory-droid.git"
+  },
+  "homepage": "https://github.com/affaan-m/everything-factory-droid#readme",
+  "bugs": {
+    "url": "https://github.com/affaan-m/everything-factory-droid/issues"
+  },
+  "files": [
+    ".factory/droids/",
+    ".factory/skills/",
+    ".factory/commands/",
+    ".factory/settings.json",
+    "agents/",
+    "commands/",
+    "contexts/",
+    "docs/examples/product-capability-template.md",
+    "examples/AGENTS.md",
+    "examples/user-AGENTS.md",
+    "examples/statusline.json",
+    "hooks/",
+    "manifests/",
+    "mcp-configs/",
+    "rules/",
+    "schemas/",
+    "scripts/ci/",
+    "scripts/efd.js",
+    "scripts/hooks/",
+    "scripts/lib/",
+    "scripts/claw.js",
+    "scripts/doctor.js",
+    "scripts/status.js",
+    "scripts/sessions-cli.js",
+    "scripts/install-apply.js",
+    "scripts/install-plan.js",
+    "scripts/list-installed.js",
+    "scripts/orchestration-status.js",
+    "scripts/orchestrate-worktrees.js",
+    "scripts/setup-package-manager.js",
+    "scripts/skill-create-output.js",
+    "scripts/repair.js",
+    "scripts/harness-audit.js",
+    "scripts/session-inspect.js",
+    "scripts/uninstall.js",
+    "skills/",
+    "AGENTS.md",
+    ".mcp.json",
+    "install.ps1",
+    "install.sh",
+    "llms.txt"
+  ],
+  "bin": {
+    "efd": "scripts/efd.js",
+    "efd-install": "scripts/install-apply.js"
+  },
+  "scripts": {
+    "postinstall": "echo '\n  efd-universal installed!\n  Run: npx efd typescript\n  Compat: npx efd-install --profile core\n  Docs: https://github.com/affaan-m/everything-factory-droid\n'",
+    "catalog:check": "node scripts/ci/catalog.js --text",
+    "catalog:sync": "node scripts/ci/catalog.js --write --text",
+    "lint": "eslint . && markdownlint '**/*.md' --ignore node_modules",
+    "harness:audit": "node scripts/harness-audit.js",
+    "claw": "node scripts/claw.js",
+    "orchestrate:status": "node scripts/orchestration-status.js",
+    "orchestrate:worker": "bash scripts/orchestrate-codex-worker.sh",
+    "orchestrate:tmux": "node scripts/orchestrate-worktrees.js",
+    "test": "node scripts/ci/check-unicode-safety.js && node scripts/ci/validate-agents.js && node scripts/ci/validate-commands.js && node scripts/ci/validate-rules.js && node scripts/ci/validate-skills.js && node scripts/ci/validate-hooks.js && node scripts/ci/validate-install-manifests.js && node scripts/ci/validate-no-personal-paths.js && npm run catalog:check && node tests/run-all.js",
+    "coverage": "c8 --all --include=\"scripts/**/*.js\" --check-coverage --lines 80 --functions 80 --branches 80 --statements 80 --reporter=text --reporter=lcov node tests/run-all.js"
+  },
+  "dependencies": {
+    "@iarna/toml": "^2.2.5",
+    "ajv": "^8.18.0",
+    "sql.js": "^1.14.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "c8": "^11.0.0",
+    "eslint": "^9.39.2",
+    "globals": "^17.1.0",
+    "markdownlint-cli": "^0.48.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "yarn@4.9.2+sha512.1fc009bc09d13cfd0e19efa44cbfc2b9cf6ca61482725eb35bbc5e257e093ebf4130db6dfe15d604ff4b79efd8e1e8e99b25fa7d0a6197c9f9826358d4d65c3c"
+}

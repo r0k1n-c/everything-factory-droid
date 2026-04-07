@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Everything Factory Droid — 完整使用手册</title>
+<style>
+:root {
+  --bg: #0f1117;
+  --panel: #161b22;
+  --panel-2: #0d1117;
+  --border: #30363d;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --dim: #6e7681;
+  --accent: #58a6ff;
+  --accent-2: #3fb950;
+  --accent-3: #d2a8ff;
+  --accent-4: #ffa657;
+  --tag: #1f2937;
+  --shadow: 0 10px 32px rgba(0,0,0,.28);
+}
+[data-theme="light"] {
+  --bg: #f6f8fa;
+  --panel: #ffffff;
+  --panel-2: #f6f8fa;
+  --border: #d0d7de;
+  --text: #24292f;
+  --muted: #57606a;
+  --dim: #6e7781;
+  --accent: #0969da;
+  --accent-2: #1a7f37;
+  --accent-3: #8250df;
+  --accent-4: #bc4c00;
+  --tag: #f1f8ff;
+  --shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif; background: var(--bg); color: var(--text); display: flex; min-height: 100vh; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+#sidebar { width: 268px; min-width: 268px; position: fixed; inset: 0 auto 0 0; background: var(--panel); border-right: 1px solid var(--border); overflow-y: auto; }
+.sidebar-header { padding: 18px 16px; position: sticky; top: 0; background: var(--panel); border-bottom: 1px solid var(--border); z-index: 2; }
+.sidebar-title { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+#search { width: 100%; padding: 8px 10px; background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 12px; }
+.nav-section { padding: 10px 0; border-bottom: 1px solid var(--border); }
+.nav-title { padding: 0 16px 8px; color: var(--dim); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.nav-item { display: block; padding: 6px 16px 6px 26px; color: var(--muted); font-size: 12.5px; }
+.nav-item:hover, .nav-item.active { color: var(--text); background: rgba(88,166,255,.08); }
+#main { margin-left: 268px; width: calc(100% - 268px); }
+.topbar { position: sticky; top: 0; z-index: 3; display: flex; justify-content: space-between; align-items: center; padding: 14px 36px; background: rgba(13,17,23,.88); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+[data-theme="light"] .topbar { background: rgba(246,248,250,.9); }
+.topbar small { color: var(--muted); }
+.theme-btn { border: 1px solid var(--border); background: var(--panel); color: var(--text); padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+.content { max-width: 1100px; padding: 32px 36px 60px; }
+.hero { background: linear-gradient(135deg, var(--panel) 0%, var(--panel-2) 68%, rgba(88,166,255,.08) 100%); border: 1px solid var(--border); border-radius: 18px; padding: 34px; box-shadow: var(--shadow); margin-bottom: 36px; }
+.hero-badge { display: inline-block; color: var(--accent); border: 1px solid rgba(88,166,255,.35); background: rgba(88,166,255,.1); padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; margin-bottom: 14px; }
+.hero h1 { font-size: 30px; line-height: 1.2; margin-bottom: 12px; }
+.hero p { max-width: 780px; color: var(--muted); font-size: 15px; }
+.stats-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 24px; }
+.stat { min-width: 120px; padding: 12px 16px; border: 1px solid var(--border); background: var(--panel-2); border-radius: 12px; }
+.stat-num { font-size: 22px; font-weight: 800; color: var(--accent); }
+.stat-label { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: .08em; }
+.section { margin-bottom: 42px; }
+.section-header { display: flex; gap: 14px; align-items: center; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.section-icon { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 10px; border: 1px solid rgba(88,166,255,.25); background: rgba(88,166,255,.08); font-size: 13px; font-weight: 800; color: var(--accent); }
+.section-header h2 { font-size: 22px; }
+.section-header p { color: var(--muted); font-size: 13px; }
+.subsection { margin-bottom: 28px; }
+.subsection-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; padding-left: 10px; border-left: 3px solid var(--accent); }
+.card, .hook-event { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 18px; margin-bottom: 14px; box-shadow: var(--shadow); }
+.card-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.card-desc, .muted { color: var(--muted); font-size: 13px; }
+.callout { border: 1px solid var(--border); background: rgba(88,166,255,.08); border-radius: 12px; padding: 14px 16px; color: var(--muted); font-size: 13px; margin: 14px 0; }
+.callout.warn { background: rgba(255,166,87,.08); }
+.callout.success { background: rgba(63,185,80,.08); }
+.cmd-table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.cmd-table th, .cmd-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+.cmd-table th { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--dim); background: var(--panel-2); }
+.cmd-table tr:last-child td { border-bottom: none; }
+.cmd-table code { color: var(--accent-4); font-size: 12px; }
+pre { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 16px; overflow-x: auto; font-size: 13px; margin: 10px 0 0; }
+.agent-grid, .mcp-grid, .rules-grid, .principle-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
+.agent-card, .mcp-card, .rule-card, .principle-card, .skill-item { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+.agent-name, .mcp-name, .skill-name { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.agent-name { color: var(--accent-4); }
+.mcp-name { color: var(--accent-2); }
+.skill-name { color: var(--accent-3); }
+.rule-name, .principle-name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.agent-desc, .mcp-desc, .rule-desc, .principle-desc, .skill-desc { color: var(--muted); font-size: 12.5px; }
+.hook-title { font-size: 14px; font-weight: 700; margin-bottom: 12px; }
+.hook-row { display: grid; grid-template-columns: 260px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--border); }
+.hook-row:first-of-type { border-top: none; }
+.hook-id { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--accent-4); font-size: 12px; }
+.hook-desc { color: var(--muted); font-size: 12.5px; }
+.decision-table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.decision-table th, .decision-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; }
+.decision-table th { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--dim); background: var(--panel-2); }
+.decision-table tr:last-child td { border-bottom: none; }
+.search-hidden { display: none !important; }
+.footer { border-top: 1px solid var(--border); padding: 24px 36px 40px; color: var(--dim); font-size: 12px; }
+@media (max-width: 900px) {
+  #sidebar { position: static; width: 100%; min-width: 100%; height: auto; }
+  #main { margin-left: 0; width: 100%; }
+  body { display: block; }
+  .content, .topbar, .footer { padding-left: 18px; padding-right: 18px; }
+  .hook-row { grid-template-columns: 1fr; gap: 6px; }
+}
+</style>
+</head>
+<body data-theme="dark">
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-title">EFD 使用手册</div>
+    <input id="search" type="text" placeholder="搜索命令 / 技能 / 代理 / MCP" oninput="filterContent(this.value)">
+  </div>
+  <div class="nav-section"><div class="nav-title">入门</div><a class="nav-item" href="#overview">项目概览</a><a class="nav-item" href="#install">安装方法</a><a class="nav-item" href="#quickstart">快速开始</a></div>
+  <div class="nav-section"><div class="nav-title">Commands</div><a class="nav-item" href="#commands">总览</a><a class="nav-item" href="#cmd-plan">规划 / 规格</a><a class="nav-item" href="#cmd-quality">质量 / 交付</a><a class="nav-item" href="#cmd-lang">语言专项</a><a class="nav-item" href="#cmd-session">会话 / 学习</a><a class="nav-item" href="#cmd-orch">编排 / 循环</a><a class="nav-item" href="#cmd-knowledge">知识 / 运维</a></div>
+  <div class="nav-section"><div class="nav-title">Agents</div><a class="nav-item" href="#agents">总览</a><a class="nav-item" href="#agent-plan">规划与架构</a><a class="nav-item" href="#agent-quality">质量与专项专家</a><a class="nav-item" href="#agent-build">构建修复代理</a><a class="nav-item" href="#agent-review">语言审查代理</a><a class="nav-item" href="#agent-auto">自动化与流水线</a></div>
+  <div class="nav-section"><div class="nav-title">Skills</div><a class="nav-item" href="#skills">总览</a><a class="nav-item" href="#skill-core">开发基础</a><a class="nav-item" href="#skill-test">测试与验证</a><a class="nav-item" href="#skill-backend">后端与数据库</a><a class="nav-item" href="#skill-lang">语言专项</a><a class="nav-item" href="#skill-agent">Agent / Harness</a><a class="nav-item" href="#skill-security">安全与治理</a><a class="nav-item" href="#skill-research">研究与集成</a><a class="nav-item" href="#skill-biz">业务与内容</a></div>
+  <div class="nav-section"><div class="nav-title">Runtime</div><a class="nav-item" href="#hooks">Hooks</a><a class="nav-item" href="#rules">Rules</a><a class="nav-item" href="#mcp">MCP</a></div>
+  <div class="nav-section"><div class="nav-title">参考</div><a class="nav-item" href="#decision">速查表</a><a class="nav-item" href="#principles">核心原则</a></div>
+</nav>
+<main id="main">
+  <div class="topbar">
+    <small>Everything Factory Droid · 中文完整使用手册</small>
+    <button class="theme-btn" onclick="toggleTheme()">切换主题</button>
+  </div>
+  <div class="content">
+    <section class="hero" id="overview">
+      <div class="hero-badge">Factory Droid Only</div>
+      <h1>Everything Factory Droid 完整使用手册</h1>
+      <p>这份手册沿用旧版单文件 HTML 手册的交互体验重新整理，但内容完全按当前 EFD 代码库对齐。它覆盖安装、commands、agents、skills、hooks、rules 与 MCP 配置，并统一使用 <code>.factory</code> 路径与 Factory Droid 术语。</p>
+      <div class="stats-row">
+        <div class="stat"><div class="stat-num">38</div><div class="stat-label">Agents</div></div>
+        <div class="stat"><div class="stat-num">156</div><div class="stat-label">Skills</div></div>
+        <div class="stat"><div class="stat-num">72</div><div class="stat-label">Commands</div></div>
+        <div class="stat"><div class="stat-num">28</div><div class="stat-label">MCP</div></div>
+        <div class="stat"><div class="stat-num">12</div><div class="stat-label">Hooks</div></div>
+        <div class="stat"><div class="stat-num">15</div><div class="stat-label">Rule 目录</div></div>
+      </div>
+    </section>
+
+    <section class="section" id="install">
+      <div class="section-header"><div class="section-icon">安装</div><div><h2>安装方法</h2><p>插件安装优先；rules 仍需单独安装到 <code>.factory</code> 目录。</p></div></div>
+      <div class="card">
+        <div class="card-title">前置条件</div>
+        <div class="card-desc">建议 Factory Droid CLI v2.1.0+。先确认版本：</div>
+        <pre>droid --version</pre>
+      </div>
+      <div class="subsection">
+        <div class="subsection-title">方式一：作为插件安装（推荐）</div>
+        <pre>/plugin marketplace add affaan-m/everything-factory-droid
+/plugin install everything-factory-droid@everything-factory-droid</pre>
+        <div class="callout">插件安装后即可使用 commands / agents / skills，但 <strong>rules 不会随插件自动分发</strong>，需要单独执行下面的安装步骤。</div>
+      </div>
+      <div class="subsection">
+        <div class="subsection-title">方式二：克隆仓库后安装 rules</div>
+        <pre>git clone https://github.com/affaan-m/everything-factory-droid.git
+cd everything-factory-droid
+npm install
+
+# macOS / Linux
+./install.sh --profile full
+# 或按语言选择
+./install.sh typescript python golang swift php
+
+# Windows PowerShell
+npx efd-install --profile full
+# 或按语言选择
+npx efd-install typescript python golang swift php</pre>
+      </div>
+      <div class="subsection">
+        <div class="subsection-title">手动复制 rules（理解目录结构时很有用）</div>
+        <pre>mkdir -p ~/.factory/rules
+cp -r rules/common ~/.factory/rules/
+cp -r rules/typescript ~/.factory/rules/
+cp -r rules/python ~/.factory/rules/
+cp -r rules/golang ~/.factory/rules/
+cp -r rules/web ~/.factory/rules/</pre>
+        <div class="callout warn">复制 rules 时要复制整个目录，例如 <code>rules/common</code>、<code>rules/typescript</code>。不要使用 <code>/*</code> 展平，否则会破坏相对引用并导致同名文件互相覆盖。</div>
+      </div>
+      <div class="subsection">
+        <div class="subsection-title">常用环境变量</div>
+        <pre># Hook profile: minimal | standard | strict
+export EFD_HOOK_PROFILE=standard
+
+# 临时禁用若干 hook ID
+export EFD_DISABLED_HOOKS="pre:edit:create:config-protection,post:edit:console-warn"
+
+</pre>
+      </div>
+    </section>
+
+    <section class="section" id="quickstart">
+      <div class="section-header"><div class="section-icon">开始</div><div><h2>快速开始</h2><p>3 分钟建立对 EFD 主工作流的直觉。</p></div></div>
+      <div class="card">
+        <div class="card-title">先记住一件事</div>
+        <div class="card-desc">EFD 当前的主工作流面是 <strong>skills</strong>；<strong>commands</strong> 主要是兼容入口。你可以继续用斜杠命令，但在编写新工作流时应该优先放到 <code>skills/</code>。</div>
+      </div>
+      <pre># 插件安装后的 namespaced 入口
+/everything-factory-droid:plan "新增认证系统"
+
+# 手动安装时可以直接用短命令
+/plan "新增认证系统"
+/tdd
+/code-review
+/verify
+/save-session</pre>
+      <div class="callout success">会话数据默认保存到 <code>~/.factory/session-data/</code>。恢复时可用 <code>/resume-session</code> 或 <code>/sessions</code>。</div>
+      <div class="callout warn">如果你要用 <code>multi-*</code> 系列命令，还需要先运行 <code>npx ccg-workflow</code> 安装对应运行时。</div>
+    </section>
+
+    <section class="section" id="commands">
+      <div class="section-header"><div class="section-icon">命令</div><div><h2>Commands（72）</h2><p>当前仓库中的 <code>commands/</code> 是 legacy slash shims。它们仍然可用，但请把它们理解为指向 skills / agents 的兼容入口。</p></div></div>
+      <div class="subsection" id="cmd-plan"><div class="subsection-title">规划 / 规格</div><table class="cmd-table"><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td><code>/plan</code></td><td>先澄清需求、风险和步骤，等待确认后再动手</td></tr><tr><td><code>/prp-prd</code></td><td>生成产品需求文档（PRD）</td></tr><tr><td><code>/prp-plan</code></td><td>基于 PRD 生成实现计划</td></tr><tr><td><code>/prp-implement</code></td><td>按 PRP 计划执行实现</td></tr><tr><td><code>/prp-commit</code></td><td>为 PRP 变更准备提交</td></tr><tr><td><code>/prp-pr</code></td><td>为 PRP 工作流创建 PR</td></tr></tbody></table></div><div class="subsection" id="cmd-quality"><div class="subsection-title">质量 / 交付</div><table class="cmd-table"><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td><code>/tdd</code></td><td>兼容入口：调用 tdd-workflow，严格执行 RED → GREEN → REFACTOR</td></tr><tr><td><code>/build-fix</code></td><td>自动识别技术栈并修复构建错误</td></tr><tr><td><code>/code-review</code></td><td>对本地变更或 PR 做完整代码审查</td></tr><tr><td><code>/verify</code></td><td>执行验证闭环：构建、lint、测试、类型检查</td></tr><tr><td><code>/quality-gate</code></td><td>运行快速质量门禁</td></tr><tr><td><code>/refactor-clean</code></td><td>清理死代码、重复逻辑和结构噪音</td></tr><tr><td><code>/test-coverage</code></td><td>分析覆盖率与缺口</td></tr><tr><td><code>/e2e</code></td><td>生成 / 运行 Playwright 端到端测试</td></tr><tr><td><code>/prompt-optimize</code></td><td>优化原始提示词，输出更可执行版本</td></tr></tbody></table></div><div class="subsection" id="cmd-lang"><div class="subsection-title">语言专项</div><table class="cmd-table"><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td><code>/python-review</code></td><td>Python 代码审查</td></tr><tr><td><code>/go-build</code></td><td>修复 Go 构建错误</td></tr><tr><td><code>/go-review</code></td><td>Go 代码审查</td></tr><tr><td><code>/go-test</code></td><td>Go 测试驱动开发</td></tr><tr><td><code>/rust-build</code></td><td>修复 Rust 构建与借用检查问题</td></tr><tr><td><code>/rust-review</code></td><td>Rust 代码审查</td></tr><tr><td><code>/rust-test</code></td><td>Rust TDD / 测试工作流</td></tr><tr><td><code>/kotlin-build</code></td><td>修复 Kotlin / Gradle 构建错误</td></tr><tr><td><code>/kotlin-review</code></td><td>Kotlin 代码审查</td></tr><tr><td><code>/kotlin-test</code></td><td>Kotlin TDD / 测试工作流</td></tr><tr><td><code>/cpp-build</code></td><td>修复 C++ / CMake / 链接问题</td></tr><tr><td><code>/cpp-review</code></td><td>C++ 代码审查</td></tr><tr><td><code>/cpp-test</code></td><td>C++ TDD / 测试工作流</td></tr><tr><td><code>/flutter-build</code></td><td>修复 Flutter / Dart 构建错误</td></tr><tr><td><code>/flutter-review</code></td><td>Flutter / Dart 代码审查</td></tr><tr><td><code>/flutter-test</code></td><td>Flutter 测试工作流</td></tr><tr><td><code>/gradle-build</code></td><td>聚焦 Gradle 构建链路排障</td></tr></tbody></table></div><div class="subsection" id="cmd-session"><div class="subsection-title">会话 / 学习</div><table class="cmd-table"><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td><code>/save-session</code></td><td>将当前上下文保存到 ~/.factory/session-data/</td></tr><tr><td><code>/resume-session</code></td><td>从最近或指定 session 文件恢复上下文</td></tr><tr><td><code>/sessions</code></td><td>查看、筛选、加载、别名化历史会话</td></tr><tr><td><code>/checkpoint</code></td><td>为当前工作创建检查点</td></tr><tr><td><code>/aside</code></td><td>临时处理旁支问题而不丢失主任务</td></tr><tr><td><code>/context-budget</code></td><td>分析上下文使用并找出节流机会</td></tr><tr><td><code>/learn</code></td><td>从当前会话提取可复用模式</td></tr><tr><td><code>/learn-eval</code></td><td>提取模式并先做质量评估</td></tr><tr><td><code>/evolve</code></td><td>把 instincts 聚类为更稳定的技能结构</td></tr><tr><td><code>/promote</code></td><td>将项目级 instincts 提升为更广范围可复用资产</td></tr><tr><td><code>/prune</code></td><td>清理过期的 pending instincts</td></tr><tr><td><code>/projects</code></td><td>查看项目及其学习状态概览</td></tr><tr><td><code>/instinct-status</code></td><td>查看 instincts 状态与置信度</td></tr><tr><td><code>/instinct-export</code></td><td>导出 instincts</td></tr><tr><td><code>/instinct-import</code></td><td>导入 instincts</td></tr></tbody></table></div><div class="subsection" id="cmd-orch"><div class="subsection-title">编排 / 循环</div><table class="cmd-table"><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td><code>/multi-plan</code></td><td>多模型 / 多代理任务拆解</td></tr><tr><td><code>/multi-execute</code></td><td>多代理执行编排</td></tr><tr><td><code>/multi-backend</code></td><td>面向后端工作流的并行编排</td></tr><tr><td><code>/multi-frontend</code></td><td>面向前端工作流的并行编排</td></tr><tr><td><code>/multi-workflow</code></td><td>通用多服务 / 多模块编排</td></tr><tr><td><code>/orchestrate</code></td><td>tmux / worktree 编排指南</td></tr><tr><td><code>/devfleet</code></td><td>通过 DevFleet 调度隔离 worktree 中的并行 agent</td></tr><tr><td><code>/loop-start</code></td><td>启动自治循环</td></tr><tr><td><code>/loop-status</code></td><td>查看自治循环状态</td></tr><tr><td><code>/santa-loop</code></td><td>运行 Santa Method 对抗式循环</td></tr><tr><td><code>/gan-build</code></td><td>GAN 风格生成 / 评测构建工作流</td></tr><tr><td><code>/gan-design</code></td><td>GAN 风格架构设计入口</td></tr><tr><td><code>/claw</code></td><td>启动 NanoClaw v2 持久 REPL</td></tr><tr><td><code>/pm2</code></td><td>管理本地长期运行进程</td></tr></tbody></table></div><div class="subsection" id="cmd-knowledge"><div class="subsection-title">知识 / 运维</div><table class="cmd-table"><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td><code>/docs</code></td><td>通过文档查找链路查询最新 API / 框架文档</td></tr><tr><td><code>/update-docs</code></td><td>更新项目文档</td></tr><tr><td><code>/update-codemaps</code></td><td>更新代码地图 / 导航信息</td></tr><tr><td><code>/jira</code></td><td>Jira 集成入口</td></tr><tr><td><code>/skill-create</code></td><td>从 git 历史中生成技能草稿</td></tr><tr><td><code>/skill-health</code></td><td>检查技能资产健康度</td></tr><tr><td><code>/rules-distill</code></td><td>从技能中提炼规则</td></tr><tr><td><code>/setup-pm</code></td><td>设置包管理器偏好</td></tr><tr><td><code>/model-route</code></td><td>给任务选择更合适的模型</td></tr><tr><td><code>/eval</code></td><td>运行评测</td></tr><tr><td><code>/harness-audit</code></td><td>审计 harness 可靠性、成本与边界</td></tr></tbody></table></div>
+    </section>
+
+    <section class="section" id="agents">
+      <div class="section-header"><div class="section-icon">代理</div><div><h2>Agents（38）</h2><p>这些是 EFD 自带的专用子代理。复杂任务通常会被自动委派给它们。</p></div></div>
+      <div class="callout">最常见的自动委派：复杂需求 → <code>planner</code>；新功能 / bug 修复 → <code>tdd-guide</code>；代码改动完成后 → <code>code-reviewer</code>；敏感实现 → <code>security-reviewer</code>。</div>
+      <div class="subsection" id="agent-plan"><div class="subsection-title">规划与架构</div><div class="agent-grid"><div class="agent-card"><div class="agent-name">planner</div><div class="agent-desc">复杂需求拆解、风险识别与实施计划</div></div><div class="agent-card"><div class="agent-name">architect</div><div class="agent-desc">系统边界、模块关系与架构决策</div></div><div class="agent-card"><div class="agent-name">harness-optimizer</div><div class="agent-desc">优化 harness 可靠性、吞吐和成本</div></div></div></div><div class="subsection" id="agent-quality"><div class="subsection-title">质量与专项专家</div><div class="agent-grid"><div class="agent-card"><div class="agent-name">code-reviewer</div><div class="agent-desc">通用代码审查</div></div><div class="agent-card"><div class="agent-name">security-reviewer</div><div class="agent-desc">安全漏洞与边界检查</div></div><div class="agent-card"><div class="agent-name">performance-optimizer</div><div class="agent-desc">性能瓶颈识别与优化</div></div><div class="agent-card"><div class="agent-name">refactor-cleaner</div><div class="agent-desc">死代码与重复逻辑清理</div></div><div class="agent-card"><div class="agent-name">doc-updater</div><div class="agent-desc">文档同步更新</div></div><div class="agent-card"><div class="agent-name">docs-lookup</div><div class="agent-desc">查找最新文档与 API 资料</div></div><div class="agent-card"><div class="agent-name">tdd-guide</div><div class="agent-desc">强制测试优先的开发节奏</div></div><div class="agent-card"><div class="agent-name">e2e-runner</div><div class="agent-desc">端到端测试生成与执行</div></div><div class="agent-card"><div class="agent-name">database-reviewer</div><div class="agent-desc">数据库设计、查询与索引审查</div></div><div class="agent-card"><div class="agent-name">healthcare-reviewer</div><div class="agent-desc">医疗合规与临床场景审查</div></div><div class="agent-card"><div class="agent-name">chief-of-staff</div><div class="agent-desc">沟通分诊与多任务协调</div></div></div></div><div class="subsection" id="agent-build"><div class="subsection-title">构建修复代理</div><div class="agent-grid"><div class="agent-card"><div class="agent-name">build-error-resolver</div><div class="agent-desc">通用构建问题修复</div></div><div class="agent-card"><div class="agent-name">go-build-resolver</div><div class="agent-desc">Go 构建链路修复</div></div><div class="agent-card"><div class="agent-name">rust-build-resolver</div><div class="agent-desc">Rust 编译与借用错误修复</div></div><div class="agent-card"><div class="agent-name">cpp-build-resolver</div><div class="agent-desc">C++ / CMake / 链接修复</div></div><div class="agent-card"><div class="agent-name">dart-build-resolver</div><div class="agent-desc">Dart / Flutter 构建修复</div></div><div class="agent-card"><div class="agent-name">java-build-resolver</div><div class="agent-desc">Java / Maven / Gradle 构建修复</div></div><div class="agent-card"><div class="agent-name">kotlin-build-resolver</div><div class="agent-desc">Kotlin / Gradle 构建修复</div></div><div class="agent-card"><div class="agent-name">pytorch-build-resolver</div><div class="agent-desc">PyTorch / CUDA / 训练环境修复</div></div></div></div><div class="subsection" id="agent-review"><div class="subsection-title">语言审查代理</div><div class="agent-grid"><div class="agent-card"><div class="agent-name">typescript-reviewer</div><div class="agent-desc">TypeScript / JavaScript 审查</div></div><div class="agent-card"><div class="agent-name">python-reviewer</div><div class="agent-desc">Python 审查</div></div><div class="agent-card"><div class="agent-name">go-reviewer</div><div class="agent-desc">Go 审查</div></div><div class="agent-card"><div class="agent-name">rust-reviewer</div><div class="agent-desc">Rust 审查</div></div><div class="agent-card"><div class="agent-name">cpp-reviewer</div><div class="agent-desc">C++ 审查</div></div><div class="agent-card"><div class="agent-name">csharp-reviewer</div><div class="agent-desc">C# / .NET 审查</div></div><div class="agent-card"><div class="agent-name">flutter-reviewer</div><div class="agent-desc">Flutter / Dart 审查</div></div><div class="agent-card"><div class="agent-name">java-reviewer</div><div class="agent-desc">Java / Spring 审查</div></div><div class="agent-card"><div class="agent-name">kotlin-reviewer</div><div class="agent-desc">Kotlin / Android / KMP 审查</div></div></div></div><div class="subsection" id="agent-auto"><div class="subsection-title">自动化与流水线</div><div class="agent-grid"><div class="agent-card"><div class="agent-name">loop-operator</div><div class="agent-desc">自治循环执行与守护</div></div><div class="agent-card"><div class="agent-name">gan-planner</div><div class="agent-desc">GAN 风格规划阶段</div></div><div class="agent-card"><div class="agent-name">gan-generator</div><div class="agent-desc">GAN 风格生成阶段</div></div><div class="agent-card"><div class="agent-name">gan-evaluator</div><div class="agent-desc">GAN 风格评测阶段</div></div><div class="agent-card"><div class="agent-name">opensource-forker</div><div class="agent-desc">开源分叉准备</div></div><div class="agent-card"><div class="agent-name">opensource-sanitizer</div><div class="agent-desc">清理敏感信息与私有痕迹</div></div><div class="agent-card"><div class="agent-name">opensource-packager</div><div class="agent-desc">整理打包开源发布产物</div></div></div></div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-header"><div class="section-icon">技能</div><div><h2>Skills（156）</h2><p>skills 是 EFD 的核心资产。本页列的是高频与代表性技能，完整目录以 <code>skills/</code> 为准。</p></div></div>
+      <div class="subsection" id="skill-core"><div class="subsection-title">开发基础</div><div class="skill-grid"><div class="skill-item"><div class="skill-name">coding-standards</div><div class="skill-desc">通用编码标准</div></div><div class="skill-item"><div class="skill-name">frontend-patterns</div><div class="skill-desc">React / Next.js 开发模式</div></div><div class="skill-item"><div class="skill-name">backend-patterns</div><div class="skill-desc">后端 API 与服务模式</div></div><div class="skill-item"><div class="skill-name">api-design</div><div class="skill-desc">REST API 设计</div></div><div class="skill-item"><div class="skill-name">design-system</div><div class="skill-desc">设计系统与 UI 一致性</div></div><div class="skill-item"><div class="skill-name">search-first</div><div class="skill-desc">先调研再编码</div></div><div class="skill-item"><div class="skill-name">codebase-onboarding</div><div class="skill-desc">快速理解陌生代码库</div></div></div></div><div class="subsection" id="skill-test"><div class="subsection-title">测试与验证</div><div class="skill-grid"><div class="skill-item"><div class="skill-name">tdd-workflow</div><div class="skill-desc">测试驱动开发</div></div><div class="skill-item"><div class="skill-name">verification-loop</div><div class="skill-desc">验证闭环</div></div><div class="skill-item"><div class="skill-name">e2e-testing</div><div class="skill-desc">Playwright E2E</div></div><div class="skill-item"><div class="skill-name">eval-harness</div><div class="skill-desc">形式化评测</div></div><div class="skill-item"><div class="skill-name">ai-regression-testing</div><div class="skill-desc">AI 回归测试</div></div><div class="skill-item"><div class="skill-name">benchmark</div><div class="skill-desc">性能基准与回归</div></div><div class="skill-item"><div class="skill-name">browser-qa</div><div class="skill-desc">浏览器 QA 自动化</div></div></div></div><div class="subsection" id="skill-backend"><div class="subsection-title">后端与数据库</div><div class="skill-grid"><div class="skill-item"><div class="skill-name">django-patterns</div><div class="skill-desc">Django 模式</div></div><div class="skill-item"><div class="skill-name">laravel-patterns</div><div class="skill-desc">Laravel 模式</div></div><div class="skill-item"><div class="skill-name">springboot-patterns</div><div class="skill-desc">Spring Boot 模式</div></div><div class="skill-item"><div class="skill-name">nestjs-patterns</div><div class="skill-desc">NestJS 模式</div></div><div class="skill-item"><div class="skill-name">postgres-patterns</div><div class="skill-desc">PostgreSQL 模式</div></div><div class="skill-item"><div class="skill-name">database-migrations</div><div class="skill-desc">数据库迁移</div></div><div class="skill-item"><div class="skill-name">docker-patterns</div><div class="skill-desc">Docker / Compose</div></div><div class="skill-item"><div class="skill-name">deployment-patterns</div><div class="skill-desc">部署与回滚</div></div><div class="skill-item"><div class="skill-name">hexagonal-architecture</div><div class="skill-desc">六边形架构</div></div></div></div><div class="subsection" id="skill-lang"><div class="subsection-title">语言专项</div><div class="skill-grid"><div class="skill-item"><div class="skill-name">python-patterns</div><div class="skill-desc">Python 最佳实践</div></div><div class="skill-item"><div class="skill-name">python-testing</div><div class="skill-desc">pytest 测试策略</div></div><div class="skill-item"><div class="skill-name">golang-patterns</div><div class="skill-desc">Go 模式</div></div><div class="skill-item"><div class="skill-name">golang-testing</div><div class="skill-desc">Go 测试模式</div></div><div class="skill-item"><div class="skill-name">rust-patterns</div><div class="skill-desc">Rust 模式</div></div><div class="skill-item"><div class="skill-name">rust-testing</div><div class="skill-desc">Rust 测试</div></div><div class="skill-item"><div class="skill-name">kotlin-patterns</div><div class="skill-desc">Kotlin 模式</div></div><div class="skill-item"><div class="skill-name">kotlin-testing</div><div class="skill-desc">Kotlin 测试</div></div><div class="skill-item"><div class="skill-name">cpp-testing</div><div class="skill-desc">C++ 测试</div></div><div class="skill-item"><div class="skill-name">swiftui-patterns</div><div class="skill-desc">SwiftUI 模式</div></div><div class="skill-item"><div class="skill-name">dotnet-patterns</div><div class="skill-desc">.NET 模式</div></div></div></div><div class="subsection" id="skill-agent"><div class="subsection-title">Agent / Harness</div><div class="skill-grid"><div class="skill-item"><div class="skill-name">autonomous-loops</div><div class="skill-desc">自治循环架构</div></div><div class="skill-item"><div class="skill-name">autonomous-agent-harness</div><div class="skill-desc">长期运行 agent harness</div></div><div class="skill-item"><div class="skill-name">agent-harness-construction</div><div class="skill-desc">action space / tool 设计</div></div><div class="skill-item"><div class="skill-name">dmux-workflows</div><div class="skill-desc">dmux 多代理并行</div></div><div class="skill-item"><div class="skill-name">claude-devfleet</div><div class="skill-desc">DevFleet 并行执行</div></div><div class="skill-item"><div class="skill-name">continuous-learning-v2</div><div class="skill-desc">instinct 持续学习</div></div><div class="skill-item"><div class="skill-name">context-budget</div><div class="skill-desc">上下文预算审计</div></div><div class="skill-item"><div class="skill-name">token-budget-advisor</div><div class="skill-desc">控制输出深度 / token 消耗</div></div><div class="skill-item"><div class="skill-name">strategic-compact</div><div class="skill-desc">人工压缩策略</div></div><div class="skill-item"><div class="skill-name">product-lens</div><div class="skill-desc">先验证为什么要做</div></div><div class="skill-item"><div class="skill-name">blueprint</div><div class="skill-desc">复杂多阶段路线图</div></div></div></div><div class="subsection" id="skill-security"><div class="subsection-title">安全与治理</div><div class="skill-grid"><div class="skill-item"><div class="skill-name">security-review</div><div class="skill-desc">安全实现检查表</div></div><div class="skill-item"><div class="skill-name">security-scan</div><div class="skill-desc">扫描 .factory 配置面</div></div><div class="skill-item"><div class="skill-name">safety-guard</div><div class="skill-desc">避免破坏性操作</div></div><div class="skill-item"><div class="skill-name">django-security</div><div class="skill-desc">Django 安全</div></div><div class="skill-item"><div class="skill-name">laravel-security</div><div class="skill-desc">Laravel 安全</div></div><div class="skill-item"><div class="skill-name">springboot-security</div><div class="skill-desc">Spring Boot 安全</div></div><div class="skill-item"><div class="skill-name">healthcare-phi-compliance</div><div class="skill-desc">PHI / PII 合规</div></div></div></div><div class="subsection" id="skill-research"><div class="subsection-title">研究与集成</div><div class="skill-grid"><div class="skill-item"><div class="skill-name">documentation-lookup</div><div class="skill-desc">最新文档查询</div></div><div class="skill-item"><div class="skill-name">deep-research</div><div class="skill-desc">多源深度研究</div></div><div class="skill-item"><div class="skill-name">exa-search</div><div class="skill-desc">Exa 神经搜索</div></div><div class="skill-item"><div class="skill-name">jira-integration</div><div class="skill-desc">Jira 集成</div></div><div class="skill-item"><div class="skill-name">google-workspace-ops</div><div class="skill-desc">Google Workspace 操作</div></div><div class="skill-item"><div class="skill-name">fal-ai-media</div><div class="skill-desc">fal.ai 媒体生成</div></div><div class="skill-item"><div class="skill-name">x-api</div><div class="skill-desc">X API 集成</div></div><div class="skill-item"><div class="skill-name">laravel-plugin-discovery</div><div class="skill-desc">Laravel 插件发现</div></div><div class="skill-item"><div class="skill-name">nutrient-document-processing</div><div class="skill-desc">文档处理</div></div></div></div><div class="subsection" id="skill-biz"><div class="subsection-title">业务与内容</div><div class="skill-grid"><div class="skill-item"><div class="skill-name">article-writing</div><div class="skill-desc">文章 / 长文写作</div></div><div class="skill-item"><div class="skill-name">content-engine</div><div class="skill-desc">多平台内容系统</div></div><div class="skill-item"><div class="skill-name">market-research</div><div class="skill-desc">市场研究</div></div><div class="skill-item"><div class="skill-name">investor-materials</div><div class="skill-desc">融资材料</div></div><div class="skill-item"><div class="skill-name">investor-outreach</div><div class="skill-desc">投资人外联</div></div><div class="skill-item"><div class="skill-name">brand-voice</div><div class="skill-desc">品牌声音建模</div></div><div class="skill-item"><div class="skill-name">crosspost</div><div class="skill-desc">跨平台分发</div></div><div class="skill-item"><div class="skill-name">lead-intelligence</div><div class="skill-desc">线索发现与优先级</div></div></div></div>
+    </section>
+
+    <section class="section" id="hooks">
+      <div class="section-header"><div class="section-icon">Hooks</div><div><h2>Hooks（12）</h2><p>以下内容按当前 <code>hooks/hooks.json</code> 真实配置整理，不沿用旧版手册中过时的更大清单。</p></div></div>
+      <div class="callout">触发顺序通常是：用户请求 → 选择工具 → <code>PreToolUse</code> → 工具执行 → <code>PostToolUse</code> → 响应结束时 <code>Stop</code> → 会话边界 <code>SessionStart/SessionEnd</code>。</div>
+      <div class="subsection" id="hook-pretooluse"><div class="subsection-title">PreToolUse</div><div class="hook-event"><div class="hook-title">PreToolUse</div><div class="hook-row"><div class="hook-id">pre:execute:auto-tmux-dev</div><div class="hook-desc">Execute 前自动把 dev server 放进 tmux</div></div><div class="hook-row"><div class="hook-id">pre:execute:commit-quality</div><div class="hook-desc">危险 git 动作前给出质量提醒</div></div><div class="hook-row"><div class="hook-id">pre:edit:create:config-protection</div><div class="hook-desc">阻止修改受保护配置</div></div><div class="hook-row"><div class="hook-id">pre:mcp-health-check</div><div class="hook-desc">MCP 调用前健康检查</div></div></div></div><div class="subsection" id="hook-sessionstart"><div class="subsection-title">SessionStart</div><div class="hook-event"><div class="hook-title">SessionStart</div><div class="hook-row"><div class="hook-id">session:start</div><div class="hook-desc">会话开始时恢复上下文并检测包管理器</div></div></div></div><div class="subsection" id="hook-posttooluse"><div class="subsection-title">PostToolUse</div><div class="hook-event"><div class="hook-title">PostToolUse</div><div class="hook-row"><div class="hook-id">post:quality-gate</div><div class="hook-desc">编辑后跑质量门禁</div></div><div class="hook-row"><div class="hook-id">post:edit:design-quality-check</div><div class="hook-desc">前端改动后检查是否过于模板化</div></div><div class="hook-row"><div class="hook-id">post:edit:console-warn</div><div class="hook-desc">编辑后提醒 console.log</div></div></div></div><div class="subsection" id="hook-stop"><div class="subsection-title">Stop</div><div class="hook-event"><div class="hook-title">Stop</div><div class="hook-row"><div class="hook-id">stop:format-typecheck</div><div class="hook-desc">每轮响应结束后批量 format / typecheck</div></div><div class="hook-row"><div class="hook-id">stop:check-console-log</div><div class="hook-desc">检查变更中的 console.log</div></div><div class="hook-row"><div class="hook-id">stop:session-end</div><div class="hook-desc">异步持久化 session 状态</div></div></div></div><div class="subsection" id="hook-sessionend"><div class="subsection-title">SessionEnd</div><div class="hook-event"><div class="hook-title">SessionEnd</div><div class="hook-row"><div class="hook-id">session:end:marker</div><div class="hook-desc">生命周期结束标记</div></div></div></div>
+    </section>
+
+    <section class="section" id="rules">
+      <div class="section-header"><div class="section-icon">Rules</div><div><h2>Rules（15 个目录）</h2><p>规则定义“应该做什么”；技能定义“具体怎么做”。EFD 采用 common + 语言 / 领域扩展层结构。</p></div></div>
+      <div class="subsection">
+        <div class="subsection-title">common 层核心文件</div>
+        <div class="rules-grid"><div class="rule-card"><div class="rule-name">coding-style.md</div><div class="rule-desc">编码风格、可维护性与不可变性偏好</div></div><div class="rule-card"><div class="rule-name">git-workflow.md</div><div class="rule-desc">提交、PR 与协作规范</div></div><div class="rule-card"><div class="rule-name">testing.md</div><div class="rule-desc">测试策略与覆盖率要求</div></div><div class="rule-card"><div class="rule-name">performance.md</div><div class="rule-desc">性能与上下文开销意识</div></div><div class="rule-card"><div class="rule-name">patterns.md</div><div class="rule-desc">常用设计模式与结构约束</div></div><div class="rule-card"><div class="rule-name">hooks.md</div><div class="rule-desc">hooks 设计与运行时控制</div></div><div class="rule-card"><div class="rule-name">agents.md</div><div class="rule-desc">何时委派给代理</div></div><div class="rule-card"><div class="rule-name">security.md</div><div class="rule-desc">安全基线</div></div><div class="rule-card"><div class="rule-name">development-workflow.md</div><div class="rule-desc">Plan → TDD → Review → Verify 工作流</div></div><div class="rule-card"><div class="rule-name">code-review.md</div><div class="rule-desc">审查优先级与检查项</div></div></div>
+      </div>
+      <div class="subsection">
+        <div class="subsection-title">目录结构</div>
+        <div class="rules-grid"><div class="rule-card"><div class="rule-name">common</div><div class="rule-desc">通用原则层，所有项目都应安装</div></div><div class="rule-card"><div class="rule-name">typescript</div><div class="rule-desc">TypeScript / JavaScript</div></div><div class="rule-card"><div class="rule-name">python</div><div class="rule-desc">Python</div></div><div class="rule-card"><div class="rule-name">golang</div><div class="rule-desc">Go</div></div><div class="rule-card"><div class="rule-name">web</div><div class="rule-desc">Web / 前端</div></div><div class="rule-card"><div class="rule-name">swift</div><div class="rule-desc">Swift</div></div><div class="rule-card"><div class="rule-name">php</div><div class="rule-desc">PHP</div></div><div class="rule-card"><div class="rule-name">cpp</div><div class="rule-desc">C++</div></div><div class="rule-card"><div class="rule-name">rust</div><div class="rule-desc">Rust</div></div><div class="rule-card"><div class="rule-name">kotlin</div><div class="rule-desc">Kotlin</div></div><div class="rule-card"><div class="rule-name">java</div><div class="rule-desc">Java</div></div><div class="rule-card"><div class="rule-name">dart</div><div class="rule-desc">Dart / Flutter</div></div><div class="rule-card"><div class="rule-name">perl</div><div class="rule-desc">Perl</div></div><div class="rule-card"><div class="rule-name">csharp</div><div class="rule-desc">C# / .NET</div></div><div class="rule-card"><div class="rule-name">zh</div><div class="rule-desc">中文项目输出与写作约束</div></div></div>
+      </div>
+      <div class="subsection">
+        <div class="subsection-title">推荐安装示例</div>
+        <pre># 所有项目都应先安装 common
+cp -r rules/common ~/.factory/rules/
+
+# 再按技术栈选择语言 / 领域扩展
+cp -r rules/typescript ~/.factory/rules/
+cp -r rules/python ~/.factory/rules/
+cp -r rules/golang ~/.factory/rules/
+cp -r rules/web ~/.factory/rules/
+cp -r rules/zh ~/.factory/rules/</pre>
+      </div>
+    </section>
+
+    <section class="section" id="mcp">
+      <div class="section-header"><div class="section-icon">MCP</div><div><h2>MCP Servers（28）</h2><p>这些配置来自 <code>mcp-configs/mcp-servers.json</code>。建议只启用当前任务真正需要的少量 server，以避免工具面和上下文膨胀。</p></div></div>
+      <div class="callout warn">经验法则：尽量把启用中的 MCP 控制在 10 个以内。否则工具描述本身就会占掉大量上下文。</div>
+      <div class="subsection" id="mcp-collab"><div class="subsection-title">协作与交付</div><div class="mcp-grid"><div class="mcp-card"><div class="mcp-name">jira</div><div class="mcp-desc">Jira 问题追踪</div></div><div class="mcp-card"><div class="mcp-name">github</div><div class="mcp-desc">GitHub PR / issue / repo 操作</div></div><div class="mcp-card"><div class="mcp-name">confluence</div><div class="mcp-desc">Confluence 内容检索</div></div><div class="mcp-card"><div class="mcp-name">vercel</div><div class="mcp-desc">Vercel 部署与项目管理</div></div><div class="mcp-card"><div class="mcp-name">railway</div><div class="mcp-desc">Railway 部署管理</div></div><div class="mcp-card"><div class="mcp-name">devfleet</div><div class="mcp-desc">多代理并行编排</div></div></div></div><div class="subsection" id="mcp-research"><div class="subsection-title">研究与文档</div><div class="mcp-grid"><div class="mcp-card"><div class="mcp-name">firecrawl</div><div class="mcp-desc">网页抓取</div></div><div class="mcp-card"><div class="mcp-name">exa-web-search</div><div class="mcp-desc">Exa Web 搜索</div></div><div class="mcp-card"><div class="mcp-name">context7</div><div class="mcp-desc">最新库文档</div></div><div class="mcp-card"><div class="mcp-name">cloudflare-docs</div><div class="mcp-desc">Cloudflare 文档</div></div><div class="mcp-card"><div class="mcp-name">laraplugins</div><div class="mcp-desc">Laravel 插件搜索</div></div></div></div><div class="subsection" id="mcp-data"><div class="subsection-title">数据与记忆</div><div class="mcp-grid"><div class="mcp-card"><div class="mcp-name">supabase</div><div class="mcp-desc">Supabase 数据库</div></div><div class="mcp-card"><div class="mcp-name">clickhouse</div><div class="mcp-desc">ClickHouse 分析查询</div></div><div class="mcp-card"><div class="mcp-name">memory</div><div class="mcp-desc">基础持久化记忆</div></div><div class="mcp-card"><div class="mcp-name">omega-memory</div><div class="mcp-desc">语义记忆 / 知识图谱</div></div><div class="mcp-card"><div class="mcp-name">filesystem</div><div class="mcp-desc">文件系统访问</div></div></div></div><div class="subsection" id="mcp-browser"><div class="subsection-title">浏览器与 UI</div><div class="mcp-grid"><div class="mcp-card"><div class="mcp-name">playwright</div><div class="mcp-desc">浏览器自动化</div></div><div class="mcp-card"><div class="mcp-name">browserbase</div><div class="mcp-desc">云浏览器会话</div></div><div class="mcp-card"><div class="mcp-name">browser-use</div><div class="mcp-desc">AI 浏览器代理</div></div><div class="mcp-card"><div class="mcp-name">magic</div><div class="mcp-desc">Magic UI 组件集</div></div></div></div><div class="subsection" id="mcp-cf"><div class="subsection-title">Cloudflare 专项</div><div class="mcp-grid"><div class="mcp-card"><div class="mcp-name">cloudflare-workers-builds</div><div class="mcp-desc">Workers 构建</div></div><div class="mcp-card"><div class="mcp-name">cloudflare-workers-bindings</div><div class="mcp-desc">Workers 绑定</div></div><div class="mcp-card"><div class="mcp-name">cloudflare-observability</div><div class="mcp-desc">Cloudflare 可观测性</div></div></div></div><div class="subsection" id="mcp-ai"><div class="subsection-title">AI / 安全 / 评测 / 优化</div><div class="mcp-grid"><div class="mcp-card"><div class="mcp-name">sequential-thinking</div><div class="mcp-desc">链式推理</div></div><div class="mcp-card"><div class="mcp-name">insaits</div><div class="mcp-desc">AI-to-AI 安全监控</div></div><div class="mcp-card"><div class="mcp-name">evalview</div><div class="mcp-desc">回归测试与行为快照</div></div><div class="mcp-card"><div class="mcp-name">token-optimizer</div><div class="mcp-desc">上下文与 token 优化</div></div></div></div><div class="subsection" id="mcp-media"><div class="subsection-title">媒体生成</div><div class="mcp-grid"><div class="mcp-card"><div class="mcp-name">fal-ai</div><div class="mcp-desc">图像 / 视频 / 音频生成</div></div></div></div>
+      <div class="subsection">
+        <div class="subsection-title">配置方式</div>
+        <pre>{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_PAT_HERE" }
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"]
+    }
+  },
+  "disabledMcpServers": ["supabase", "railway"]
+}</pre>
+        <div class="callout">把需要的配置复制到 <code>~/.factory/settings.json</code> 或项目级配置中；用 <code>disabledMcpServers</code> 为项目禁用不需要的服务。</div>
+      </div>
+    </section>
+
+    <section class="section" id="decision">
+      <div class="section-header"><div class="section-icon">速查</div><div><h2>快速决策速查表</h2><p>不知道该从哪个入口开始时，可以先看这里。</p></div></div>
+      <table class="decision-table">
+        <thead><tr><th>场景</th><th>推荐入口</th></tr></thead>
+        <tbody>
+          <tr><td>开始一个新功能</td><td><code>/plan</code> → <code>/tdd</code></td></tr>
+          <tr><td>刚完成一轮代码改动</td><td><code>/code-review</code> → <code>/verify</code></td></tr>
+          <tr><td>构建报错</td><td><code>/build-fix</code> 或对应语言的 <code>*-build</code></td></tr>
+          <tr><td>需要最新框架 / API 文档</td><td><code>/docs</code> 或 <code>documentation-lookup</code></td></tr>
+          <tr><td>要恢复昨天的工作</td><td><code>/resume-session</code> / <code>/sessions</code></td></tr>
+          <tr><td>上下文快满了</td><td>先用 <code>/context-budget</code> 分析，再结合 <code>strategic-compact</code> 的建议决定何时压缩上下文</td></tr>
+          <tr><td>想把经验沉淀下来</td><td><code>/learn-eval</code> → <code>/evolve</code></td></tr>
+          <tr><td>需要并行推进多个模块</td><td><code>/multi-plan</code> / <code>/orchestrate</code> / <code>/devfleet</code></td></tr>
+          <tr><td>要做安全检查</td><td><code>/code-review</code> + <code>security-review</code> / <code>security-scan</code></td></tr>
+          <tr><td>要生成新技能</td><td><code>/skill-create</code></td></tr>
+          <tr><td>要管理长期运行流程</td><td><code>/pm2</code> / <code>/loop-start</code></td></tr>
+          <tr><td>不确定应该走哪条路线</td><td>先用 <code>planner</code> 或 <code>product-lens</code> 明确目标</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="principles">
+      <div class="section-header"><div class="section-icon">原则</div><div><h2>核心原则</h2><p>如果你只记住少数几个要点，请记住这 6 条。</p></div></div>
+      <div class="principle-grid"><div class="principle-card"><div class="principle-name">技能优先</div><div class="principle-desc">EFD 的主工作流面是 skills；commands 主要用于兼容与过渡。</div></div><div class="principle-card"><div class="principle-name">先计划再执行</div><div class="principle-desc">复杂工作先用 /plan 或 blueprint 明确范围、风险和步骤。</div></div><div class="principle-card"><div class="principle-name">测试驱动</div><div class="principle-desc">默认按 TDD 和 verification-loop 思路推进。</div></div><div class="principle-card"><div class="principle-name">安全前置</div><div class="principle-desc">涉及输入、身份、密钥、支付、部署时先做安全审查。</div></div><div class="principle-card"><div class="principle-name">上下文节制</div><div class="principle-desc">合理使用 compact、context-budget、token-budget-advisor 控制成本。</div></div><div class="principle-card"><div class="principle-name">持续学习</div><div class="principle-desc">通过 learn / evolve / skill-create 把经验沉淀为资产。</div></div></div>
+    </section>
+  </div>
+  <div class="footer">Everything Factory Droid · 38 Agents · 156 Skills · 72 Commands · 28 MCP Servers · 12 Hooks</div>
+</main>
+<script>
+function toggleTheme() {
+  const body = document.body;
+  const current = body.getAttribute('data-theme');
+  body.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
+}
+function filterContent(query) {
+  const q = (query || '').trim().toLowerCase();
+  const blocks = document.querySelectorAll('.agent-card,.skill-item,.mcp-card,.rule-card,.principle-card,.cmd-table tbody tr,.hook-row,.decision-table tbody tr');
+  if (!q) {
+    blocks.forEach(el => el.classList.remove('search-hidden'));
+    return;
+  }
+  blocks.forEach(el => {
+    const text = (el.textContent || '').toLowerCase();
+    el.classList.toggle('search-hidden', !text.includes(q));
+  });
+}
+const navLinks = document.querySelectorAll('.nav-item');
+const sections = Array.from(navLinks)
+  .map(link => document.querySelector(link.getAttribute('href')))
+  .filter(Boolean);
+function updateActiveNav() {
+  let current = '';
+  sections.forEach(section => {
+    if (window.scrollY >= section.offsetTop - 120) current = section.id;
+  });
+  navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + current));
+}
+window.addEventListener('scroll', updateActiveNav, { passive: true });
+updateActiveNav();
+</script>
+</body>
+</html>

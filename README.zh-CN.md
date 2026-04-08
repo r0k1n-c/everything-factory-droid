@@ -72,10 +72,10 @@
 
 ```bash
 # 添加市场
-/plugin marketplace add r0k1n-c/everything-factory-droid
+droid plugin marketplace add https://github.com/r0k1n-c/everything-factory-droid
 
 # 安装插件
-/plugin install everything-factory-droid@everything-factory-droid
+droid plugin install everything-factory-droid@everything-factory-droid
 ```
 
 ### 第二步：安装规则（必需）
@@ -106,8 +106,8 @@ cp -r everything-factory-droid/rules/perl ~/.factory/rules/
 # 手动安装（选项2）使用简短形式：
 # /plan "添加用户认证"
 
-# 查看可用命令
-/plugin list everything-factory-droid@everything-factory-droid
+# 验证插件是否已安装
+droid plugin list
 ```
 
 **完成！** 你现在可以使用 47 个代理、171 个技能和 79 个命令。
@@ -169,11 +169,11 @@ node scripts/setup-package-manager.js --detect
 
 ```
 everything-factory-droid/
-|-- .factory/         # Factory Droid 镜像与设置
-|   |-- droids/             # 转换后的 droid 定义
-|   |-- skills/             # Factory Droid skill 镜像
-|   |-- commands/           # Factory Droid command 镜像
-|   |-- settings.json       # 项目级 Factory Droid 设置
+|-- .factory/         # 仓库本地的 Factory Droid 项目配置
+|   |-- settings.json       # 此仓库的项目设置
+|   |-- package-manager.json # 仓库工作的首选包管理器
+|   |-- identity.json       # 项目身份元数据
+|   |-- rules/              # 仓库本地的 Droid 守护规则
 |
 |-- agents/           # 用于委托的专业子代理
 |   |-- planner.md           # 功能实现规划
@@ -341,10 +341,10 @@ everything-factory-droid/
 
 ```bash
 # 将此仓库添加为市场
-/plugin marketplace add r0k1n-c/everything-factory-droid
+droid plugin marketplace add https://github.com/r0k1n-c/everything-factory-droid
 
 # 安装插件
-/plugin install everything-factory-droid@everything-factory-droid
+droid plugin install everything-factory-droid@everything-factory-droid
 ```
 
 或直接添加到你的 `~/.factory/settings.json`：

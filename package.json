@@ -33,10 +33,10 @@
     "url": "https://github.com/r0k1n-c/everything-factory-droid/issues"
   },
   "files": [
-    ".factory/droids/",
-    ".factory/skills/",
-    ".factory/commands/",
     ".factory/settings.json",
+    ".factory/package-manager.json",
+    ".factory/identity.json",
+    ".factory/rules/",
     "agents/",
     "commands/",
     "contexts/",

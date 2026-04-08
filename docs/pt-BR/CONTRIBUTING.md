@@ -330,13 +330,13 @@ Skills e agentes podem usar ferramentas **MCP (Model Context Protocol)** para ob
 
 ### Espelhos do Factory Droid
 
-Este repositório publica conteúdo curado em `skills/`, `commands/` e `agents/`, além dos espelhos prontos para Factory Droid em `.factory/`.
+Este repositório publica conteúdo curado em `skills/`, `commands/` e `agents/`. O diretório `.factory/` do próprio repositório agora guarda apenas configuração de projeto (`settings.json`, `package-manager.json`, `identity.json` e regras locais).
 
 Ao adicionar ou atualizar uma skill ou command distribuído:
 
 1. Edite primeiro a fonte em `skills/` ou `commands/`.
-2. Mantenha em sincronia o espelho correspondente em `.factory/skills/` ou `.factory/commands/`.
-3. Mencione no PR qualquer atualização de espelho que afete instalação ou comportamento empacotado.
+2. Atualize a lógica de empacotamento ou instalação apenas quando o layout dos artefatos distribuídos mudar.
+3. Mencione no PR mudanças de configuração de projeto ou de superfície de instalação que afetem o comportamento empacotado.
 
 Este fluxo de contribuição é centrado em Factory Droid. Não adicione novos caminhos exclusivos de Codex/Cursor a menos que o repositório os reintroduza explicitamente.
 

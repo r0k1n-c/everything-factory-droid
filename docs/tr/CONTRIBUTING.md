@@ -365,13 +365,13 @@ Skill'ler ve agent'lar, sadece eğitim verilerine güvenmek yerine güncel veril
 
 ### Factory Droid aynaları
 
-Bu depo, `skills/`, `commands/` ve `agents/` altındaki küratörlü kaynak içeriğin yanı sıra `.factory/` altında Factory Droid'e hazır aynalar da yayınlar.
+Bu depo, `skills/`, `commands/` ve `agents/` altındaki küratörlü kaynak içeriği yayınlar. Deponun kendi `.factory/` dizini artık yalnızca proje yapılandırmasını (`settings.json`, `package-manager.json`, `identity.json` ve yerel rules) içerir.
 
 Dağıtılan bir skill veya command eklediğinizde ya da güncellediğinizde:
 
 1. Önce `skills/` veya `commands/` altındaki kaynak dosyayı düzenleyin.
-2. Karşılık gelen `.factory/skills/` veya `.factory/commands/` aynasını senkron tutun.
-3. Kurulum veya paketlenmiş davranışı etkileyen ayna güncellemelerini PR'da belirtin.
+2. Dağıtılan artefakt düzeni değişiyorsa yalnızca o zaman paketleme veya kurulum mantığını güncelleyin.
+3. Paketlenmiş davranışı etkileyen proje yapılandırması veya kurulum yüzeyi değişikliklerini PR'da belirtin.
 
 Bu katkı akışı Factory Droid merkezlidir. Depo bunları açıkça geri getirmedikçe yeni Codex/Cursor-özel yollar eklemeyin.
 

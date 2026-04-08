@@ -67,10 +67,10 @@
 
 ```bash
 # 新增市集
-/plugin marketplace add r0k1n-c/everything-factory-droid
+droid plugin marketplace add https://github.com/r0k1n-c/everything-factory-droid
 
 # 安裝外掛程式
-/plugin install everything-factory-droid@everything-factory-droid
+droid plugin install everything-factory-droid@everything-factory-droid
 ```
 
 ### 第二步：安裝規則（必需）
@@ -94,8 +94,8 @@ cp -r everything-factory-droid/rules/* ~/.factory/rules/
 # 手動安裝（選項2）使用簡短形式：
 # /plan "新增使用者認證"
 
-# 查看可用指令
-/plugin list everything-factory-droid@everything-factory-droid
+# 驗證外掛程式是否已安裝
+droid plugin list
 ```
 
 **完成！** 您現在可以使用 47 個 agents、171 項 skills 與 79 個 commands。
@@ -143,11 +143,11 @@ node scripts/setup-package-manager.js --detect
 
 ```
 everything-factory-droid/
-|-- .factory/         # Factory Droid 專用鏡像與設定
-|   |-- droids/             # 已轉換的 droid 定義
-|   |-- skills/             # Factory Droid skill 鏡像
-|   |-- commands/           # Factory Droid command 鏡像
-|   |-- settings.json       # 專案層級的 Factory Droid 設定
+|-- .factory/         # 儲存庫本地的 Factory Droid 專案設定
+|   |-- settings.json       # 這個儲存庫的專案設定
+|   |-- package-manager.json # 儲存庫工作的偏好套件管理器
+|   |-- identity.json       # 專案身分中繼資料
+|   |-- rules/              # 儲存庫本地的 Droid 守護規則
 |
 |-- agents/           # 用於委派任務的專門子代理程式
 |   |-- planner.md           # 功能實作規劃
@@ -268,10 +268,10 @@ everything-factory-droid/
 
 ```bash
 # 將此儲存庫新增為市集
-/plugin marketplace add r0k1n-c/everything-factory-droid
+droid plugin marketplace add https://github.com/r0k1n-c/everything-factory-droid
 
 # 安裝外掛程式
-/plugin install everything-factory-droid@everything-factory-droid
+droid plugin install everything-factory-droid@everything-factory-droid
 ```
 
 或直接新增到您的 `~/.factory/settings.json`：

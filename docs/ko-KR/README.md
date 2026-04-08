@@ -80,10 +80,10 @@
 
 ```bash
 # 마켓플레이스 추가
-/plugin marketplace add r0k1n-c/everything-factory-droid
+droid plugin marketplace add https://github.com/r0k1n-c/everything-factory-droid
 
 # 플러그인 설치
-/plugin install everything-factory-droid@everything-factory-droid
+droid plugin install everything-factory-droid@everything-factory-droid
 ```
 
 ### 2단계: 룰 설치 (필수)
@@ -112,8 +112,8 @@ cd everything-factory-droid
 # 수동 설치(옵션 2) 시에는 짧은 형태를 사용:
 # /plan "사용자 인증 추가"
 
-# 사용 가능한 커맨드 확인
-/plugin list everything-factory-droid@everything-factory-droid
+# 플러그인 설치 확인
+droid plugin list
 ```
 
 **끝!** 이제 47개 에이전트, 171개 스킬, 79개 커맨드를 사용할 수 있습니다.
@@ -173,11 +173,11 @@ export EFD_DISABLED_HOOKS="pre:bash:tmux-reminder,post:edit:typecheck"
 
 ```
 everything-factory-droid/
-|-- .factory/         # Factory Droid용 미러와 설정
-|   |-- droids/             # 변환된 droid 정의
-|   |-- skills/             # Factory Droid skill 미러
-|   |-- commands/           # Factory Droid command 미러
-|   |-- settings.json       # 프로젝트 수준 Factory Droid 설정
+|-- .factory/         # 저장소 로컬 Factory Droid 프로젝트 설정
+|   |-- settings.json       # 이 저장소용 프로젝트 설정
+|   |-- package-manager.json # 저장소 작업용 기본 패키지 매니저
+|   |-- identity.json       # 프로젝트 식별 메타데이터
+|   |-- rules/              # 저장소 로컬 Droid 가드레일
 |
 |-- agents/           # 위임을 위한 전문 서브에이전트
 |   |-- planner.md           # 기능 구현 계획
@@ -324,10 +324,10 @@ Factory Droid v2.1+는 설치된 EFD 콘텐츠의 `hooks/hooks.json`을 **자동
 
 ```bash
 # 마켓플레이스 추가
-/plugin marketplace add r0k1n-c/everything-factory-droid
+droid plugin marketplace add https://github.com/r0k1n-c/everything-factory-droid
 
 # 플러그인 설치
-/plugin install everything-factory-droid@everything-factory-droid
+droid plugin install everything-factory-droid@everything-factory-droid
 ```
 
 또는 `~/.factory/settings.json`에 직접 추가:
@@ -503,7 +503,7 @@ rules/
 <summary><b>설치된 에이전트/커맨드 확인은 어떻게 하나요?</b></summary>
 
 ```bash
-/plugin list everything-factory-droid@everything-factory-droid
+droid plugin list
 ```
 
 플러그인에서 사용할 수 있는 모든 에이전트, 커맨드, 스킬을 보여줍니다.

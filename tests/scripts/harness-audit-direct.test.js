@@ -146,14 +146,19 @@ if (test('detectTargetMode and findPluginInstall cover repo, consumer, direct, p
 
     fs.writeFileSync(path.join(rootDir, 'package.json'), JSON.stringify({ name: 'consumer-app' }, null, 2));
     fs.mkdirSync(path.join(rootDir, 'scripts'), { recursive: true });
-    fs.mkdirSync(path.join(rootDir, '.factory', 'droids'), { recursive: true });
+    fs.mkdirSync(path.join(rootDir, '.factory'), { recursive: true });
+    fs.mkdirSync(path.join(rootDir, 'agents'), { recursive: true });
+    fs.mkdirSync(path.join(rootDir, 'commands'), { recursive: true });
     fs.mkdirSync(path.join(rootDir, 'skills'), { recursive: true });
     fs.writeFileSync(path.join(rootDir, 'scripts', 'harness-audit.js'), '// audit');
     fs.writeFileSync(path.join(rootDir, '.factory', 'settings.json'), '{}');
+    fs.writeFileSync(path.join(rootDir, '.factory', 'package-manager.json'), '{"packageManager":"yarn"}');
     assert.strictEqual(internals.detectTargetMode(rootDir), 'repo');
 
     fs.rmSync(path.join(rootDir, 'scripts'), { recursive: true, force: true });
     fs.rmSync(path.join(rootDir, '.factory'), { recursive: true, force: true });
+    fs.rmSync(path.join(rootDir, 'agents'), { recursive: true, force: true });
+    fs.rmSync(path.join(rootDir, 'commands'), { recursive: true, force: true });
     fs.rmSync(path.join(rootDir, 'skills'), { recursive: true, force: true });
     assert.strictEqual(internals.detectTargetMode(rootDir), 'consumer');
 
@@ -201,7 +206,11 @@ if (test('repo and consumer checks feed report scoring, printText, and help outp
     fs.writeFileSync(path.join(rootDir, 'AGENTS.md'), '# instructions');
     fs.writeFileSync(path.join(rootDir, '.mcp.json'), '{}');
     fs.writeFileSync(path.join(rootDir, '.gitignore'), '.env\n');
-    fs.writeFileSync(path.join(rootDir, '.factory', 'settings.json'), 'PreToolUse');
+    fs.writeFileSync(path.join(rootDir, '.factory', 'settings.json'), JSON.stringify({ model: 'claude-sonnet-4-6' }));
+    fs.writeFileSync(path.join(rootDir, '.factory', 'package-manager.json'), '{"packageManager":"yarn"}');
+    fs.writeFileSync(path.join(rootDir, '.factory', 'identity.json'), '{"project":"consumer-app"}');
+    fs.mkdirSync(path.join(rootDir, '.factory', 'rules'), { recursive: true });
+    fs.writeFileSync(path.join(rootDir, '.factory', 'rules', 'efd-guardrails.md'), '- guardrail');
     fs.writeFileSync(path.join(rootDir, '.github', 'workflows', 'ci.yml'), 'name: ci');
     fs.writeFileSync(path.join(rootDir, 'tests', 'app.test.js'), 'ok');
 
@@ -209,7 +218,8 @@ if (test('repo and consumer checks feed report scoring, printText, and help outp
     assert.ok(consumerChecks.some(check => check.id === 'consumer-plugin-install' && check.pass));
     assert.ok(consumerChecks.some(check => check.id === 'consumer-ci-workflow' && check.pass));
 
-    fs.writeFileSync(path.join(rootDir, 'hooks', 'hooks.json'), '{}');
+    fs.writeFileSync(path.join(rootDir, 'hooks', 'hooks.json'), '{"hooks":{}}');
+    fs.writeFileSync(path.join(rootDir, '.factory', 'settings.json'), '{"model":"claude-sonnet-4-6","disabledMcpServers":["vercel"]}');
     fs.writeFileSync(path.join(rootDir, 'scripts', 'doctor.js'), '// doctor');
     fs.writeFileSync(path.join(rootDir, 'scripts', 'harness-audit.js'), '// audit');
     fs.writeFileSync(path.join(rootDir, 'scripts', 'hooks', 'suggest-compact.js'), '// hook');
@@ -229,6 +239,7 @@ if (test('repo and consumer checks feed report scoring, printText, and help outp
     const repoChecks = internals.getRepoChecks(rootDir);
     assert.ok(repoChecks.some(check => check.id === 'quality-doctor-script' && check.pass));
     assert.ok(repoChecks.some(check => check.id === 'security-agent' && check.pass));
+    assert.ok(repoChecks.some(check => check.id === 'tool-project-settings' && check.pass));
 
     const report = loaded.buildReport('repo', { rootDir, targetMode: 'repo' });
     assert.strictEqual(report.scope, 'repo');

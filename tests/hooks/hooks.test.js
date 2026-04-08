@@ -2359,6 +2359,28 @@ async function runTests() {
     passed++;
   else failed++;
 
+  if (
+    test('Factory Droid plugin manifests exist for marketplace installation', () => {
+      const pluginPath = path.join(__dirname, '..', '..', '.factory-plugin', 'plugin.json');
+      const marketplacePath = path.join(__dirname, '..', '..', '.factory-plugin', 'marketplace.json');
+
+      assert.ok(fs.existsSync(pluginPath), 'Plugin manifest should exist');
+      assert.ok(fs.existsSync(marketplacePath), 'Marketplace manifest should exist');
+
+      const plugin = JSON.parse(fs.readFileSync(pluginPath, 'utf8'));
+      const marketplace = JSON.parse(fs.readFileSync(marketplacePath, 'utf8'));
+
+      assert.strictEqual(plugin.name, 'everything-factory-droid');
+      assert.strictEqual(marketplace.name, 'everything-factory-droid');
+      assert.ok(
+        marketplace.plugins.some(entry => entry.name === 'everything-factory-droid' && entry.source === '.'),
+        'Marketplace manifest should expose the root plugin'
+      );
+    })
+  )
+    passed++;
+  else failed++;
+
   // ─── evaluate-session.js tests ───
   console.log('\nevaluate-session.js:');
 

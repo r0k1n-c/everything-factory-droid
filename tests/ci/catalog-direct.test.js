@@ -95,13 +95,13 @@ function writeCatalogFixture(rootDir, counts = {}, options = {}) {
 
   fs.writeFileSync(
     path.join(rootDir, 'docs', 'pt-BR', 'README.md'),
-    `Você agora tem acesso a ${catalog.agents} agentes, ${catalog.skills} skills e ${catalog.commands} comandos.\n\`\`\`\neverything-factory-droid/\n|-- .factory/         # Espelhos e configurações voltados ao Factory Droid\n|   |-- droids/             # Definições de droids convertidas\n|   |-- skills/             # Espelhos de skills para Factory Droid\n|   |-- commands/           # Espelhos de commands para Factory Droid\n|   |-- settings.json       # Configurações de projeto do Factory Droid\n|\n|-- agents/           # ${catalog.agents} subagentes especializados\n\`\`\`\n`,
+    `Você agora tem acesso a ${catalog.agents} agentes, ${catalog.skills} skills e ${catalog.commands} comandos.\n\`\`\`\neverything-factory-droid/\n|-- .factory/         # Configuração local de projeto do Factory Droid\n|   |-- settings.json       # Configurações de projeto deste repositório\n|   |-- package-manager.json # Gerenciador de pacotes preferido para o repositório\n|   |-- identity.json       # Metadados de identidade do projeto\n|   |-- rules/              # Guardrails locais do Droid\n|\n|-- agents/           # ${catalog.agents} subagentes especializados\n\`\`\`\n`,
     'utf8'
   );
 
   fs.writeFileSync(
     path.join(rootDir, 'docs', 'tr', 'README.md'),
-    `Artık ${catalog.agents} agent, ${catalog.skills} skill ve ${catalog.commands} command'a erişiminiz var.\n\`\`\`\neverything-factory-droid/\n|-- .factory/         # Factory Droid aynaları ve ayarları\n|   |-- droids/             # Dönüştürülmüş droid tanımları\n|   |-- skills/             # Factory Droid skill aynaları\n|   |-- commands/           # Factory Droid command aynaları\n|   |-- settings.json       # Proje düzeyi Factory Droid ayarları\n|\n|-- agents/           # Delegation için ${catalog.agents} özel subagent\n\`\`\`\n`,
+    `Artık ${catalog.agents} agent, ${catalog.skills} skill ve ${catalog.commands} command'a erişiminiz var.\n\`\`\`\neverything-factory-droid/\n|-- .factory/         # Repo-yerel Factory Droid proje yapılandırması\n|   |-- settings.json       # Bu repo için proje ayarları\n|   |-- package-manager.json # Repo çalışmaları için tercih edilen paket yöneticisi\n|   |-- identity.json       # Proje kimlik metadatası\n|   |-- rules/              # Repo-yerel Droid guardrail'leri\n|\n|-- agents/           # Delegation için ${catalog.agents} özel subagent\n\`\`\`\n`,
     'utf8'
   );
 }

@@ -1,0 +1,10 @@
+{
+  "project": "everything-factory-droid",
+  "role": "Factory Droid plugin repository",
+  "technicalLevel": "advanced",
+  "preferredStyle": {
+    "verbosity": "concise",
+    "comments": "minimal",
+    "verification": "always"
+  }
+}

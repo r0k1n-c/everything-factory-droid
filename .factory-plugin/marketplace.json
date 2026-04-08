@@ -1,0 +1,14 @@
+{
+  "name": "everything-factory-droid",
+  "description": "Everything Factory Droid plugin marketplace",
+  "owner": {
+    "name": "r0k1n-c"
+  },
+  "plugins": [
+    {
+      "name": "everything-factory-droid",
+      "description": "Complete Factory Droid workflow system",
+      "source": "."
+    }
+  ]
+}

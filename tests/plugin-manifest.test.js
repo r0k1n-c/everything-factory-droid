@@ -27,35 +27,41 @@ function test(name, fn) {
 console.log('\n=== Factory Droid surfaces ===\n');
 
 const factoryDir = path.join(repoRoot, '.factory');
-const droidsDir = path.join(factoryDir, 'droids');
-const skillsDir = path.join(factoryDir, 'skills');
-const commandsDir = path.join(factoryDir, 'commands');
 const settingsPath = path.join(factoryDir, 'settings.json');
+const packageManagerPath = path.join(factoryDir, 'package-manager.json');
+const identityPath = path.join(factoryDir, 'identity.json');
+const guardrailsPath = path.join(factoryDir, 'rules', 'efd-guardrails.md');
 
 test('.factory directory exists', () => {
   assert.ok(fs.existsSync(factoryDir), 'Expected .factory to exist');
 });
 
-test('.factory/droids contains shared droids', () => {
-  const expected = ['architect.md', 'planner.md', 'code-reviewer.md', 'security-reviewer.md', 'tdd-guide.md'];
-  for (const file of expected) {
-    assert.ok(fs.existsSync(path.join(droidsDir, file)), `Missing droid: ${file}`);
-  }
-});
-
-test('.factory/skills mirrors root skills', () => {
-  assert.ok(fs.existsSync(skillsDir), 'Expected .factory/skills to exist');
-  assert.ok(fs.existsSync(path.join(skillsDir, 'verification-loop', 'SKILL.md')), 'Expected copied skill content');
-});
-
-test('.factory/commands mirrors root commands', () => {
-  assert.ok(fs.existsSync(commandsDir), 'Expected .factory/commands to exist');
-  assert.ok(fs.existsSync(path.join(commandsDir, 'plan.md')), 'Expected plan command');
-});
-
-test('.factory/settings.json contains hooks config', () => {
+test('.factory/settings.json stores project-level config instead of mirrored hooks', () => {
   const settings = JSON.parse(fs.readFileSync(settingsPath, 'utf8'));
-  assert.ok(settings.hooks && typeof settings.hooks === 'object', 'Expected hooks object');
+  assert.strictEqual(settings.model, 'claude-sonnet-4-6');
+  assert.strictEqual(settings.alwaysThinkingEnabled, true);
+  assert.ok(Array.isArray(settings.disabledMcpServers), 'Expected disabledMcpServers array');
+  assert.ok(!Object.prototype.hasOwnProperty.call(settings, 'hooks'), 'Did not expect repo-local hooks duplication');
+});
+
+test('.factory/package-manager.json declares the repo package manager', () => {
+  const packageManager = JSON.parse(fs.readFileSync(packageManagerPath, 'utf8'));
+  assert.strictEqual(packageManager.packageManager, 'yarn');
+});
+
+test('.factory/identity.json exists', () => {
+  const identity = JSON.parse(fs.readFileSync(identityPath, 'utf8'));
+  assert.strictEqual(identity.project, 'everything-factory-droid');
+});
+
+test('.factory/rules/efd-guardrails.md exists', () => {
+  assert.ok(fs.existsSync(guardrailsPath), 'Expected repo-local guardrails file');
+});
+
+test('.factory does not mirror reusable droids, skills, or commands', () => {
+  assert.ok(!fs.existsSync(path.join(factoryDir, 'droids')), 'Did not expect .factory/droids mirror');
+  assert.ok(!fs.existsSync(path.join(factoryDir, 'skills')), 'Did not expect .factory/skills mirror');
+  assert.ok(!fs.existsSync(path.join(factoryDir, 'commands')), 'Did not expect .factory/commands mirror');
 });
 
 console.log(`\nPassed: ${passed}`);

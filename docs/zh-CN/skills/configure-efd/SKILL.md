@@ -19,7 +19,7 @@ origin: EFD
 
 此技能必须在激活前对 Factory Droid 可访问。有两种引导方式：
 
-1. **通过插件**: `/plugin install everything-factory-droid` — 插件会自动加载此技能
+1. **通过插件**: 先运行 `droid plugin marketplace add https://github.com/r0k1n-c/everything-factory-droid`，再运行 `droid plugin install everything-factory-droid@everything-factory-droid` — 插件会自动加载此技能
 2. **手动**: 仅将此技能复制到 `~/.factory/skills/configure-efd/SKILL.md`，然后通过说 "configure efd" 激活
 
 ***

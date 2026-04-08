@@ -352,13 +352,13 @@ description: /help에 표시되는 간단한 설명
 
 ### Factory Droid 미러
 
-이 저장소는 `skills/`, `commands/`, `agents/` 아래의 큐레이션된 소스 콘텐츠와 함께 `.factory/` 아래의 Factory Droid용 미러도 함께 배포합니다.
+이 저장소는 `skills/`, `commands/`, `agents/` 아래의 큐레이션된 소스 콘텐츠를 배포합니다. 저장소 로컬 `.factory/` 디렉터리는 이제 프로젝트 설정(`settings.json`, `package-manager.json`, `identity.json`, 로컬 rules)만 담습니다.
 
 배포되는 스킬이나 커맨드를 추가하거나 수정할 때는:
 
 1. 먼저 `skills/` 또는 `commands/` 아래의 소스 파일을 수정합니다.
-2. 대응되는 `.factory/skills/` 또는 `.factory/commands/` 미러를 동기화합니다.
-3. 설치나 패키징된 동작에 영향을 주는 미러 변경사항은 PR에 명시합니다.
+2. 배포 아티팩트 레이아웃이 바뀌는 경우에만 패키징 또는 설치 로직을 갱신합니다.
+3. 패키징된 동작에 영향을 주는 프로젝트 설정 또는 설치 표면 변경사항은 PR에 명시합니다.
 
 이 기여 흐름은 Factory Droid 중심입니다. 저장소에서 명시적으로 다시 도입하지 않는 한 새로운 Codex/Cursor 전용 경로를 추가하지 마세요.
 

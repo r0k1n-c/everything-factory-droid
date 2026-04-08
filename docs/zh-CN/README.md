@@ -87,10 +87,10 @@
 
 ```bash
 # Add marketplace
-/plugin marketplace add r0k1n-c/everything-factory-droid
+droid plugin marketplace add https://github.com/r0k1n-c/everything-factory-droid
 
 # Install plugin
-/plugin install everything-factory-droid@everything-factory-droid
+droid plugin install everything-factory-droid@everything-factory-droid
 ```
 
 ### 步骤 2：安装规则（必需）
@@ -134,8 +134,8 @@ npx efd-install typescript
 # Manual install (Option 2) uses the shorter form:
 # /plan "Add user authentication"
 
-# Check available commands
-/plugin list everything-factory-droid@everything-factory-droid
+# Verify the plugin installation
+droid plugin list
 ```
 
 **搞定！** 你现在可以使用 47 个智能体、171 项技能和 79 个命令了。
@@ -163,11 +163,11 @@ npx efd-install typescript
 
 ```
 everything-factory-droid/
-|-- .factory/         # Factory Droid 镜像与设置
-|   |-- droids/             # 转换后的 droid 定义
-|   |-- skills/             # Factory Droid skill 镜像
-|   |-- commands/           # Factory Droid command 镜像
-|   |-- settings.json       # 项目级 Factory Droid 设置
+|-- .factory/         # 仓库本地的 Factory Droid 项目配置
+|   |-- settings.json       # 此仓库的项目设置
+|   |-- package-manager.json # 仓库工作的首选包管理器
+|   |-- identity.json       # 项目身份元数据
+|   |-- rules/              # 仓库本地的 Droid 守护规则
 |
 |-- agents/           # 47 个用于委托任务的专用子代理
 |   |-- planner.md           # 功能实现规划
@@ -480,10 +480,10 @@ Factory Droid v2.1+ **会自动加载** 已安装 EFD 内容中的 `hooks/hooks.
 
 ```bash
 # Add this repo as a marketplace
-/plugin marketplace add r0k1n-c/everything-factory-droid
+droid plugin marketplace add https://github.com/r0k1n-c/everything-factory-droid
 
 # Install the plugin
-/plugin install everything-factory-droid@everything-factory-droid
+droid plugin install everything-factory-droid@everything-factory-droid
 ```
 
 或者直接添加到您的 `~/.factory/settings.json`：
@@ -692,7 +692,7 @@ rules/
 <summary><b>如何检查已安装的代理/命令？</b></summary>
 
 ```bash
-/plugin list everything-factory-droid@everything-factory-droid
+droid plugin list
 ```
 
 这会显示插件中所有可用的代理、命令和技能。

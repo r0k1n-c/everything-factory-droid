@@ -397,13 +397,13 @@ Skills and agents can use **MCP (Model Context Protocol)** tools to pull in up-t
 
 ### Factory Droid mirrors
 
-This repo ships curated source content under `skills/`, `commands/`, and `agents/`, plus Factory Droid-ready mirrors under `.factory/`.
+This repo ships curated source content under `skills/`, `commands/`, and `agents/`. The repo-local `.factory/` directory now holds only project configuration (`settings.json`, `package-manager.json`, `identity.json`, and local rules).
 
 When you add or update a shipped skill or command:
 
 1. Edit the source file first under `skills/` or `commands/`.
-2. Keep the corresponding `.factory/skills/` or `.factory/commands/` mirror in sync.
-3. Mention mirror updates in your PR if the change affects installation or packaged behavior.
+2. Update packaging or install logic only if the shipped artifact layout changes.
+3. Mention any project-config or install-surface changes in your PR if they affect packaged behavior.
 
 This contributor flow is centered on Factory Droid. Do not add new Codex/Cursor-only paths unless the repo explicitly reintroduces them.
 

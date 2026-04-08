@@ -134,7 +134,7 @@ MCPs connect Droid to external services directly. Not a replacement for APIs - i
 
 **CRITICAL: Context Window Management**
 
-Be picky with MCPs. I keep all MCPs in user config but **disable everything unused**. Use `/plugin list` or run `/mcp` to inspect what is currently available.
+Be picky with MCPs. I keep all MCPs in user config but **disable everything unused**. Use `/plugins` or run `/mcp` to inspect what is currently available.
 
 ![Plugin management interface](./assets/images/shortform/05-plugins-interface.jpeg)
 *Using plugin management to inspect installed MCPs and their status*
@@ -161,9 +161,9 @@ Plugins package tools for easy installation instead of tedious manual setup. A p
 ```bash
 # Add a marketplace
 # mgrep plugin by @mixedbread-ai
-/plugin marketplace add https://github.com/mixedbread-ai/mgrep
+droid plugin marketplace add https://github.com/mixedbread-ai/mgrep
 
-# Open Droid, run /plugin list, find the new marketplace entry, and install from there
+# Open Droid, run /plugins, find the new marketplace entry, and install from there
 ```
 
 ![Marketplaces tab showing mgrep](./assets/images/shortform/06-marketplaces-mgrep.jpeg)

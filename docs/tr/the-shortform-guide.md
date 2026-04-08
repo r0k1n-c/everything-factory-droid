@@ -134,7 +134,7 @@ MCP'ler Droid'u doğrudan harici hizmetlere bağlar. API'lerin yerini tutmaz - b
 
 **KRİTİK: Context Window Yönetimi**
 
-MCP'lerle seçici olun. Tüm MCP'leri kullanıcı yapılandırmasında tutarım ancak **kullanılmayan her şeyi devre dışı bırakırım**. `/plugin list` veya `/mcp` ile şu anda nelerin kullanılabilir olduğunu kontrol edin.
+MCP'lerle seçici olun. Tüm MCP'leri kullanıcı yapılandırmasında tutarım ancak **kullanılmayan her şeyi devre dışı bırakırım**. Eklentiler için `/plugins`, MCP'ler için `/mcp` kullanarak şu anda nelerin kullanılabilir olduğunu kontrol edin.
 
 ![Plugin yönetim arayüzü](../../assets/images/shortform/05-plugins-interface.jpeg)
 *Plugin yönetimi üzerinden yüklü MCP'leri ve durumlarını görme*
@@ -161,9 +161,9 @@ Plugin'ler, sıkıcı manuel kurulum yerine kolay kurulum için araçları paket
 ```bash
 # Bir marketplace ekleyin
 # @mixedbread-ai tarafından mgrep plugin
-/plugin marketplace add https://github.com/mixedbread-ai/mgrep
+droid plugin marketplace add https://github.com/mixedbread-ai/mgrep
 
-# Droid'i açın, /plugin list çalıştırın, yeni marketplace girdisini bulun ve oradan yükleyin
+# Droid'i açın, /plugins çalıştırın, yeni marketplace girdisini bulun ve oradan yükleyin
 ```
 
 ![Marketplaces tab showing mgrep](../../assets/images/shortform/06-marketplaces-mgrep.jpeg)

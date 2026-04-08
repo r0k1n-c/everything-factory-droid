@@ -86,10 +86,10 @@ Comece em menos de 2 minutos:
 
 ```bash
 # Adicionar marketplace
-/plugin marketplace add r0k1n-c/everything-factory-droid
+droid plugin marketplace add https://github.com/r0k1n-c/everything-factory-droid
 
 # Instalar plugin
-/plugin install everything-factory-droid@everything-factory-droid
+droid plugin install everything-factory-droid@everything-factory-droid
 ```
 
 ### Passo 2: Instalar as Regras (Obrigatório)
@@ -131,8 +131,8 @@ npx efd-install typescript
 # Instalação manual (Opção 2) usa a forma mais curta:
 # /plan "Adicionar autenticação de usuário"
 
-# Verificar comandos disponíveis
-/plugin list everything-factory-droid@everything-factory-droid
+# Verificar a instalação do plugin
+droid plugin list
 ```
 
 **Pronto!** Você agora tem acesso a 47 agentes, 171 skills e 79 comandos.
@@ -152,11 +152,11 @@ Este projeto mantém apenas a superfície compatível com o **Factory Droid**:
 
 ```
 everything-factory-droid/
-|-- .factory/         # Espelhos e configurações voltados ao Factory Droid
-|   |-- droids/             # Definições de droids convertidas
-|   |-- skills/             # Espelhos de skills para Factory Droid
-|   |-- commands/           # Espelhos de commands para Factory Droid
-|   |-- settings.json       # Configurações de projeto do Factory Droid
+|-- .factory/         # Configuração local de projeto do Factory Droid
+|   |-- settings.json       # Configurações de projeto deste repositório
+|   |-- package-manager.json # Gerenciador de pacotes preferido para o repositório
+|   |-- identity.json       # Metadados de identidade do projeto
+|   |-- rules/              # Guardrails locais do Droid
 |
 |-- agents/           # 47 subagentes especializados para delegação
 |-- skills/           # Definições de fluxo de trabalho e conhecimento de domínio
@@ -243,10 +243,10 @@ droid --version
 
 ```bash
 # Adicionar este repositório como marketplace
-/plugin marketplace add r0k1n-c/everything-factory-droid
+droid plugin marketplace add https://github.com/r0k1n-c/everything-factory-droid
 
 # Instalar o plugin
-/plugin install everything-factory-droid@everything-factory-droid
+droid plugin install everything-factory-droid@everything-factory-droid
 ```
 
 Ou adicione diretamente ao seu `~/.factory/settings.json`:
@@ -387,7 +387,7 @@ Regras são diretrizes sempre seguidas, organizadas em `common/` (agnóstico à 
 <summary><b>Como verificar quais agentes/comandos estão instalados?</b></summary>
 
 ```bash
-/plugin list everything-factory-droid@everything-factory-droid
+droid plugin list
 ```
 </details>
 

@@ -177,7 +177,9 @@ function detectTargetMode(rootDir) {
   if (
     fileExists(rootDir, 'scripts/harness-audit.js') &&
     fileExists(rootDir, '.factory/settings.json') &&
-    fileExists(rootDir, '.factory/droids') &&
+    fileExists(rootDir, '.factory/package-manager.json') &&
+    fileExists(rootDir, 'agents') &&
+    fileExists(rootDir, 'commands') &&
     fileExists(rootDir, 'skills')
   ) {
     return 'repo';
@@ -240,8 +242,9 @@ function findPluginInstall(rootDir) {
 
 function getRepoChecks(rootDir) {
   const packageJson = JSON.parse(readText(rootDir, 'package.json'));
-  const commandPrimary = safeRead(rootDir, 'commands/harness-audit.md').trim();
-  const commandParity = safeRead(rootDir, '.factory/commands/harness-audit.md').trim();
+  const projectSettings = safeParseJson(safeRead(rootDir, '.factory/settings.json'));
+  const projectPackageManager = safeParseJson(safeRead(rootDir, '.factory/package-manager.json'));
+  const projectIdentity = safeParseJson(safeRead(rootDir, '.factory/identity.json'));
   const hooksJson = safeRead(rootDir, 'hooks/hooks.json');
 
   return [
@@ -286,14 +289,32 @@ function getRepoChecks(rootDir) {
       fix: 'Add missing skill directories with SKILL.md definitions.',
     },
     {
-      id: 'tool-command-parity',
+      id: 'tool-project-settings',
       category: 'Tool Coverage',
       points: 2,
-      scopes: ['repo', 'commands'],
-      path: '.factory/commands/harness-audit.md',
-      description: 'Harness-audit command parity exists between primary and Factory command docs',
-      pass: commandPrimary.length > 0 && commandPrimary === commandParity,
-      fix: 'Sync commands/harness-audit.md and .factory/commands/harness-audit.md.',
+      scopes: ['repo'],
+      path: '.factory/settings.json',
+      description: 'Repo-local .factory settings contain project config without duplicated hooks',
+      pass: Boolean(projectSettings)
+        && typeof projectSettings === 'object'
+        && !Array.isArray(projectSettings)
+        && !Object.prototype.hasOwnProperty.call(projectSettings, 'hooks')
+        && (
+          typeof projectSettings.model === 'string'
+          || Array.isArray(projectSettings.disabledMcpServers)
+          || typeof projectSettings.alwaysThinkingEnabled === 'boolean'
+        ),
+      fix: 'Store real project settings in .factory/settings.json and keep hooks in hooks/hooks.json only.',
+    },
+    {
+      id: 'tool-project-package-manager',
+      category: 'Tool Coverage',
+      points: 2,
+      scopes: ['repo'],
+      path: '.factory/package-manager.json',
+      description: 'Repo declares its project-level package manager config',
+      pass: typeof projectPackageManager?.packageManager === 'string',
+      fix: 'Add .factory/package-manager.json with the preferred package manager.',
     },
     {
       id: 'context-strategic-compact',
@@ -324,6 +345,16 @@ function getRepoChecks(rootDir) {
       description: 'Model routing command exists',
       pass: fileExists(rootDir, 'commands/model-route.md'),
       fix: 'Add model-route command guidance in commands/model-route.md.',
+    },
+    {
+      id: 'context-project-identity',
+      category: 'Context Efficiency',
+      points: 2,
+      scopes: ['repo'],
+      path: '.factory/identity.json',
+      description: 'Repo exposes project identity metadata for local sessions',
+      pass: typeof projectIdentity?.project === 'string' && projectIdentity.project.length > 0,
+      fix: 'Add .factory/identity.json with repo identity metadata.',
     },
     {
       id: 'context-token-doc',
@@ -454,6 +485,16 @@ function getRepoChecks(rootDir) {
       description: 'Security reviewer agent exists',
       pass: fileExists(rootDir, 'agents/security-reviewer.md'),
       fix: 'Add agents/security-reviewer.md for delegated security audits.',
+    },
+    {
+      id: 'security-project-guardrails',
+      category: 'Security Guardrails',
+      points: 2,
+      scopes: ['repo'],
+      path: '.factory/rules/efd-guardrails.md',
+      description: 'Repo-local guardrails exist under .factory/rules',
+      pass: fileExists(rootDir, '.factory/rules/efd-guardrails.md'),
+      fix: 'Add .factory/rules/efd-guardrails.md with repo-specific guardrails.',
     },
     {
       id: 'security-prompt-hook',

@@ -60,7 +60,7 @@ Harness 审计 (代码库): 66/70
 
 首要三项行动:
 1) [安全防护] 在 hooks/hooks.json 中添加提示/工具预检安全防护。 (hooks/hooks.json)
-2) [工具覆盖率] 同步 commands/harness-audit.md 和 .opencode/commands/harness-audit.md。 (.factory/commands/harness-audit.md)
+2) [工具覆盖率] 在 .factory/settings.json 中保留真实的项目设置，并仅在 hooks/hooks.json 中维护 hooks。 (.factory/settings.json)
 3) [评估覆盖率] 提升 scripts/hooks/lib 目录下的自动化测试覆盖率。 (tests/)
 ```
 

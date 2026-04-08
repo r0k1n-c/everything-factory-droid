@@ -18,7 +18,7 @@ An interactive, step-by-step installation wizard for the Everything Factory Droi
 ## Prerequisites
 
 This skill must be accessible to Factory Droid before activation. Two ways to bootstrap:
-1. **Via Plugin**: `/plugin install everything-factory-droid` — the plugin loads this skill automatically
+1. **Via Plugin**: add the marketplace with `droid plugin marketplace add https://github.com/r0k1n-c/everything-factory-droid`, then run `droid plugin install everything-factory-droid@everything-factory-droid` — the plugin loads this skill automatically
 2. **Manual**: Copy only this skill to `~/.factory/skills/configure-efd/SKILL.md`, then activate by saying "configure efd"
 
 ---

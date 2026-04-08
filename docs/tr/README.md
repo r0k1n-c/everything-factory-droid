@@ -85,10 +85,10 @@ Bu repository yalnızca ham kodu içerir. Rehberler her şeyi açıklıyor.
 
 ```bash
 # Marketplace ekle
-/plugin marketplace add r0k1n-c/everything-factory-droid
+droid plugin marketplace add https://github.com/r0k1n-c/everything-factory-droid
 
 # Plugin'i kur
-/plugin install everything-factory-droid@everything-factory-droid
+droid plugin install everything-factory-droid@everything-factory-droid
 ```
 
 ### Adım 2: Rule'ları Kurun (Gerekli)
@@ -132,8 +132,8 @@ Manuel kurulum talimatları için `rules/` klasöründeki README'ye bakın.
 # Manuel kurulum (Seçenek 2) daha kısa formu kullanır:
 # /plan "Kullanıcı kimlik doğrulaması ekle"
 
-# Mevcut command'ları kontrol edin
-/plugin list everything-factory-droid@everything-factory-droid
+# Plugin kurulumunu doğrulayın
+droid plugin list
 ```
 
 **Bu kadar!** Artık 47 agent, 171 skill ve 79 command'a erişiminiz var.
@@ -155,11 +155,11 @@ Bu repo bir **Factory Droid plugin'i** - doğrudan kurun veya component'leri man
 
 ```
 everything-factory-droid/
-|-- .factory/         # Factory Droid aynaları ve ayarları
-|   |-- droids/             # Dönüştürülmüş droid tanımları
-|   |-- skills/             # Factory Droid skill aynaları
-|   |-- commands/           # Factory Droid command aynaları
-|   |-- settings.json       # Proje düzeyi Factory Droid ayarları
+|-- .factory/         # Repo-yerel Factory Droid proje yapılandırması
+|   |-- settings.json       # Bu repo için proje ayarları
+|   |-- package-manager.json # Repo çalışmaları için tercih edilen paket yöneticisi
+|   |-- identity.json       # Proje kimlik metadatası
+|   |-- rules/              # Repo-yerel Droid guardrail'leri
 |
 |-- agents/           # Delegation için 47 özel subagent
 |   |-- planner.md           # Feature implementasyon planlama
@@ -279,7 +279,7 @@ Nereden başlayacağınızdan emin değil misiniz? Bu hızlı referansı kullan�
 <summary><b>Hangi agent/command'ların kurulu olduğunu nasıl kontrol ederim?</b></summary>
 
 ```bash
-/plugin list everything-factory-droid@everything-factory-droid
+droid plugin list
 ```
 
 Bu, plugin'den mevcut tüm agent'ları, command'ları ve skill'leri gösterir.

@@ -611,7 +611,7 @@ function syncPtBrReadme(content, catalog) {
     nextContent = replaceOrThrow(
       nextContent,
       /\|--\s*\.claude-plugin\/[^\n]*\n\|\s+\|--\s+plugin\.json[^\n]*\n\|\s+\|--\s+marketplace\.json[^\n]*\n\|\n/,
-      '|-- .factory/         # Espelhos e configurações voltados ao Factory Droid\n|   |-- droids/             # Definições de droids convertidas\n|   |-- skills/             # Espelhos de skills para Factory Droid\n|   |-- commands/           # Espelhos de commands para Factory Droid\n|   |-- settings.json       # Configurações de projeto do Factory Droid\n|\n',
+      '|-- .factory/         # Configuração local de projeto do Factory Droid\n|   |-- settings.json       # Configurações de projeto deste repositório\n|   |-- package-manager.json # Gerenciador de pacotes preferido para o repositório\n|   |-- identity.json       # Metadados de identidade do projeto\n|   |-- rules/              # Guardrails locais do Droid\n|\n',
       'docs/pt-BR/README.md structure block'
     );
   }
@@ -645,7 +645,7 @@ function syncTrReadme(content, catalog) {
     nextContent = replaceOrThrow(
       nextContent,
       /\|--\s*\.claude-plugin\/[^\n]*\n\|\s+\|--\s+plugin\.json[^\n]*\n\|\s+\|--\s+marketplace\.json[^\n]*\n\|\n/,
-      '|-- .factory/         # Factory Droid aynaları ve ayarları\n|   |-- droids/             # Dönüştürülmüş droid tanımları\n|   |-- skills/             # Factory Droid skill aynaları\n|   |-- commands/           # Factory Droid command aynaları\n|   |-- settings.json       # Proje düzeyi Factory Droid ayarları\n|\n',
+      '|-- .factory/         # Repo-yerel Factory Droid proje yapılandırması\n|   |-- settings.json       # Bu repo için proje ayarları\n|   |-- package-manager.json # Repo çalışmaları için tercih edilen paket yöneticisi\n|   |-- identity.json       # Proje kimlik metadatası\n|   |-- rules/              # Repo-yerel Droid guardrail\'leri\n|\n',
       'docs/tr/README.md structure block'
     );
   }

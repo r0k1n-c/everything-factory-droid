@@ -374,7 +374,7 @@ description: 在 /help 中显示的简要描述
 2. 保持对应的 `.factory/skills/` 或 `.factory/commands/` 镜像同步。
 3. 如果镜像更新会影响安装或打包后的行为，请在 PR 中说明。
 
-此贡献流程以 Factory Droid 为中心。除非仓库明确重新引入，否则不要新增 Codex/Cursor 专用路径。
+此贡献流程以 Factory Droid 为中心。除非仓库明确重新引入，否则不要新增其他 AI 工具专用路径。
 
 ### 翻译
 

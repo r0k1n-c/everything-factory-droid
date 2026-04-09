@@ -11,7 +11,7 @@
 | Project focus | Factory Droid only |
 | Agents | 47 |
 | Skills | 171 |
-| Commands | 79 |
+| Commands | 74 |
 | Rule files | 89 |
 | Hook events | 6 |
 | Hook matchers | 16 |

@@ -373,7 +373,7 @@ Dağıtılan bir skill veya command eklediğinizde ya da güncellediğinizde:
 2. Dağıtılan artefakt düzeni değişiyorsa yalnızca o zaman paketleme veya kurulum mantığını güncelleyin.
 3. Paketlenmiş davranışı etkileyen proje yapılandırması veya kurulum yüzeyi değişikliklerini PR'da belirtin.
 
-Bu katkı akışı Factory Droid merkezlidir. Depo bunları açıkça geri getirmedikçe yeni Codex/Cursor-özel yollar eklemeyin.
+Bu katkı akışı Factory Droid merkezlidir. Depo bunları açıkça geri getirmedikçe diğer AI araçlarına özel yollar eklemeyin.
 
 ### Çeviriler
 

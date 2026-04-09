@@ -557,8 +557,8 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    任务([复杂任务]) --> MultiPlan[/multi-plan]
-    MultiPlan --> Split{任务分解}
+    任务([复杂任务]) --> Orchestrate[/orchestrate]
+    Orchestrate --> Split{任务分解}
     Split --> A1[智能体：后端]
     Split --> A2[智能体：前端]
     Split --> A3[智能体：测试]
@@ -569,31 +569,9 @@ flowchart TD
     Review --> Done([发布])
 ```
 
-### 5.1 用 /multi-plan 处理复杂任务
+> **注意：** 原 `/multi-plan` 命令已移除。请改用 `/orchestrate` 进行多智能体协调，或使用 `/devfleet` 进行并行智能体执行。
 
-```
-/multi-plan "实现 WebSocket 实时订单追踪与 React 仪表盘"
-```
-
-multi-plan 命令将需求拆分为独立工作流并分配合适的智能体：
-
-```
-## 工作流 1：WebSocket 服务（后端）
-  负责：tdd-guide + code-reviewer
-  文件：server/websocket.ts, server/orderTracker.ts
-
-## 工作流 2：React 仪表盘（前端）
-  负责：tdd-guide + typescript-reviewer
-  文件：components/OrderTracker.tsx, hooks/useOrderSocket.ts
-
-## 工作流 3：集成测试
-  负责：e2e-runner
-  文件：tests/e2e/orderTracking.spec.ts
-
-Proceed? (yes / modify)
-```
-
-### 5.2 通过 /orchestrate 使用并行 Worktrees
+### 5.1 通过 /orchestrate 使用并行 Worktrees
 
 对于需要完全隔离的长时间并行会话（使用 tmux + git worktrees）：
 
@@ -615,7 +593,7 @@ tmux new-window -n "frontend" "cd ../my-app-frontend && droid"
 
 每个窗格都是拥有独立上下文窗口的完整 Factory Droid 会话。
 
-### 5.3 DevFleet 云端并行智能体
+### 5.2 DevFleet 云端并行智能体
 
 ```
 /devfleet "使用 4 个并行智能体实现支付网关集成"
@@ -769,7 +747,7 @@ Next.js 15、TypeScript、Supabase、Tailwind CSS
 | 提取本次会话的模式 | `/learn-eval` | — |
 | 将 Instincts 转化为 Skill | `/evolve` | — |
 | 从 Git 历史生成 Skill | `/skill-create` | — |
-| 运行并行多智能体任务 | `/multi-plan` | planner + 各智能体 |
+| 运行并行多智能体任务 | `/orchestrate` | planner + 各智能体 |
 | 配置包管理器 | `/setup-pm` | — |
 | 审计 Hook / 智能体配置 | `/harness-audit` | harness-optimizer |
 
@@ -797,6 +775,6 @@ Next.js 15、TypeScript、Supabase、Tailwind CSS
 > **更多资源：**
 > - [简明指南](../../the-shortform-guide.md) — 基础、设置、Hooks、子智能体
 > - [详细指南](../../the-longform-guide.md) — Token 优化、记忆持久化、并行执行
-> - [命令速查表](../../COMMANDS-QUICK-REF.md) — 全部 79 个命令列表
+> - [命令速查表](../../COMMANDS-QUICK-REF.md) — 全部 74 个命令列表
 > - [Skill 开发指南](../SKILL-DEVELOPMENT-GUIDE.md) — 编写自己的 Skill
 > - [Token 优化](../token-optimization.md) — 降低成本、延长上下文

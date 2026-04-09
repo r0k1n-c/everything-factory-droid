@@ -1,6 +1,6 @@
 # Commands Quick Reference
 
-> 79 slash commands available. Type `/` in any Factory Droid session to invoke.
+> 74 slash commands available. Type `/` in any Factory Droid session to invoke.
 
 ---
 
@@ -62,11 +62,6 @@
 | Command | What it does |
 |---------|-------------|
 | `/plan` | Implementation plan with risk assessment |
-| `/multi-plan` | Multi-model collaborative planning |
-| `/multi-workflow` | Multi-model collaborative development |
-| `/multi-backend` | Backend-focused multi-model development |
-| `/multi-frontend` | Frontend-focused multi-model development |
-| `/multi-execute` | Multi-model collaborative execution |
 | `/orchestrate` | Guide for tmux/worktree multi-agent orchestration |
 | `/devfleet` | Orchestrate parallel Factory Droid agents via DevFleet |
 

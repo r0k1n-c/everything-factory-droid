@@ -74,7 +74,6 @@ Launch an Agent (subagent_type: `code-reviewer`, model: `opus`) with the full ru
 
 First, detect which CLIs are available:
 ```bash
-command -v codex >/dev/null 2>&1 && echo "codex" || true
 command -v gemini >/dev/null 2>&1 && echo "gemini" || true
 ```
 
@@ -88,19 +87,13 @@ EOF
 
 Use the first available CLI:
 
-**Codex CLI** (if installed)
-```bash
-codex exec --sandbox read-only -m gpt-5.4 -C "$(pwd)" - < "$PROMPT_FILE"
-rm -f "$PROMPT_FILE"
-```
-
-**Gemini CLI** (if installed and codex is not)
+**Gemini CLI** (if installed)
 ```bash
 gemini -p "$(cat "$PROMPT_FILE")" -m gemini-2.5-pro
 rm -f "$PROMPT_FILE"
 ```
 
-**Droid Agent fallback** (only if neither `codex` nor `gemini` is installed)
+**Droid Agent fallback** (only if `gemini` is not installed)
 Launch a second Droid Agent (subagent_type: `code-reviewer`, model: `opus`). Log a warning that both reviewers share the same model family — true model diversity was not achieved but context isolation is still enforced.
 
 In all cases, the reviewer must return the same structured JSON verdict as Reviewer A.
@@ -166,9 +159,9 @@ Result:     [PUSHED / ESCALATED TO USER]
 ## Notes
 
 - Reviewer A (Claude Opus) always runs — guarantees at least one strong reviewer regardless of tooling.
-- Model diversity is the goal for Reviewer B. GPT-5.4 or Gemini 2.5 Pro gives true independence — different training data, different biases, different blind spots. The same-model fallback still provides value via context isolation but loses model diversity.
-- Strongest available models are used: Opus for Reviewer A, GPT-5.4 or Gemini 2.5 Pro for Reviewer B.
-- External reviewers run with `--sandbox read-only` (Codex) to prevent repo mutation during review.
+- Model diversity is the goal for Reviewer B. Gemini 2.5 Pro gives true independence — different training data, different biases, different blind spots. The same-model fallback still provides value via context isolation but loses model diversity.
+- Strongest available models are used: Opus for Reviewer A, Gemini 2.5 Pro for Reviewer B.
+- External reviewers should run in read-only mode to prevent repo mutation during review.
 - Fresh reviewers each round prevents anchoring bias from prior findings.
 - The rubric is the most important input. Tighten it if reviewers rubber-stamp or flag subjective style issues.
 - Commits happen on NAUGHTY rounds so fixes are preserved even if the loop is interrupted.

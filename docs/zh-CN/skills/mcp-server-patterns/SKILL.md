@@ -19,7 +19,7 @@ origin: EFD
 * **工具**：模型可以调用的操作（例如搜索、运行命令）。根据 SDK 版本，使用 `registerTool()` 或 `tool()` 注册。
 * **资源**：模型可以获取的只读数据（例如文件内容、API 响应）。根据 SDK 版本，使用 `registerResource()` 或 `resource()` 注册。处理程序通常接收一个 `uri` 参数。
 * **提示**：客户端可以呈现的可重用参数化提示模板（例如在 Claude Desktop 中）。使用 `registerPrompt()` 或等效方法注册。
-* **传输**：stdio 用于本地客户端（例如 Claude Desktop）；可流式 HTTP 是远程（Cursor、云端）的首选。传统 HTTP/SSE 用于向后兼容。
+* **传输**：stdio 用于本地客户端（例如 Claude Desktop）；可流式 HTTP 是远程部署的首选。传统 HTTP/SSE 用于向后兼容。
 
 Node/TypeScript SDK 可能暴露 `tool()` / `resource()` 或 `registerTool()` / `registerResource()`；官方 SDK 已随时间变化。请始终根据当前 [MCP 文档](https://modelcontextprotocol.io) 或 Context7 进行验证。
 
@@ -31,7 +31,7 @@ Node/TypeScript SDK 可能暴露 `tool()` / `resource()` 或 `registerTool()` / 
 
 ### 远程（可流式 HTTP）
 
-对于 Cursor、云端或其他远程客户端，使用**可流式 HTTP**（根据当前规范，每个 MCP HTTP 端点）。仅在需要向后兼容性时支持传统 HTTP/SSE。
+对于远程客户端，使用**可流式 HTTP**（根据当前规范，每个 MCP HTTP 端点）。仅在需要向后兼容性时支持传统 HTTP/SSE。
 
 ## 示例
 

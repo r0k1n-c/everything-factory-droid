@@ -460,11 +460,11 @@ Each stage runs in its own agent process with its own context window:
 |-------|-------|---------|
 | Research | Sonnet | Read codebase + RFC, produce context doc |
 | Plan | Opus | Design implementation steps |
-| Implement | Codex | Write code following the plan |
+| Implement | Worker Agent | Write code following the plan |
 | Test | Sonnet | Run build + test suite |
 | PRD Review | Sonnet | Spec compliance check |
 | Code Review | Opus | Quality + security check |
-| Review Fix | Codex | Address review issues |
+| Review Fix | Worker Agent | Address review issues |
 | Final Review | Opus | Quality gate (large tier only) |
 
 **Critical design:** The reviewer never wrote the code it reviews. This eliminates author bias — the most common source of missed issues in self-review.

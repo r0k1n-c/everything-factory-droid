@@ -17,7 +17,7 @@
 ![Perl](https://img.shields.io/badge/-Perl-39457E?logo=perl\&logoColor=white)
 ![Markdown](https://img.shields.io/badge/-Markdown-000000?logo=markdown\&logoColor=white)
 
-> **Factory Droid 专注** | **47 个 agents** | **172 项 skills** | **79 个 commands** | **跨平台安装器**
+> **Factory Droid 专注** | **47 个 agents** | **171 项 skills** | **74 个 commands** | **跨平台安装器**
 
 ***
 
@@ -159,7 +159,7 @@ bash ~/everything-factory-droid/install.sh typescript
 droid plugin list
 ```
 
-**搞定！** 你现在可以使用 47 个智能体、172 项技能和 79 个命令了。
+**搞定！** 你现在可以使用 47 个智能体、171 项技能和 74 个命令了。
 
 ***
 
@@ -170,13 +170,13 @@ droid plugin list
 * `./install.sh`、`npx efd` 和 `npx @r0k1n-c/efd-install` 都面向 Factory Droid 目标。
 * 项目本地安装写入 `.factory/`。
 * 打包产物只包含 Factory Droid 的 droids、skills、commands 和 `settings.json`。
-* Cursor/Codex/OpenCode/Antigravity 的安装文档已从此项目中有意移除。
+
 
 | 组件 | 目录 | 范围 |
 |-----------|---------|-------|
 | 智能体 | 47 个 | Factory Droid |
-| 命令 | 79 个 | Factory Droid |
-| 技能 | 172 项 | Factory Droid |
+| 命令 | 74 个 | Factory Droid |
+| 技能 | 171 项 | Factory Droid |
 
 ## 包含内容
 
@@ -306,11 +306,6 @@ everything-factory-droid/
 |   |-- instinct-export.md  # /instinct-export - 导出直觉（新增）
 |   |-- evolve.md           # /evolve - 将直觉聚类为技能
 |   |-- pm2.md              # /pm2 - PM2 服务生命周期管理（新增）
-|   |-- multi-plan.md       # /multi-plan - 多代理任务拆解（新增）
-|   |-- multi-execute.md    # /multi-execute - 编排的多代理工作流（新增）
-|   |-- multi-backend.md    # /multi-backend - 后端多服务编排（新增）
-|   |-- multi-frontend.md   # /multi-frontend - 前端多服务编排（新增）
-|   |-- multi-workflow.md   # /multi-workflow - 通用多服务工作流（新增）
 |   |-- orchestrate.md      # /orchestrate - 多代理协调
 |   |-- sessions.md         # /sessions - 会话历史管理
 |   |-- eval.md             # /eval - 按标准评估

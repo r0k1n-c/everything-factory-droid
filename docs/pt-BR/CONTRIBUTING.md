@@ -338,7 +338,7 @@ Ao adicionar ou atualizar uma skill ou command distribuído:
 2. Atualize a lógica de empacotamento ou instalação apenas quando o layout dos artefatos distribuídos mudar.
 3. Mencione no PR mudanças de configuração de projeto ou de superfície de instalação que afetem o comportamento empacotado.
 
-Este fluxo de contribuição é centrado em Factory Droid. Não adicione novos caminhos exclusivos de Codex/Cursor a menos que o repositório os reintroduza explicitamente.
+Este fluxo de contribuição é centrado em Factory Droid. Não adicione caminhos específicos de outras ferramentas de IA a menos que o repositório os reintroduza explicitamente.
 
 ### Traduções
 

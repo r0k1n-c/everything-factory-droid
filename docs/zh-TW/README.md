@@ -98,7 +98,7 @@ cp -r everything-factory-droid/rules/* ~/.factory/rules/
 droid plugin list
 ```
 
-**完成！** 您現在可以使用 47 個 agents、171 項 skills 與 79 個 commands。
+**完成！** 您現在可以使用 47 個 agents、171 項 skills 與 74 個 commands。
 
 ---
 

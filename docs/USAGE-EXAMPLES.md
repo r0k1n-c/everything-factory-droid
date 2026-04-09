@@ -555,8 +555,8 @@ The agent clusters related instincts and generates a `SKILL.md` file you can com
 
 ```mermaid
 flowchart TD
-    Task([complex task]) --> MultiPlan[/multi-plan]
-    MultiPlan --> Split{decompose}
+    Task([complex task]) --> Orchestrate[/orchestrate]
+    Orchestrate --> Split{decompose}
     Split --> A1[agent: backend]
     Split --> A2[agent: frontend]
     Split --> A3[agent: tests]
@@ -567,31 +567,9 @@ flowchart TD
     Review --> Done([ship])
 ```
 
-### 5.1 Multi-Plan for Complex Tasks
+> **Note:** The former `/multi-plan` command has been removed. Use `/orchestrate` for multi-agent coordination or `/devfleet` for parallel agent execution instead.
 
-```
-/multi-plan "Implement real-time order tracking with WebSocket and a React dashboard"
-```
-
-The multi-plan command breaks the request into independent workstreams and assigns the right agent to each:
-
-```
-## Workstream 1: WebSocket Server (backend team)
-  Owner: tdd-guide + code-reviewer
-  Files: server/websocket.ts, server/orderTracker.ts
-
-## Workstream 2: React Dashboard (frontend team)
-  Owner: tdd-guide + typescript-reviewer
-  Files: components/OrderTracker.tsx, hooks/useOrderSocket.ts
-
-## Workstream 3: Integration Tests
-  Owner: e2e-runner
-  Files: tests/e2e/orderTracking.spec.ts
-
-Proceed? (yes / modify)
-```
-
-### 5.2 Parallel Worktrees with /orchestrate
+### 5.1 Parallel Worktrees with /orchestrate
 
 For long-running, fully-isolated parallel sessions using tmux and git worktrees:
 
@@ -613,7 +591,7 @@ tmux new-window -n "frontend" "cd ../my-app-frontend && droid"
 
 Each pane is a full, independent Factory Droid session with its own context window.
 
-### 5.3 DevFleet for Cloud-Parallel Agents
+### 5.2 DevFleet for Cloud-Parallel Agents
 
 ```
 /devfleet "Implement the payment gateway integration across 4 parallel agents"
@@ -767,7 +745,7 @@ Next.js 15, TypeScript, Supabase, Tailwind CSS
 | Extract patterns from this session | `/learn-eval` | — |
 | Turn instincts into a skill | `/evolve` | — |
 | Generate skill from git history | `/skill-create` | — |
-| Run parallel multi-agent work | `/multi-plan` | planner + agents |
+| Run parallel multi-agent work | `/orchestrate` | planner + agents |
 | Configure package manager | `/setup-pm` | — |
 | Audit hook/agent config | `/harness-audit` | harness-optimizer |
 
@@ -795,6 +773,6 @@ Next.js 15, TypeScript, Supabase, Tailwind CSS
 > **More resources:**
 > - [Shorthand Guide](../the-shortform-guide.md) — foundations, setup, hooks, subagents
 > - [Longform Guide](../the-longform-guide.md) — token optimization, memory persistence, parallelization
-> - [Commands Quick Reference](../COMMANDS-QUICK-REF.md) — full 79-command listing
+> - [Commands Quick Reference](../COMMANDS-QUICK-REF.md) — full 74-command listing
 > - [Skill Development Guide](SKILL-DEVELOPMENT-GUIDE.md) — write your own skills
 > - [Token Optimization](token-optimization.md) — cut costs and extend context

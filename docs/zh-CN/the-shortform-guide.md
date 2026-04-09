@@ -273,7 +273,7 @@ mgrep --web "Next.js 15 app router changes"  # Web search
 4. **Git 集成** - 使用编辑器的 git 功能在提交前审查 Droid 的更改
 5. **文件监视器** - 大多数编辑器自动重新加载更改的文件，请验证是否已启用
 
-### VSCode / Cursor
+### VSCode
 
 这也是一个可行的选择，并且与 Factory Droid 配合良好。你可以使用终端格式，通过 `\ide` 与你的编辑器自动同步以启用 LSP 功能（现在与插件有些冗余）。或者你可以选择扩展，它更集成于编辑器并具有匹配的 UI。
 

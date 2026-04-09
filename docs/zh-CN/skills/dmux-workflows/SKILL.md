@@ -1,6 +1,6 @@
 ---
 name: dmux-workflows
-description: 使用dmux（AI代理的tmux窗格管理器）进行多代理编排。跨Factory Droid、Codex、OpenCode及其他工具的并行代理工作流模式。适用于并行运行多个代理会话或协调多代理开发工作流时。
+description: 使用dmux（AI代理的tmux窗格管理器）进行多代理编排。跨Factory Droid及其他工具的并行代理工作流模式。适用于并行运行多个代理会话或协调多代理开发工作流时。
 origin: EFD
 ---
 
@@ -11,7 +11,7 @@ origin: EFD
 ## 何时激活
 
 * 并行运行多个代理会话时
-* 跨 Factory Droid、Codex 和其他套件协调工作时
+* 跨 Factory Droid 和其他套件协调工作时
 * 需要分而治之并行处理的复杂任务
 * 用户提到“并行运行”、“拆分此工作”、“使用 dmux”或“多代理”时
 
@@ -21,7 +21,7 @@ dmux 是一个基于 tmux 的编排工具，用于管理 AI 代理窗格：
 
 * 按 `n` 创建一个带有提示的新窗格
 * 按 `m` 将窗格输出合并回主会话
-* 支持：Factory Droid、Codex、OpenCode、Cline、Gemini、Qwen
+* 支持：Factory Droid、Cline、Gemini、Qwen
 
 **安装：** `npm install -g dmux` 或参见 [github.com/standardagents/dmux](https://github.com/standardagents/dmux)
 
@@ -86,7 +86,7 @@ Pane 3: "创建计费仪表板 UI 组件"
 
 ```
 Pane 1 (Factory Droid): "Review the security of the auth module"
-Pane 2 (Codex): "Refactor the utility functions for performance"
+Pane 2 (Gemini): "Refactor the utility functions for performance"
 Pane 3 (Factory Droid): "Write E2E tests for the checkout flow"
 ```
 
@@ -135,7 +135,7 @@ git merge feat/billing
 | **dmux** | 用于代理的 tmux 窗格管理 | 并行代理会话 |
 | **Superset** | 用于 10+ 并行代理的终端 IDE | 大规模编排 |
 | **Factory Droid Task 工具** | 进程内子代理生成 | 会话内的程序化并行 |
-| **Codex 多代理** | 内置代理角色 | Codex 特定的并行工作 |
+| **外部多代理** | 内置代理角色 | 工具特定的并行工作 |
 
 ## EFD 助手
 

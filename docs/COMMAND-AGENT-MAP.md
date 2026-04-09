@@ -22,11 +22,6 @@ This document lists each slash command and the primary agent(s) or skills it inv
 | `/quality-gate` | — | Quality pipeline (hook-like) |
 | `/model-route` | — | Model recommendation (no agent) |
 | `/orchestrate` | planner, tdd-guide, code-reviewer, security-reviewer, architect | Multi-agent handoff |
-| `/multi-plan` | architect (multi-model prompts) | Multi-model planning |
-| `/multi-execute` | architect / frontend prompts | Multi-model execution |
-| `/multi-backend` | architect | Backend multi-service |
-| `/multi-frontend` | architect | Frontend multi-service |
-| `/multi-workflow` | architect | General multi-service |
 | `/learn` | — | continuous-learning skill, instincts |
 | `/learn-eval` | — | continuous-learning-v2, evaluate then save |
 | `/instinct-status` | — | continuous-learning-v2 |

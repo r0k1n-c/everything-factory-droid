@@ -19,7 +19,7 @@ Use when: implementing a new MCP server, adding tools or resources, choosing std
 - **Tools**: Actions the model can invoke (e.g. search, run a command). Register with `registerTool()` or `tool()` depending on SDK version.
 - **Resources**: Read-only data the model can fetch (e.g. file contents, API responses). Register with `registerResource()` or `resource()`. Handlers typically receive a `uri` argument.
 - **Prompts**: Reusable, parameterised prompt templates the client can surface (e.g. in Claude Desktop). Register with `registerPrompt()` or equivalent.
-- **Transport**: stdio for local clients (e.g. Claude Desktop); Streamable HTTP is preferred for remote (Cursor, cloud). Legacy HTTP/SSE is for backward compatibility.
+- **Transport**: stdio for local clients (e.g. Claude Desktop); Streamable HTTP is preferred for remote clients. Legacy HTTP/SSE is for backward compatibility.
 
 The Node/TypeScript SDK may expose `tool()` / `resource()` or `registerTool()` / `registerResource()`; the official SDK has changed over time. Always verify against the current [MCP docs](https://modelcontextprotocol.io) or Context7.
 
@@ -31,7 +31,7 @@ Keep server logic (tools + resources) independent of transport so you can plug i
 
 ### Remote (Streamable HTTP)
 
-For Cursor, cloud, or other remote clients, use **Streamable HTTP** (single MCP HTTP endpoint per current spec). Support legacy HTTP/SSE only when backward compatibility is required.
+For cloud or other remote clients, use **Streamable HTTP** (single MCP HTTP endpoint per current spec). Support legacy HTTP/SSE only when backward compatibility is required.
 
 ## Examples
 

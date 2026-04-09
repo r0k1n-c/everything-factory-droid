@@ -10,7 +10,7 @@ origin: EFD
 
 ## 何时激活
 
-* AI 代理（Factory Droid、Cursor、Codex）已修改 API 路由或后端逻辑
+* AI 代理（Factory Droid）已修改 API 路由或后端逻辑
 * 发现并修复了一个 bug——需要防止重新引入
 * 项目具有沙盒/模拟模式，可用于无需数据库的测试
 * 在代码更改后运行 `/bug-check` 或类似的审查命令

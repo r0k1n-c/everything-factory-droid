@@ -405,7 +405,7 @@ When you add or update a shipped skill or command:
 2. Update packaging or install logic only if the shipped artifact layout changes.
 3. Mention any project-config or install-surface changes in your PR if they affect packaged behavior.
 
-This contributor flow is centered on Factory Droid. Do not add new Codex/Cursor-only paths unless the repo explicitly reintroduces them.
+This contributor flow is centered on Factory Droid. Do not add paths specific to other AI tools unless the repo explicitly reintroduces them.
 
 ### Translations
 

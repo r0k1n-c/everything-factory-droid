@@ -1,3 +1,4 @@
+<!-- Archived: This skill was created during the ECC→EFD migration (commit 85a531e) and is preserved here as historical reference. It is no longer registered as an active skill. -->
 ---
 name: factory-droid-adapter-pattern
 description: Guide for porting ECC (everything-claude-code) components to Factory Droid. Covers env var fallback patterns, MCP config, skill frontmatter, plugin manifest, and branding migration.

@@ -26,7 +26,7 @@ AI video editing is useful when you stop asking it to create the whole video and
 
 ```
 Screen Studio / raw footage
-  → Claude / Codex
+  → Factory Droid
   → FFmpeg
   → Remotion
   → ElevenLabs / fal.ai
@@ -44,9 +44,9 @@ Collect the source material:
 
 Output: raw files ready for organization.
 
-## Layer 2: Organization (Claude / Codex)
+## Layer 2: Organization (Factory Droid)
 
-Use Factory Droid or Codex to:
+Use Factory Droid to:
 - **Transcribe and label**: generate transcript, identify topics and themes
 - **Plan structure**: decide what stays, what gets cut, what order works
 - **Identify dead sections**: find pauses, tangents, repeated takes
@@ -288,7 +288,7 @@ identify the 5 most engaging 30-second clips for social media."
 
 | Tool | Strength | Weakness |
 |------|----------|----------|
-| Claude / Codex | Organization, planning, code generation | Not the creative taste layer |
+| Factory Droid | Organization, planning, code generation | Not the creative taste layer |
 | FFmpeg | Deterministic cuts, batch processing, format conversion | No visual editing UI |
 | Remotion | Programmable overlays, composable scenes, reusable templates | Learning curve for non-devs |
 | Screen Studio | Polished screen recordings immediately | Only screen capture |

@@ -1,6 +1,6 @@
 # Everything Factory Droid (EFD) — Agent Talimatları
 
-Bu, yazılım geliştirme için 47 özel agent, 171 skill, 79 command ve otomatik hook iş akışları sağlayan **Factory Droid odaklı üretime hazır bir iş akışı eklentisidir**.
+Bu, yazılım geliştirme için 47 özel agent, 171 skill, 74 command ve otomatik hook iş akışları sağlayan **Factory Droid odaklı üretime hazır bir iş akışı eklentisidir**.
 
 **Sürüm:** 1.9.0
 
@@ -143,7 +143,7 @@ Başarısızlık sorunlarını giderin: test izolasyonunu kontrol edin → mockl
 ```
 agents/          — 47 özel subagent
 skills/          — 171 iş akışı skillleri ve alan bilgisi
-commands/        — 79 slash command
+commands/        — 74 slash command
 hooks/           — Tetikleyici tabanlı otomasyonlar
 rules/           — Her zaman uyulması gereken kurallar (ortak + dile özel)
 scripts/         — Platformlar arası Node.js yardımcı programları

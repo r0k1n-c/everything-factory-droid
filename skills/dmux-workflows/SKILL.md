@@ -1,6 +1,6 @@
 ---
 name: dmux-workflows
-description: Multi-agent orchestration via dmux (tmux pane manager). Run parallel agent sessions across Factory Droid, Codex, OpenCode, and other harnesses.
+description: Multi-agent orchestration via dmux (tmux pane manager). Run parallel agent sessions across Factory Droid and other AI harnesses.
 origin: EFD
 disable-model-invocation: true
 ---
@@ -12,7 +12,7 @@ Orchestrate parallel AI agent sessions using dmux, a tmux pane manager for agent
 ## When to Activate
 
 - Running multiple agent sessions in parallel
-- Coordinating work across Factory Droid, Codex, and other harnesses
+- Coordinating work across Factory Droid and other harnesses
 - Complex tasks that benefit from divide-and-conquer parallelism
 - User says "run in parallel", "split this work", "use dmux", or "multi-agent"
 
@@ -21,7 +21,7 @@ Orchestrate parallel AI agent sessions using dmux, a tmux pane manager for agent
 dmux is a tmux-based orchestration tool that manages AI agent panes:
 - Press `n` to create a new pane with a prompt
 - Press `m` to merge pane output back to the main session
-- Supports: Factory Droid, Codex, OpenCode, Cline, Gemini, Qwen
+- Supports: Factory Droid and other AI coding agents (Cline, Gemini, Qwen, etc.)
 
 **Install:** Install dmux from its repository after reviewing the package. See [github.com/standardagents/dmux](https://github.com/standardagents/dmux)
 
@@ -86,7 +86,7 @@ Use different AI tools for different tasks:
 
 ```
 Pane 1 (Factory Droid): "Review the security of the auth module"
-Pane 2 (Codex): "Refactor the utility functions for performance"
+Pane 2 (external agent): "Refactor the utility functions for performance"
 Pane 3 (Factory Droid): "Write E2E tests for the checkout flow"
 ```
 
@@ -135,7 +135,7 @@ git merge feat/billing
 | **dmux** | tmux pane management for agents | Parallel agent sessions |
 | **Superset** | Terminal IDE for 10+ parallel agents | Large-scale orchestration |
 | **Factory Droid Task tool** | In-process subagent spawning | Programmatic parallelism within a session |
-| **Codex multi-agent** | Built-in agent roles | Codex-specific parallel work |
+| **Multi-agent dispatch** | Built-in agent roles | Harness-specific parallel work |
 
 ## EFD Helper
 
@@ -151,7 +151,7 @@ Example `plan.json`:
 {
   "sessionName": "skill-audit",
   "baseRef": "HEAD",
-  "launcherCommand": "codex exec --cwd {worktree_path} --task-file {task_file}",
+  "launcherCommand": "droid exec --cwd {worktree_path} --task-file {task_file}",
   "workers": [
     { "name": "docs-a", "task": "Fix skills 1-4 and write handoff notes." },
     { "name": "docs-b", "task": "Fix skills 5-8 and write handoff notes." }
@@ -177,7 +177,7 @@ Use `seedPaths` when workers need access to dirty or untracked local files that 
     "scripts/lib/tmux-worktree-orchestrator.js",
     ".factory/plan/workflow-e2e-test.json"
   ],
-  "launcherCommand": "bash {repo_root}/scripts/orchestrate-codex-worker.sh {task_file} {handoff_file} {status_file}",
+  "launcherCommand": "bash {repo_root}/scripts/orchestrate-worker.sh {task_file} {handoff_file} {status_file}",
   "workers": [
     { "name": "seed-check", "task": "Verify seeded files are present before starting work." }
   ]

@@ -13,7 +13,7 @@
 ![Java](https://img.shields.io/badge/-Java-ED8B00?logo=openjdk&logoColor=white)
 ![Markdown](https://img.shields.io/badge/-Markdown-000000?logo=markdown&logoColor=white)
 
-> **Factory Droid専用** | **47 agents** | **171 skills** | **79 commands** | **クロスプラットフォーム対応**
+> **Factory Droid専用** | **47 agents** | **171 skills** | **74 commands** | **クロスプラットフォーム対応**
 
 ---
 
@@ -111,7 +111,7 @@ cp -r everything-factory-droid/rules/golang ~/.factory/rules/
 droid plugin list
 ```
 
-**完了です！** これで47のagents、171のskills、79のcommandsにアクセスできます。
+**完了です！** これで47のagents、171のskills、74のcommandsにアクセスできます。
 
 ---
 
@@ -225,11 +225,6 @@ everything-factory-droid/
 |   |-- instinct-export.md  # /instinct-export - 直感をエクスポート（新規）
 |   |-- evolve.md           # /evolve - 直感をスキルにクラスタリング
 |   |-- pm2.md              # /pm2 - PM2 サービスライフサイクル管理（新規）
-|   |-- multi-plan.md       # /multi-plan - マルチエージェント タスク分解（新規）
-|   |-- multi-execute.md    # /multi-execute - オーケストレーション マルチエージェント ワークフロー（新規）
-|   |-- multi-backend.md    # /multi-backend - バックエンド マルチサービス オーケストレーション（新規）
-|   |-- multi-frontend.md   # /multi-frontend - フロントエンド マルチサービス オーケストレーション（新規）
-|   |-- multi-workflow.md   # /multi-workflow - 一般的なマルチサービス ワークフロー（新規）
 |
 |-- rules/            # 常に従うべきガイドライン（~/.factory/rules/ にコピー）
 |   |-- README.md            # 構造概要とインストールガイド

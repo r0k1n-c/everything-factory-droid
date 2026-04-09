@@ -70,6 +70,6 @@ Uses PreToolUse hooks to intercept Bash, Write, Edit, and MultiEdit tool calls. 
 
 ## Integration
 
-- Enable by default for `codex -a never` sessions
+- Enable by default for restricted-autonomy agent sessions
 - Pair with observability risk scoring in EFD 2.0
 - Logs all blocked actions to `~/.factory/safety-guard.log`

@@ -16,7 +16,7 @@
 ![Java](https://img.shields.io/badge/-Java-ED8B00?logo=openjdk&logoColor=white)
 ![Markdown](https://img.shields.io/badge/-Markdown-000000?logo=markdown&logoColor=white)
 
-> **Factory Droid 전용** | **47개 에이전트** | **171개 스킬** | **79개 커맨드** | **크로스 플랫폼 설치 지원**
+> **Factory Droid 전용** | **47개 에이전트** | **171개 스킬** | **74개 커맨드** | **크로스 플랫폼 설치 지원**
 
 ---
 
@@ -131,7 +131,7 @@ bash ~/everything-factory-droid/install.sh typescript
 droid plugin list
 ```
 
-**끝!** 이제 47개 에이전트, 171개 스킬, 79개 커맨드를 사용할 수 있습니다.
+**끝!** 이제 47개 에이전트, 171개 스킬, 74개 커맨드를 사용할 수 있습니다.
 
 ---
 

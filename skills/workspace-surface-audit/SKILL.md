@@ -35,7 +35,7 @@ Inspect only the files and settings needed to answer the question well:
 
 1. Repo surface
    - `package.json`, lockfiles, language markers, framework config, `README.md`
-   - `.mcp.json`, `.lsp.json`, `.factory/settings*.json`, `.codex/*`
+   - `.mcp.json`, `.lsp.json`, `.factory/settings*.json`
    - `AGENTS.md`, `AGENTS.md`, install manifests, hook configs
 2. Environment surface
    - `.env*` files in the active repo and obvious adjacent EFD workspaces
@@ -68,7 +68,7 @@ If a surface exists only as a primitive, call that out. Example:
 Compare the workspace against:
 
 - official Claude plugins that overlap with setup, review, docs, design, or workflow quality
-- locally installed plugins in Claude or Codex
+- locally installed plugins in Claude
 - the user's currently connected app surfaces
 
 Do not just list names. For each comparison, answer:

@@ -90,7 +90,7 @@ Update any relevant indexes or summary files.
 
 ### Conversation Sync
 Periodically sync conversation history into the knowledge base:
-- Sources: Factory Droid session files, Codex sessions, other agent sessions
+- Sources: Factory Droid session files and other agent sessions
 - Destination: knowledge base repo
 - Generate a session index for quick browsing
 - Commit and push

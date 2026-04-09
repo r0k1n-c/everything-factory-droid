@@ -110,21 +110,7 @@ cp -r everything-factory-droid/rules/perl ~/.factory/rules/
 droid plugin list
 ```
 
-**完成！** 你现在可以使用 47 个代理、172 个技能和 79 个命令。
-
-### multi-* 命令需要额外配置
-
-> WARNING: 上面的基础插件 / rules 安装**不包含** `multi-*` 命令所需的运行时。
->
-> 如果要使用 `/multi-plan`、`/multi-execute`、`/multi-backend`、`/multi-frontend` 和 `/multi-workflow`，还需要额外安装 `ccg-workflow` 运行时。
->
-> 可通过 `npx ccg-workflow` 完成初始化安装。
->
-> 该运行时会提供这些命令依赖的关键组件，包括：
-> - `~/.factory/bin/codeagent-wrapper`
-> - `~/.factory/.ccg/prompts/*`
->
-> 未安装 `ccg-workflow` 时，这些 `multi-*` 命令将无法正常运行。
+**完成！** 你现在可以使用 47 个代理、171 个技能和 74 个命令。
 
 ---
 

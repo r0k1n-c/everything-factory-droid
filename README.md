@@ -19,7 +19,7 @@
 ![Perl](https://img.shields.io/badge/-Perl-39457E?logo=perl&logoColor=white)
 ![Markdown](https://img.shields.io/badge/-Markdown-000000?logo=markdown&logoColor=white)
 
-> **Factory Droid-only** | **47 agents** | **172 skills** | **79 commands** | **Cross-platform installers**
+> **Factory Droid-only** | **47 agents** | **171 skills** | **74 commands** | **Cross-platform installers**
 
 ---
 
@@ -171,23 +171,7 @@ For manual copy instructions see the README in the `rules/` folder. When copying
 droid plugin list
 ```
 
-**That's it!** You now have access to 47 agents, 172 skills, and 79 legacy command shims.
-
-### Multi-model commands require additional setup
-
-> WARNING: `multi-*` commands are **not** covered by the base plugin/rules install above.
->
-> To use `/multi-plan`, `/multi-execute`, `/multi-backend`, `/multi-frontend`, and `/multi-workflow`, you must also install the `ccg-workflow` runtime.
->
-> Initialize it with `npx ccg-workflow`.
->
-> That runtime provides the external dependencies these commands expect, including:
-> - `~/.factory/bin/codeagent-wrapper`
-> - `~/.factory/.ccg/prompts/*`
->
-> Without `ccg-workflow`, these `multi-*` commands will not run correctly.
-
----
+**That's it!** You now have access to 47 agents, 171 skills, and 74 legacy command shims.
 
 ## Cross-Platform Support
 
@@ -365,11 +349,6 @@ everything-factory-droid/
 |   |-- evolve.md           # /evolve - Cluster instincts into skills
 |   |-- prune.md            # /prune - Delete expired pending instincts (NEW)
 |   |-- pm2.md              # /pm2 - PM2 service lifecycle management (NEW)
-|   |-- multi-plan.md       # /multi-plan - Multi-agent task decomposition (NEW)
-|   |-- multi-execute.md    # /multi-execute - Orchestrated multi-agent workflows (NEW)
-|   |-- multi-backend.md    # /multi-backend - Backend multi-service orchestration (NEW)
-|   |-- multi-frontend.md   # /multi-frontend - Frontend multi-service orchestration (NEW)
-|   |-- multi-workflow.md   # /multi-workflow - General multi-service workflows (NEW)
 |   |-- orchestrate.md      # /orchestrate - Multi-agent coordination
 |   |-- sessions.md         # /sessions - Session history management
 |   |-- eval.md             # /eval - Evaluate against criteria
@@ -911,13 +890,13 @@ This project keeps only the Factory Droid-compatible surface:
 - Project-local installs write to `.factory/`.
 - Hook runtime files remain in `./hooks/` and `./scripts/` so installed settings can invoke them by project-relative path.
 - Packaged assets are limited to Factory Droid droids, skills, commands, and settings.
-- Legacy Cursor/Codex/OpenCode/Antigravity setup docs were intentionally removed from this project.
+
 
 | Component | Catalog | Scope |
 |-----------|---------|-------|
 | Agents | 47 agents | Factory Droid |
-| Commands | 79 commands | Factory Droid |
-| Skills | 172 skills | Factory Droid |
+| Commands | 74 commands | Factory Droid |
+| Skills | 171 skills | Factory Droid |
 
 ---
 

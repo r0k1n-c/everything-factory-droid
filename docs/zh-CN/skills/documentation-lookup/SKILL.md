@@ -23,7 +23,7 @@ origin: EFD
 * 需要 API 或参考信息（“Supabase 的认证方法有哪些？”）
 * 提及特定的框架或库（React、Vue、Svelte、Express、Tailwind、Prisma、Supabase 等）
 
-当请求依赖于库、框架或 API 的准确、最新行为时，请使用此技能。适用于配置了 Context7 MCP 的所有环境（例如 Factory Droid、Cursor、Codex）。
+当请求依赖于库、框架或 API 的准确、最新行为时，请使用此技能。适用于配置了 Context7 MCP 的所有环境（例如 Factory Droid）。
 
 ## 工作原理
 

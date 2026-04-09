@@ -126,7 +126,7 @@ test('buildOrchestrationPlan normalizes global and worker seed paths', () => {
       {
         name: 'Docs',
         task: 'Update docs',
-        seedPaths: ['commands/multi-workflow.md']
+        seedPaths: ['commands/orchestrate.md']
       }
     ]
   });
@@ -134,7 +134,7 @@ test('buildOrchestrationPlan normalizes global and worker seed paths', () => {
   assert.deepStrictEqual(plan.workerPlans[0].seedPaths, [
     'scripts/orchestrate-worktrees.js',
     '.factory/plan/workflow-e2e-test.json',
-    'commands/multi-workflow.md'
+    'commands/orchestrate.md'
   ]);
 });
 

@@ -30,7 +30,7 @@ Current repo inventory:
 |-----------|------|
 | Agents | 47 |
 | Skills | 171 |
-| Commands | 79 |
+| Commands | 74 |
 | Rule files | 89 |
 | Hook events | 6 (`UserPromptSubmit`, `PreToolUse`, `SessionStart`, `PostToolUse`, `Stop`, `SessionEnd`) |
 | Hook matchers | 16 |
@@ -50,7 +50,7 @@ Compared with the earlier snapshot of this repo:
 
 - Agents increased from **28 -> 47**
 - Skills increased from **116 -> 171**
-- Commands increased from **59 -> 79**
+- Commands increased from **59 -> 74**
 - The project is now explicitly **Factory Droid-only**
 - Hookify is now wired into the real hook runtime instead of being documentation-only
 - The Windows installer (`install.ps1`) is included in the published package
@@ -86,10 +86,10 @@ The skill surface now spans:
 - business/research/content workflows
 - new upstream-migrated skills such as `agent-sort`, `code-tour`, `council`, `dashboard-builder`, `github-ops`, `research-ops`, `seo`, and `terminal-ops`
 
-### Commands (79 missing)
+### Commands (74 missing)
 The command layer covers:
 - core dev workflows (`/tdd`, `/plan`, `/code-review`, `/verify`)
-- orchestration (`/orchestrate`, `/multi-plan`, `/multi-execute`)
+- orchestration (`/orchestrate`)
 - session management (`/sessions`, `/save-session`, `/resume-session`)
 - continuous improvement and analysis
 - newly migrated compatibility commands such as `/feature-dev`, `/hookify`, and `/review-pr`
@@ -127,7 +127,7 @@ Run:
 efd install --profile full
 ```
 
-This resolves the repo's full classified install surface, including all **47 agents**, **171 skills**, and **79 command shims**, plus the shipped template/support assets referenced by those skills.
+This resolves the repo's full classified install surface, including all **47 agents**, **171 skills**, and **74 command shims**, plus the shipped template/support assets referenced by those skills.
 
 ### Hook adoption
 If you want the biggest day-to-day improvement, adopt the repo hook system first:

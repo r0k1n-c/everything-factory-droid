@@ -335,7 +335,6 @@
       "kind": "orchestration",
       "description": "Worktree/tmux orchestration runtime and workflow docs.",
       "paths": [
-        "commands/multi-workflow.md",
         "commands/orchestrate.md",
         "commands/sessions.md",
         "scripts/lib/orchestration-session.js",

@@ -273,7 +273,7 @@ I use [Zed](https://zed.dev) - written in Rust, so it's genuinely fast. Opens in
 4. **Git integration** - Use editor's git features to review Droid's changes before committing
 5. **File watchers** - Most editors auto-reload changed files, verify this is enabled
 
-### VSCode / Cursor
+### VSCode
 
 This is also a viable choice and works well with Factory Droid. You can use it in either terminal format, with automatic sync with your editor using `\ide` enabling LSP functionality (somewhat redundant with plugins now). Or you can opt for the extension which is more integrated with the Editor and has a matching UI.
 

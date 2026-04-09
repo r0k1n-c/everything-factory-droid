@@ -108,7 +108,7 @@ function getSessionStartPayload(stdout) {
 function runHookCommand(command, input = {}, env = {}, timeoutMs = 10000) {
   return new Promise((resolve, reject) => {
     const isWindows = process.platform === 'win32';
-    const mergedEnv = { ...process.env, FACTORY_PROJECT_DIR: REPO_ROOT, ...env };
+    const mergedEnv = { ...process.env, DROID_PLUGIN_ROOT: REPO_ROOT, FACTORY_PROJECT_DIR: REPO_ROOT, ...env };
     const resolvedCommand = command
       .replace(/\$\{([A-Z_][A-Z0-9_]*)\}/g, (_, name) => String(mergedEnv[name] || ''))
       .replace(/\$([A-Z_][A-Z0-9_]*)/g, (_, name) => String(mergedEnv[name] || ''));

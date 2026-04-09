@@ -30,15 +30,21 @@ rules/
 ### 选项 1：安装脚本（推荐）
 
 ```bash
-# Install common + one or more language-specific rule sets
-./install.sh typescript
-./install.sh python
-./install.sh golang
-./install.sh swift
-./install.sh php
+# 在目标项目根目录执行
+cd /path/to/your-project
 
-# Install multiple languages at once
-./install.sh typescript python
+# 推荐：使用已发布的 CLI 安装
+npx efd-install typescript
+npx efd-install python
+npx efd-install golang
+npx efd-install swift
+npx efd-install php
+
+# 一次安装多种语言
+npx efd-install typescript python
+
+# 或者，如果你把仓库克隆到了别处，也要保持 cwd 在目标项目根目录：
+# bash /path/to/everything-factory-droid/install.sh typescript
 ```
 
 ### 选项 2：手动安装

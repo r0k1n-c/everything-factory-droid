@@ -97,30 +97,38 @@ droid plugin install everything-factory-droid@everything-factory-droid
 > WARNING: **Importante:** Plugins do Factory Droid não podem distribuir `rules` automaticamente. Instale-as manualmente:
 
 ```bash
-# Clone o repositório primeiro
-git clone https://github.com/r0k1n-c/everything-factory-droid.git
-cd everything-factory-droid
+# Execute o instalador na RAIZ DO PROJETO de destino
+cd /caminho/do/seu-projeto
 
-# Instalar dependências (escolha seu gerenciador de pacotes)
-npm install        # ou: pnpm install | yarn install | bun install
+# Recomendado: sem clonar o repositório
+npx efd-install --profile full
 
-# macOS/Linux
-./install.sh typescript    # ou python ou golang ou swift ou php
-# ./install.sh typescript python golang swift php
-# ./install.sh --profile developer
-# ./install.sh --with lang:typescript --with capability:security
-```
-
-```powershell
-# Windows PowerShell
-npx efd-install typescript   # ou python ou golang ou swift ou php
+# Ou instale só o que precisar
+npx efd-install typescript    # ou python ou golang ou swift ou php
 # npx efd-install typescript python golang swift php
 # npx efd-install --profile developer
 # npx efd-install --with lang:typescript --with capability:security
-
-# O ponto de entrada de compatibilidade npm também funciona multiplataforma
-npx efd-install typescript
 ```
+
+```powershell
+# Windows PowerShell — também na RAIZ DO PROJETO de destino
+Set-Location C:\caminho\do\seu-projeto
+npx efd-install --profile full
+# npx efd-install typescript
+# npx efd-install --profile developer
+# npx efd-install --with lang:typescript --with capability:security
+```
+
+```bash
+# Alternativa: clone este repositório em qualquer lugar, mas execute o instalador
+# na RAIZ DO PROJETO de destino (não dentro do clone nem de ~/.factory/plugins/...)
+git clone https://github.com/r0k1n-c/everything-factory-droid.git ~/everything-factory-droid
+cd /caminho/do/seu-projeto
+bash ~/everything-factory-droid/install.sh typescript
+# bash ~/everything-factory-droid/install.sh --profile full
+```
+
+Não execute `install.sh` dentro de `~/.factory/plugins/...` nem dentro do repositório clonado, a menos que aquele diretório seja o projeto que você realmente quer configurar.
 
 ### Passo 3: Começar a Usar
 
@@ -267,7 +275,18 @@ Ou adicione diretamente ao seu `~/.factory/settings.json`:
 }
 ```
 
-> **Nota:** O sistema de plugins do Factory Droid não suporta distribuição de `rules` via plugins. Você precisa instalar as regras manualmente:
+> **Nota:** O sistema de plugins do Factory Droid não suporta distribuição de `rules` via plugins. Faça a instalação no projeto de destino, por exemplo:
+>
+> ```bash
+> cd /caminho/do/seu-projeto
+> npx efd-install typescript
+> # npx efd-install --profile full
+> #
+> # Ou, se você clonou este repo em outro lugar:
+> # bash /caminho/para/everything-factory-droid/install.sh typescript
+> ```
+>
+> Se preferir copiar os arquivos manualmente:
 >
 > ```bash
 > # Clone o repositório primeiro

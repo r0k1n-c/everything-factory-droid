@@ -86,6 +86,32 @@ function runTests() {
     }
   })) passed++; else failed++;
 
+  if (test('refuses to install into the managed plugin cache directory', () => {
+    const homeDir = createTempDir('install-sh-home-');
+    const pluginCacheDir = path.join(
+      homeDir,
+      '.factory',
+      'plugins',
+      'cache',
+      'everything-factory-droid',
+      'everything-factory-droid',
+      'test-version'
+    );
+    fs.mkdirSync(pluginCacheDir, { recursive: true });
+
+    try {
+      const result = run(['typescript'], {
+        cwd: pluginCacheDir,
+        homeDir,
+      });
+
+      assert.strictEqual(result.code, 1, 'Installer should reject plugin cache as the target root');
+      assert.ok(result.stderr.includes('Refusing to install into the plugin bundle/cache directory'), result.stderr);
+    } finally {
+      cleanup(homeDir);
+    }
+  })) passed++; else failed++;
+
   console.log(`\nResults: Passed: ${passed}, Failed: ${failed}`);
   process.exit(failed > 0 ? 1 : 0);
 }

@@ -83,6 +83,18 @@
 
 在 2 分钟内启动并运行：
 
+### 最短安装步骤
+
+```bash
+droid plugin marketplace add https://github.com/r0k1n-c/everything-factory-droid
+droid plugin install everything-factory-droid@everything-factory-droid
+cd /path/to/your-project
+npx efd-install --profile full
+# 或：npx efd-install typescript
+```
+
+不要在 `~/.factory/plugins/...`、`~/.factory/plugins/cache/...`，或克隆出来的 `everything-factory-droid/` 仓库目录里运行安装器，除非那个目录本身就是你要配置的项目。
+
 ### 步骤 1：安装插件
 
 ```bash
@@ -98,32 +110,39 @@ droid plugin install everything-factory-droid@everything-factory-droid
 > WARNING: **重要提示：** Factory Droid 插件无法自动分发 `rules`。请手动安装它们：
 
 ```bash
-# Clone the repo first
-git clone https://github.com/r0k1n-c/everything-factory-droid.git
-cd everything-factory-droid
+# 在你的“目标项目根目录”执行安装
+cd /path/to/your-project
 
-# Install dependencies (pick your package manager)
-npm install        # or: pnpm install | yarn install | bun install
+# 推荐：无需克隆仓库
+npx efd-install --profile full
 
-# macOS/Linux
-./install.sh typescript    # or python or golang or swift or php
-# ./install.sh typescript python golang swift php
-# ./install.sh --profile developer
-# ./install.sh --with lang:typescript --with capability:security
-```
-
-```powershell
-# Windows PowerShell
-npx efd-install typescript   # or python or golang or swift or php
+# 或只安装你需要的语言/能力
+npx efd-install typescript    # 或 python / golang / swift / php
 # npx efd-install typescript python golang swift php
 # npx efd-install --profile developer
 # npx efd-install --with lang:typescript --with capability:security
-
-# npm-installed compatibility entrypoint also works cross-platform
-npx efd-install typescript
 ```
 
-手动安装说明请参阅 `rules/` 文件夹中的 README。
+```powershell
+# Windows PowerShell —— 同样要在“目标项目根目录”执行
+Set-Location C:\path\to\your-project
+npx efd-install --profile full
+# npx efd-install typescript
+# npx efd-install --profile developer
+# npx efd-install --with lang:typescript --with capability:security
+```
+
+```bash
+# 备选方案：把仓库克隆到任意位置，但仍然要在“目标项目根目录”执行安装器
+git clone https://github.com/r0k1n-c/everything-factory-droid.git ~/everything-factory-droid
+cd /path/to/your-project
+bash ~/everything-factory-droid/install.sh typescript
+# bash ~/everything-factory-droid/install.sh --profile full
+```
+
+不要在 `~/.factory/plugins/...` 缓存目录里，或直接在克隆出来的仓库目录里运行 `install.sh`，除非那个目录本身就是你要配置的项目。
+
+手动复制安装说明请参阅 `rules/` 文件夹中的 README。
 
 ### 步骤 3：开始使用
 
@@ -506,7 +525,18 @@ droid plugin install everything-factory-droid@everything-factory-droid
 
 这将使您能够立即访问所有命令、代理、技能和钩子。
 
-> **注意：** Factory Droid 插件系统不支持通过插件分发 `rules` ([当前插件限制](https://docs.factory.ai/cli/configuration/plugins.md))。您需要手动安装规则：
+> **注意：** Factory Droid 插件系统不支持通过插件分发 `rules` ([当前插件限制](https://docs.factory.ai/cli/configuration/plugins.md))。请在目标项目根目录执行项目级安装，例如：
+>
+> ```bash
+> cd /path/to/your-project
+> npx efd-install typescript
+> # npx efd-install --profile full
+> #
+> # 或者，如果你已经把仓库克隆到别处：
+> # bash /path/to/everything-factory-droid/install.sh typescript
+> ```
+>
+> 如果你更想手动复制文件：
 >
 > ```bash
 > # 首先克隆仓库

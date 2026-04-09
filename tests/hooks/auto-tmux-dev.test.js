@@ -51,37 +51,56 @@ function runTests() {
   if (test('transforms npm run dev command', () => {
     const result = runScript({ tool_input: { command: 'npm run dev' } });
     assert.strictEqual(result.code, 0);
-    const output = JSON.parse(result.stdout);
-    if (process.platform !== 'win32' && tmuxAvailable) {
-      assert.ok(output.tool_input.command.includes('tmux'), 'Should contain tmux');
-      assert.ok(output.tool_input.command.includes('npm run dev'), 'Should contain original command');
+    if (result.stdout) {
+      const output = JSON.parse(result.stdout);
+      if (process.platform !== 'win32' && tmuxAvailable) {
+        assert.ok(output.tool_input.command.includes('tmux'), 'Should contain tmux');
+        assert.ok(output.tool_input.command.includes('npm run dev'), 'Should contain original command');
+      }
+      if (process.platform === 'win32') {
+        assert.ok(output.tool_input.command.includes('start "DevServer-'), 'Should start a detached Windows dev server');
+      }
+    } else {
+      assert.ok(process.platform !== 'win32' && !tmuxAvailable, 'Expected quiet no-op only when tmux is unavailable');
     }
   })) passed++; else failed++;
 
   if (test('transforms pnpm dev command', () => {
     const result = runScript({ tool_input: { command: 'pnpm dev' } });
     assert.strictEqual(result.code, 0);
-    const output = JSON.parse(result.stdout);
-    if (process.platform !== 'win32' && tmuxAvailable) {
-      assert.ok(output.tool_input.command.includes('tmux'));
+    if (result.stdout) {
+      const output = JSON.parse(result.stdout);
+      if (process.platform !== 'win32' && tmuxAvailable) {
+        assert.ok(output.tool_input.command.includes('tmux'));
+      }
+    } else {
+      assert.ok(process.platform !== 'win32' && !tmuxAvailable, 'Expected quiet no-op only when tmux is unavailable');
     }
   })) passed++; else failed++;
 
   if (test('transforms yarn dev command', () => {
     const result = runScript({ tool_input: { command: 'yarn dev' } });
     assert.strictEqual(result.code, 0);
-    const output = JSON.parse(result.stdout);
-    if (process.platform !== 'win32' && tmuxAvailable) {
-      assert.ok(output.tool_input.command.includes('tmux'));
+    if (result.stdout) {
+      const output = JSON.parse(result.stdout);
+      if (process.platform !== 'win32' && tmuxAvailable) {
+        assert.ok(output.tool_input.command.includes('tmux'));
+      }
+    } else {
+      assert.ok(process.platform !== 'win32' && !tmuxAvailable, 'Expected quiet no-op only when tmux is unavailable');
     }
   })) passed++; else failed++;
 
   if (test('transforms bun run dev command', () => {
     const result = runScript({ tool_input: { command: 'bun run dev' } });
     assert.strictEqual(result.code, 0);
-    const output = JSON.parse(result.stdout);
-    if (process.platform !== 'win32' && tmuxAvailable) {
-      assert.ok(output.tool_input.command.includes('tmux'));
+    if (result.stdout) {
+      const output = JSON.parse(result.stdout);
+      if (process.platform !== 'win32' && tmuxAvailable) {
+        assert.ok(output.tool_input.command.includes('tmux'));
+      }
+    } else {
+      assert.ok(process.platform !== 'win32' && !tmuxAvailable, 'Expected quiet no-op only when tmux is unavailable');
     }
   })) passed++; else failed++;
 
@@ -91,32 +110,28 @@ function runTests() {
     const input = { tool_input: { command: 'npm install' } };
     const result = runScript(input);
     assert.strictEqual(result.code, 0);
-    const output = JSON.parse(result.stdout);
-    assert.strictEqual(output.tool_input.command, 'npm install');
+    assert.strictEqual(result.stdout, '', 'Expected no stdout for non-dev command passthrough');
   })) passed++; else failed++;
 
   if (test('does not transform npm test', () => {
     const input = { tool_input: { command: 'npm test' } };
     const result = runScript(input);
     assert.strictEqual(result.code, 0);
-    const output = JSON.parse(result.stdout);
-    assert.strictEqual(output.tool_input.command, 'npm test');
+    assert.strictEqual(result.stdout, '', 'Expected no stdout for non-dev command passthrough');
   })) passed++; else failed++;
 
   if (test('does not transform npm run build', () => {
     const input = { tool_input: { command: 'npm run build' } };
     const result = runScript(input);
     assert.strictEqual(result.code, 0);
-    const output = JSON.parse(result.stdout);
-    assert.strictEqual(output.tool_input.command, 'npm run build');
+    assert.strictEqual(result.stdout, '', 'Expected no stdout for non-dev command passthrough');
   })) passed++; else failed++;
 
   if (test('does not transform npm run develop (partial match)', () => {
     const input = { tool_input: { command: 'npm run develop' } };
     const result = runScript(input);
     assert.strictEqual(result.code, 0);
-    const output = JSON.parse(result.stdout);
-    assert.strictEqual(output.tool_input.command, 'npm run develop');
+    assert.strictEqual(result.stdout, '', 'Expected no stdout for partial-match passthrough');
   })) passed++; else failed++;
 
   console.log('\nEdge cases:');
@@ -136,6 +151,7 @@ function runTests() {
     const input = { tool_input: {} };
     const result = runScript(input);
     assert.strictEqual(result.code, 0);
+    assert.strictEqual(result.stdout, '', 'Expected no stdout when command is missing');
   })) passed++; else failed++;
 
   console.log(`\nResults: Passed: ${passed}, Failed: ${failed}`);

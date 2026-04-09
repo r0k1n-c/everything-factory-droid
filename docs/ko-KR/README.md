@@ -91,15 +91,30 @@ droid plugin install everything-factory-droid@everything-factory-droid
 > WARNING: **중요:** Factory Droid 플러그인은 `rules`를 자동으로 배포할 수 없습니다. 수동으로 설치해야 합니다:
 
 ```bash
-# 먼저 저장소 클론
-git clone https://github.com/r0k1n-c/everything-factory-droid.git
-cd everything-factory-droid
+# 대상 프로젝트 루트에서 설치를 실행하세요
+cd /path/to/your-project
 
-# 권장: 설치 스크립트 사용 (common + 언어별 룰을 안전하게 처리)
-./install.sh typescript    # 또는 python, golang
+# 권장: 저장소를 클론하지 않고 바로 설치
+npx efd-install --profile full
+
+# 또는 필요한 항목만 설치
+npx efd-install typescript    # 또는 python, golang
 # 여러 언어를 한번에 설치할 수 있습니다:
-# ./install.sh typescript python golang
+# npx efd-install typescript python golang
+# npx efd-install --profile developer
+# npx efd-install --with lang:typescript --with capability:security
 ```
+
+```bash
+# 대안: 이 저장소를 아무 위치에나 클론해도 되지만, 설치기는 여전히
+# 대상 프로젝트 루트에서 실행해야 합니다 (clone 내부나 ~/.factory/plugins/... 내부가 아님)
+git clone https://github.com/r0k1n-c/everything-factory-droid.git ~/everything-factory-droid
+cd /path/to/your-project
+bash ~/everything-factory-droid/install.sh typescript
+# bash ~/everything-factory-droid/install.sh --profile full
+```
+
+`install.sh`를 `~/.factory/plugins/...` 내부나 클론한 저장소 내부에서 실행하지 마세요. 실제로 설정하려는 프로젝트 디렉터리에서 실행해야 합니다.
 
 수동 설치 방법은 `rules/` 폴더의 README를 참고하세요.
 
@@ -348,7 +363,18 @@ droid plugin install everything-factory-droid@everything-factory-droid
 }
 ```
 
-> **참고:** Factory Droid 플러그인 시스템은 `rules`를 플러그인으로 배포하는 것을 지원하지 않습니다. 룰은 수동으로 설치해야 합니다:
+> **참고:** Factory Droid 플러그인 시스템은 `rules`를 플러그인으로 배포하는 것을 지원하지 않습니다. 대상 프로젝트 루트에서 다음처럼 설치하세요:
+>
+> ```bash
+> cd /path/to/your-project
+> npx efd-install typescript
+> # npx efd-install --profile full
+> #
+> # 또는 이 저장소를 다른 위치에 클론했다면:
+> # bash /path/to/everything-factory-droid/install.sh typescript
+> ```
+>
+> 파일을 직접 복사하려면:
 >
 > ```bash
 > git clone https://github.com/r0k1n-c/everything-factory-droid.git

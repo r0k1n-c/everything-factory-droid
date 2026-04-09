@@ -96,32 +96,40 @@ droid plugin install everything-factory-droid@everything-factory-droid
 > WARNING: **Önemli:** Factory Droid plugin'leri `rule`'ları otomatik olarak dağıtamaz. Manuel olarak kurmalısınız:
 
 ```bash
-# Önce repo'yu klonlayın
-git clone https://github.com/r0k1n-c/everything-factory-droid.git
-cd everything-factory-droid
+# Kurulumu HEDEF PROJE kök dizininden çalıştırın
+cd /projenizin/yolu
 
-# Bağımlılıkları kurun (paket yöneticinizi seçin)
-npm install        # veya: pnpm install | yarn install | bun install
+# Önerilen: repo klonlamadan
+npx efd-install --profile full
 
-# macOS/Linux
-./install.sh typescript    # veya python veya golang veya swift veya php
-# ./install.sh typescript python golang swift php
-# ./install.sh --profile developer
-# ./install.sh --with lang:typescript --with capability:security
-```
-
-```powershell
-# Windows PowerShell
-npx efd-install typescript   # veya python veya golang veya swift veya php
+# Veya yalnızca ihtiyacınız olanları kurun
+npx efd-install typescript    # veya python veya golang veya swift veya php
 # npx efd-install typescript python golang swift php
 # npx efd-install --profile developer
 # npx efd-install --with lang:typescript --with capability:security
-
-# npm-installed uyumluluk entry point'i de çapraz platform çalışır
-npx efd-install typescript
 ```
 
-Manuel kurulum talimatları için `rules/` klasöründeki README'ye bakın.
+```powershell
+# Windows PowerShell — yine HEDEF PROJE kök dizininde
+Set-Location C:\projenizin\yolu
+npx efd-install --profile full
+# npx efd-install typescript
+# npx efd-install --profile developer
+# npx efd-install --with lang:typescript --with capability:security
+```
+
+```bash
+# Alternatif: bu repo'yu herhangi bir yere klonlayın, ama installer'ı yine
+# HEDEF PROJE kök dizininden çalıştırın (clone içinde veya ~/.factory/plugins/... altında değil)
+git clone https://github.com/r0k1n-c/everything-factory-droid.git ~/everything-factory-droid
+cd /projenizin/yolu
+bash ~/everything-factory-droid/install.sh typescript
+# bash ~/everything-factory-droid/install.sh --profile full
+```
+
+`install.sh` komutunu `~/.factory/plugins/...` içinde veya klonlanmış repo içinde çalıştırmayın; yalnızca gerçekten yapılandırmak istediğiniz proje dizininde çalıştırın.
+
+Manuel kopyalama kurulum talimatları için `rules/` klasöründeki README'ye bakın.
 
 ### Adım 3: Kullanmaya Başlayın
 

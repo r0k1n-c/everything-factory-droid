@@ -49,6 +49,7 @@ function runCustomHook(pluginRoot, hookId, relScriptPath, input, env = {}) {
     encoding: 'utf8',
     env: {
       ...process.env,
+      DROID_PLUGIN_ROOT: pluginRoot,
       FACTORY_PROJECT_DIR: pluginRoot,
       EFD_HOOK_PROFILE: 'standard',
       ...env
@@ -94,10 +95,9 @@ function runTests() {
       }
     };
 
-    const rawInput = JSON.stringify(input);
     const result = runHook(input);
     assert.strictEqual(result.code, 0, 'Expected safe file edit to pass');
-    assert.strictEqual(result.stdout, rawInput, 'Expected exact raw JSON passthrough');
+    assert.strictEqual(result.stdout, '', 'Expected safe file edit to remain quiet on stdout');
     assert.strictEqual(result.stderr, '', 'Expected no stderr for safe edits');
   })) passed++; else failed++;
 
@@ -124,6 +124,7 @@ function runTests() {
 
     try {
       fs.mkdirSync(scriptDir, { recursive: true });
+      fs.copyFileSync(runner, path.join(scriptDir, 'run-with-flags.js'));
       fs.writeFileSync(
         scriptPath,
         '#!/usr/bin/env node\nprocess.stderr.write("blocked by legacy hook\\n");\nprocess.exit(2);\n'

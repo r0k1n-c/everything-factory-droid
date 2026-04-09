@@ -30,16 +30,22 @@ rules/
 ### Option 1: Install Script (Recommended)
 
 ```bash
-# Install common + one or more language-specific rule sets
-./install.sh typescript
-./install.sh python
-./install.sh golang
-./install.sh web
-./install.sh swift
-./install.sh php
+# Run from your TARGET PROJECT ROOT
+cd /path/to/your-project
+
+# Recommended: install with the published CLI
+npx efd-install typescript
+npx efd-install python
+npx efd-install golang
+npx efd-install web
+npx efd-install swift
+npx efd-install php
 
 # Install multiple languages at once
-./install.sh typescript python
+npx efd-install typescript python
+
+# Or, if you cloned this repo elsewhere, keep your cwd in the target project:
+# bash /path/to/everything-factory-droid/install.sh typescript
 ```
 
 ### Option 2: Manual Installation

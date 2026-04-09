@@ -44,6 +44,7 @@ process.stdin.on('end', () => {
   try {
     input = JSON.parse(data);
     const cmd = input.tool_input?.command || '';
+    let transformed = false;
 
     // Detect dev server commands: npm run dev, pnpm dev, yarn dev, bun run dev
     // Use word boundary (\b) to avoid matching partial commands
@@ -61,6 +62,7 @@ process.stdin.on('end', () => {
         // Escape double quotes in cmd for cmd /k syntax
         const escapedCmd = cmd.replace(/"/g, '""');
         input.tool_input.command = `start "DevServer-${sessionName}" cmd /k "${escapedCmd}"`;
+        transformed = true;
       } else {
         // Unix (macOS/Linux): Check tmux is available before transforming
         const tmuxCheck = spawnSync('which', ['tmux'], { encoding: 'utf8' });
@@ -75,11 +77,15 @@ process.stdin.on('end', () => {
           const transformedCmd = `SESSION="${sessionName}"; tmux kill-session -t "$SESSION" 2>/dev/null || true; tmux new-session -d -s "$SESSION" '${escapedCmd}' && echo "[Hook] Dev server started in tmux session '${sessionName}'. View logs: tmux capture-pane -t ${sessionName} -p -S -100"`;
 
           input.tool_input.command = transformedCmd;
+          transformed = true;
         }
         // else: tmux not found, pass through original command unchanged
       }
     }
-    process.stdout.write(JSON.stringify(input));
+
+    if (transformed) {
+      process.stdout.write(JSON.stringify(input));
+    }
   } catch {
     // Invalid input — pass through original data unchanged
     process.stdout.write(data);

@@ -46,7 +46,10 @@ function writeStderr(stderr) {
 
 function emitHookResult(raw, output) {
   if (typeof output === 'string' || Buffer.isBuffer(output)) {
-    process.stdout.write(String(output));
+    const text = String(output);
+    if (text && text !== raw) {
+      process.stdout.write(text);
+    }
     return 0;
   }
 
@@ -54,34 +57,41 @@ function emitHookResult(raw, output) {
     writeStderr(output.stderr);
 
     if (Object.prototype.hasOwnProperty.call(output, 'stdout')) {
-      process.stdout.write(String(output.stdout ?? ''));
-    } else if (!Number.isInteger(output.exitCode) || output.exitCode === 0) {
-      process.stdout.write(raw);
+      const text = String(output.stdout ?? '');
+      if (text && text !== raw) {
+        process.stdout.write(text);
+      }
     }
 
     return Number.isInteger(output.exitCode) ? output.exitCode : 0;
   }
 
-  process.stdout.write(raw);
   return 0;
 }
 
-function writeLegacySpawnOutput(raw, result) {
+function writeLegacySpawnOutput(result) {
   const stdout = typeof result.stdout === 'string' ? result.stdout : '';
   if (stdout) {
     process.stdout.write(stdout);
-    return;
-  }
-
-  if (Number.isInteger(result.status) && result.status === 0) {
-    process.stdout.write(raw);
   }
 }
 
+function hasRunnerRoot(candidate) {
+  const value = typeof candidate === 'string' ? candidate.trim() : '';
+  return value.length > 0 && fs.existsSync(path.join(path.resolve(value), 'scripts', 'hooks', 'run-with-flags.js'));
+}
+
 function getPluginRoot() {
-  if (process.env.FACTORY_PROJECT_DIR && process.env.FACTORY_PROJECT_DIR.trim()) {
-    return process.env.FACTORY_PROJECT_DIR;
+  const pluginRoot = process.env.DROID_PLUGIN_ROOT || '';
+  if (hasRunnerRoot(pluginRoot)) {
+    return path.resolve(pluginRoot.trim());
   }
+
+  const projectRoot = process.env.FACTORY_PROJECT_DIR || '';
+  if (hasRunnerRoot(projectRoot)) {
+    return path.resolve(projectRoot.trim());
+  }
+
   return path.resolve(__dirname, '..', '..');
 }
 
@@ -95,7 +105,6 @@ async function main() {
   }
 
   if (!isHookEnabled(hookId, { profiles: profilesCsv })) {
-    process.stdout.write(raw);
     process.exit(0);
   }
 
@@ -106,13 +115,11 @@ async function main() {
   // Prevent path traversal outside the plugin root
   if (!scriptPath.startsWith(resolvedRoot + path.sep)) {
     process.stderr.write(`[Hook] Path traversal rejected for ${hookId}: ${scriptPath}\n`);
-    process.stdout.write(raw);
     process.exit(0);
   }
 
   if (!fs.existsSync(scriptPath)) {
     process.stderr.write(`[Hook] Script not found for ${hookId}: ${scriptPath}\n`);
-    process.stdout.write(raw);
     process.exit(0);
   }
 
@@ -141,7 +148,6 @@ async function main() {
       process.exit(emitHookResult(raw, output));
     } catch (runErr) {
       process.stderr.write(`[Hook] run() error for ${hookId}: ${runErr.message}\n`);
-      process.stdout.write(raw);
     }
     process.exit(0);
   }
@@ -159,7 +165,7 @@ async function main() {
     timeout: 30000
   });
 
-  writeLegacySpawnOutput(raw, result);
+  writeLegacySpawnOutput(result);
   if (result.stderr) process.stderr.write(result.stderr);
 
   if (result.error || result.signal || result.status === null) {

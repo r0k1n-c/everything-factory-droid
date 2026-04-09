@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${FACTORY_PROJECT_DIR}/scripts/hooks/run-with-flags.js\" \"prompt:hookify\" \"scripts/hooks/hookify-runtime.js\" \"standard,strict\"",
+            "command": "node \"${DROID_PLUGIN_ROOT}/scripts/hooks/run-with-flags.js\" \"prompt:hookify\" \"scripts/hooks/hookify-runtime.js\" \"standard,strict\"",
             "timeout": 5
           }
         ],
@@ -19,7 +19,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${FACTORY_PROJECT_DIR}/scripts/hooks/run-with-flags.js\" \"pre:execute:hookify\" \"scripts/hooks/hookify-runtime.js\" \"standard,strict\"",
+            "command": "node \"${DROID_PLUGIN_ROOT}/scripts/hooks/run-with-flags.js\" \"pre:execute:hookify\" \"scripts/hooks/hookify-runtime.js\" \"standard,strict\"",
             "timeout": 5
           }
         ],
@@ -31,7 +31,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${FACTORY_PROJECT_DIR}/scripts/hooks/run-with-flags.js\" \"pre:file:hookify\" \"scripts/hooks/hookify-runtime.js\" \"standard,strict\"",
+            "command": "node \"${DROID_PLUGIN_ROOT}/scripts/hooks/run-with-flags.js\" \"pre:file:hookify\" \"scripts/hooks/hookify-runtime.js\" \"standard,strict\"",
             "timeout": 5
           }
         ],
@@ -43,7 +43,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${FACTORY_PROJECT_DIR}/scripts/hooks/auto-tmux-dev.js\""
+            "command": "node \"${DROID_PLUGIN_ROOT}/scripts/hooks/auto-tmux-dev.js\""
           }
         ],
         "description": "Auto-start dev servers in tmux with directory-based session names",
@@ -54,7 +54,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${FACTORY_PROJECT_DIR}/scripts/hooks/run-with-flags.js\" \"pre:execute:commit-quality\" \"scripts/hooks/pre-bash-commit-quality.js\" \"strict\""
+            "command": "node \"${DROID_PLUGIN_ROOT}/scripts/hooks/run-with-flags.js\" \"pre:execute:commit-quality\" \"scripts/hooks/pre-bash-commit-quality.js\" \"strict\""
           }
         ],
         "description": "Pre-command quality reminder before destructive git actions",
@@ -65,7 +65,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${FACTORY_PROJECT_DIR}/scripts/hooks/run-with-flags.js\" \"pre:edit:create:config-protection\" \"scripts/hooks/config-protection.js\" \"standard,strict\"",
+            "command": "node \"${DROID_PLUGIN_ROOT}/scripts/hooks/run-with-flags.js\" \"pre:edit:create:config-protection\" \"scripts/hooks/config-protection.js\" \"standard,strict\"",
             "timeout": 5
           }
         ],
@@ -77,7 +77,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${FACTORY_PROJECT_DIR}/scripts/hooks/run-with-flags.js\" \"pre:mcp-health-check\" \"scripts/hooks/mcp-health-check.js\" \"standard,strict\""
+            "command": "node \"${DROID_PLUGIN_ROOT}/scripts/hooks/run-with-flags.js\" \"pre:mcp-health-check\" \"scripts/hooks/mcp-health-check.js\" \"standard,strict\""
           }
         ],
         "description": "Check MCP server health before MCP tool execution",
@@ -90,7 +90,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${FACTORY_PROJECT_DIR}/scripts/hooks/session-start-bootstrap.js\""
+            "command": "node \"${DROID_PLUGIN_ROOT}/scripts/hooks/session-start-bootstrap.js\""
           }
         ],
         "description": "Load previous context and detect package manager on session start",
@@ -103,7 +103,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${FACTORY_PROJECT_DIR}/scripts/hooks/run-with-flags.js\" \"post:quality-gate\" \"scripts/hooks/quality-gate.js\" \"standard,strict\"",
+            "command": "node \"${DROID_PLUGIN_ROOT}/scripts/hooks/run-with-flags.js\" \"post:quality-gate\" \"scripts/hooks/quality-gate.js\" \"standard,strict\"",
             "async": true,
             "timeout": 30
           }
@@ -116,7 +116,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${FACTORY_PROJECT_DIR}/scripts/hooks/run-with-flags.js\" \"post:edit:design-quality-check\" \"scripts/hooks/design-quality-check.js\" \"standard,strict\"",
+            "command": "node \"${DROID_PLUGIN_ROOT}/scripts/hooks/run-with-flags.js\" \"post:edit:design-quality-check\" \"scripts/hooks/design-quality-check.js\" \"standard,strict\"",
             "timeout": 10
           }
         ],
@@ -128,7 +128,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${FACTORY_PROJECT_DIR}/scripts/hooks/run-with-flags.js\" \"post:edit:console-warn\" \"scripts/hooks/post-edit-console-warn.js\" \"standard,strict\""
+            "command": "node \"${DROID_PLUGIN_ROOT}/scripts/hooks/run-with-flags.js\" \"post:edit:console-warn\" \"scripts/hooks/post-edit-console-warn.js\" \"standard,strict\""
           }
         ],
         "description": "Warn about console.log statements after edits",
@@ -141,48 +141,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${FACTORY_PROJECT_DIR}/scripts/hooks/run-with-flags.js\" \"stop:hookify\" \"scripts/hooks/hookify-runtime.js\" \"standard,strict\"",
-            "timeout": 5
-          }
-        ],
-        "description": "Apply user-defined Hookify stop rules",
-        "id": "stop:hookify"
-      },
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"${FACTORY_PROJECT_DIR}/scripts/hooks/run-with-flags.js\" \"stop:format-typecheck\" \"scripts/hooks/stop-format-typecheck.js\" \"standard,strict\"",
+            "command": "node \"${DROID_PLUGIN_ROOT}/scripts/hooks/run-with-flags.js\" \"stop:dispatch\" \"scripts/hooks/stop-dispatch.js\" \"minimal,standard,strict\"",
             "timeout": 300
           }
         ],
-        "description": "Batch format and typecheck edited JS/TS files once per response",
-        "id": "stop:format-typecheck"
-      },
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"${FACTORY_PROJECT_DIR}/scripts/hooks/run-with-flags.js\" \"stop:check-console-log\" \"scripts/hooks/check-console-log.js\" \"standard,strict\""
-          }
-        ],
-        "description": "Check for console.log in modified files after each response",
-        "id": "stop:check-console-log"
-      },
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"${FACTORY_PROJECT_DIR}/scripts/hooks/run-with-flags.js\" \"stop:session-end\" \"scripts/hooks/session-end.js\" \"minimal,standard,strict\"",
-            "async": true,
-            "timeout": 10
-          }
-        ],
-        "description": "Persist session state after each response",
-        "id": "stop:session-end"
+        "description": "Run the plugin stop pipeline once per response",
+        "id": "stop:dispatch"
       }
     ],
     "SessionEnd": [
@@ -191,7 +155,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${FACTORY_PROJECT_DIR}/scripts/hooks/run-with-flags.js\" \"session:end:marker\" \"scripts/hooks/session-end-marker.js\" \"minimal,standard,strict\"",
+            "command": "node \"${DROID_PLUGIN_ROOT}/scripts/hooks/run-with-flags.js\" \"session:end:marker\" \"scripts/hooks/session-end-marker.js\" \"minimal,standard,strict\"",
             "async": true,
             "timeout": 10
           }

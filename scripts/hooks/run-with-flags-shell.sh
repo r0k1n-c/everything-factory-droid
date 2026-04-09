@@ -5,7 +5,14 @@ HOOK_ID="${1:-}"
 REL_SCRIPT_PATH="${2:-}"
 PROFILES_CSV="${3:-standard,strict}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PLUGIN_ROOT="${FACTORY_PROJECT_DIR:-$(cd "${SCRIPT_DIR}/../.." && pwd)}"
+
+if [[ -n "${DROID_PLUGIN_ROOT:-}" && -f "${DROID_PLUGIN_ROOT}/scripts/hooks/run-with-flags.js" ]]; then
+  PLUGIN_ROOT="${DROID_PLUGIN_ROOT}"
+elif [[ -n "${FACTORY_PROJECT_DIR:-}" && -f "${FACTORY_PROJECT_DIR}/scripts/hooks/run-with-flags.js" ]]; then
+  PLUGIN_ROOT="${FACTORY_PROJECT_DIR}"
+else
+  PLUGIN_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
+fi
 
 # Preserve stdin for passthrough or script execution
 INPUT="$(cat)"

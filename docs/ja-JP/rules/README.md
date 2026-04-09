@@ -28,13 +28,20 @@ rules/
 ### オプション 1: インストールスクリプト（推奨）
 
 ```bash
-# common + 1つ以上の言語固有ルールセットをインストール
-./install.sh typescript
-./install.sh python
-./install.sh golang
+# 対象プロジェクトのルートで実行
+cd /path/to/your-project
+
+# 推奨: 公開 CLI でインストール
+npx efd-install typescript
+npx efd-install python
+npx efd-install golang
 
 # 複数の言語を一度にインストール
-./install.sh typescript python
+npx efd-install typescript python
+
+# または、このリポジトリを別の場所に clone した場合でも、
+# cwd は対象プロジェクトのルートのままにしてください:
+# bash /path/to/everything-factory-droid/install.sh typescript
 ```
 
 ### オプション 2: 手動インストール

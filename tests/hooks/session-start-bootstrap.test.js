@@ -68,7 +68,7 @@ console.log('\n=== Testing session-start-bootstrap.js ===\n');
 let passed = 0;
 let failed = 0;
 
-if (test('delegates to run-with-flags using FACTORY_PROJECT_DIR', () => {
+if (test('delegates to run-with-flags using DROID_PLUGIN_ROOT', () => {
   const tempDir = createTempDir('efd-session-bootstrap-');
   const fakeRoot = path.join(tempDir, 'plugin-root');
   const logFile = path.join(tempDir, 'runner-args.json');
@@ -77,7 +77,7 @@ if (test('delegates to run-with-flags using FACTORY_PROJECT_DIR', () => {
   try {
     const rawInput = JSON.stringify({ hook_event_name: 'SessionStart' });
     const result = runScript(rawInput, {
-      FACTORY_PROJECT_DIR: fakeRoot,
+      DROID_PLUGIN_ROOT: fakeRoot,
     });
 
     assert.strictEqual(result.code, 0, result.stderr);
@@ -90,7 +90,7 @@ if (test('delegates to run-with-flags using FACTORY_PROJECT_DIR', () => {
   }
 })) passed++; else failed++;
 
-if (test('warns and passes input through when no plugin root can be resolved', () => {
+if (test('warns and stays quiet when no plugin root can be resolved', () => {
   const tempDir = createTempDir('efd-session-bootstrap-');
 
   try {
@@ -102,7 +102,7 @@ if (test('warns and passes input through when no plugin root can be resolved', (
     });
 
     assert.strictEqual(result.code, 0, result.stderr);
-    assert.strictEqual(result.stdout, rawInput);
+    assert.strictEqual(result.stdout, '');
     assert.ok(result.stderr.includes('could not resolve EFD plugin root'), result.stderr);
   } finally {
     cleanup(tempDir);

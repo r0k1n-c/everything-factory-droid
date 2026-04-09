@@ -1,8 +1,6 @@
 **Language:** English | [Português (Brasil)](docs/pt-BR/README.md) | [简体中文](docs/zh-CN/README.md) | [繁體中文](docs/zh-TW/README.md) | [日本語](docs/ja-JP/README.md) | [한국어](docs/ko-KR/README.md) | [Türkçe](docs/tr/README.md)
 > Fork Notice: This project is forked and adapted from [everything-claude-code](https://github.com/affaan-m/everything-claude-code) for Factory Droid usage.
-
 > Fork 通知：本项目是从 [everything-claude-code](https://github.com/affaan-m/everything-claude-code) 分支并改编而来，用于 Factory Droid。
-
 
 # Everything Factory Droid
 
@@ -88,6 +86,18 @@ This repo is the raw code only. The guides explain everything.
 
 Get up and running in under 2 minutes:
 
+### Shortest marketplace install
+
+```bash
+droid plugin marketplace add https://github.com/r0k1n-c/everything-factory-droid
+droid plugin install everything-factory-droid@everything-factory-droid
+cd /path/to/your-project
+npx efd-install --profile full
+# or: npx efd-install typescript
+```
+
+Do not run the installer inside `~/.factory/plugins/...`, `~/.factory/plugins/cache/...`, or the cloned `everything-factory-droid/` repo unless that directory is the project you want to configure.
+
 ### Step 1: Install the Plugin
 
 ```bash
@@ -103,42 +113,45 @@ droid plugin install everything-factory-droid@everything-factory-droid
 > WARNING: **Important:** Factory Droid plugins cannot distribute `rules` automatically. Install them manually:
 
 ```bash
-# Clone the repo first
-git clone https://github.com/r0k1n-c/everything-factory-droid.git
-cd everything-factory-droid
+# Run the installer from your TARGET PROJECT ROOT
+cd /path/to/your-project
 
-# Install dependencies (pick your package manager)
-npm install        # or: pnpm install | yarn install | bun install
+# Recommended: no clone needed
+npx efd-install --profile full
 
-# macOS/Linux
-
-# Recommended: install everything (full profile)
-./install.sh --profile full
-
-# Or install for specific languages only
-./install.sh typescript    # or python or golang or swift or php
-# ./install.sh typescript python golang swift php
-# ./install.sh --profile developer
-# ./install.sh --with lang:typescript --with capability:security
+# Or install only what you need
+npx efd-install typescript    # or python or golang or swift or php
+# npx efd-install typescript python golang swift php
+# npx efd-install --profile developer
+# npx efd-install --with lang:typescript --with capability:security
 ```
 
 ```powershell
-# Windows PowerShell
+# Windows PowerShell — also run from your TARGET PROJECT ROOT
+Set-Location C:\path\to\your-project
 
-# Recommended: install everything (full profile)
+# Recommended: no clone needed
 npx efd-install --profile full
 
-# Or install for specific languages only
+# Or install only what you need
 npx efd-install typescript   # or python or golang or swift or php
 # npx efd-install typescript python golang swift php
 # npx efd-install --profile developer
 # npx efd-install --with lang:typescript --with capability:security
-
-# npm-installed compatibility entrypoint also works cross-platform
-npx efd-install typescript
 ```
 
-For manual install instructions see the README in the `rules/` folder. When copying rules manually, copy the whole language directory (for example `rules/common` or `rules/golang`), not the files inside it, so relative references keep working and filenames do not collide.
+```bash
+# Alternative: clone this repo anywhere, but still run the installer
+# from your TARGET PROJECT ROOT (not inside the clone or ~/.factory/plugins/...)
+git clone https://github.com/r0k1n-c/everything-factory-droid.git ~/everything-factory-droid
+cd /path/to/your-project
+bash ~/everything-factory-droid/install.sh typescript
+# bash ~/everything-factory-droid/install.sh --profile full
+```
+
+Do not run `install.sh` inside `~/.factory/plugins/...` or inside the cloned repo unless that directory is the project you actually want to configure.
+
+For manual copy instructions see the README in the `rules/` folder. When copying rules manually, copy the whole language directory (for example `rules/common` or `rules/golang`), not the files inside it, so relative references keep working and filenames do not collide.
 
 ### Step 3: Start Using
 
@@ -565,7 +578,18 @@ Or add directly to your `~/.factory/settings.json`:
 
 This gives you instant access to all commands, agents, skills, and hooks.
 
-> **Note:** The Factory Droid plugin system does not support distributing `rules` via plugins ([current plugin limitation](https://docs.factory.ai/cli/configuration/plugins.md)). You need to install rules manually:
+> **Note:** The Factory Droid plugin system does not support distributing `rules` via plugins ([current plugin limitation](https://docs.factory.ai/cli/configuration/plugins.md)). Install project-local rules from your target project root, for example:
+>
+> ```bash
+> cd /path/to/your-project
+> npx efd-install typescript
+> # npx efd-install --profile full
+> #
+> # Or, if you cloned this repo elsewhere:
+> # bash /path/to/everything-factory-droid/install.sh typescript
+> ```
+>
+> If you prefer copying files by hand:
 >
 > ```bash
 > # Clone the repo first

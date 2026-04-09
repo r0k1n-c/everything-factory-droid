@@ -2247,7 +2247,7 @@ async function runTests() {
               const isNode = hook.command.startsWith('node');
               const isNpx = hook.command.startsWith('npx ');
               const isSkillScript = hook.command.includes('/skills/') && (/^(bash|sh)\s/.test(hook.command) || hook.command.startsWith('${FACTORY_PROJECT_DIR}/skills/'));
-              const isHookShellWrapper = /^(bash|sh)\s+["']?\$\{FACTORY_PROJECT_DIR\}\/scripts\/hooks\/run-with-flags-shell\.sh/.test(hook.command);
+              const isHookShellWrapper = /^(bash|sh)\s+["']?\$\{(?:DROID_PLUGIN_ROOT|FACTORY_PROJECT_DIR)\}\/scripts\/hooks\/run-with-flags-shell\.sh/.test(hook.command);
               assert.ok(
                 isNode || isNpx || isSkillScript || isHookShellWrapper,
                 `Hook command should use node or approved shell wrapper: ${hook.command.substring(0, 100)}...`
@@ -2266,7 +2266,7 @@ async function runTests() {
   else failed++;
 
   if (
-    test('SessionStart hook delegates to the bootstrap script with FACTORY_PROJECT_DIR', () => {
+    test('SessionStart hook delegates to the bootstrap script with DROID_PLUGIN_ROOT', () => {
       const hooksPath = path.join(__dirname, '..', '..', 'hooks', 'hooks.json');
       const hooks = JSON.parse(fs.readFileSync(hooksPath, 'utf8'));
       const sessionStartHook = hooks.hooks.SessionStart?.[0]?.hooks?.[0];
@@ -2279,7 +2279,7 @@ async function runTests() {
         sessionStartHook.command.includes('session-start-bootstrap.js'),
         'SessionStart should delegate to the extracted bootstrap script'
       );
-      assert.ok(sessionStartHook.command.includes('FACTORY_PROJECT_DIR'), 'SessionStart should use FACTORY_PROJECT_DIR');
+      assert.ok(sessionStartHook.command.includes('DROID_PLUGIN_ROOT'), 'SessionStart should use DROID_PLUGIN_ROOT');
 
       // Verify the bootstrap script itself contains the expected logic
       const bootstrapPath = path.join(__dirname, '..', '..', 'scripts', 'hooks', 'session-start-bootstrap.js');
@@ -2287,29 +2287,31 @@ async function runTests() {
       const bootstrapSrc = fs.readFileSync(bootstrapPath, 'utf8');
       assert.ok(bootstrapSrc.includes('session:start'), 'Bootstrap should invoke the session:start profile');
       assert.ok(bootstrapSrc.includes('run-with-flags.js'), 'Bootstrap should resolve the runner script');
-      assert.ok(bootstrapSrc.includes('FACTORY_PROJECT_DIR'), 'Bootstrap should consult FACTORY_PROJECT_DIR');
+      assert.ok(bootstrapSrc.includes('DROID_PLUGIN_ROOT'), 'Bootstrap should consult DROID_PLUGIN_ROOT');
     })
   )
     passed++;
   else failed++;
   if (
-    test('Stop and SessionEnd hooks invoke run-with-flags via FACTORY_PROJECT_DIR', () => {
+    test('Stop and SessionEnd hooks invoke run-with-flags via DROID_PLUGIN_ROOT', () => {
       const hooksPath = path.join(__dirname, '..', '..', 'hooks', 'hooks.json');
       const hooks = JSON.parse(fs.readFileSync(hooksPath, 'utf8'));
       const stopHooks = (hooks.hooks.Stop || []).flatMap(entry => entry.hooks || []);
       const sessionEndHooks = (hooks.hooks.SessionEnd || []).flatMap(entry => entry.hooks || []);
 
+      assert.strictEqual(stopHooks.length, 1, 'Stop hooks should be consolidated into a single dispatcher entry');
+
       for (const hook of [...stopHooks, ...sessionEndHooks]) {
         assert.ok(hook.command.startsWith('node '), 'Lifecycle hook should execute through node');
         assert.ok(hook.command.includes('run-with-flags.js'), 'Lifecycle hook should resolve the runner script');
-        assert.ok(hook.command.includes('FACTORY_PROJECT_DIR'), 'Lifecycle hook should consult FACTORY_PROJECT_DIR');
+        assert.ok(hook.command.includes('DROID_PLUGIN_ROOT'), 'Lifecycle hook should consult DROID_PLUGIN_ROOT');
       }
     })
   )
     passed++;
   else failed++;
   if (
-    test('script references use FACTORY_PROJECT_DIR variable or a safe inline resolver', () => {
+    test('script references use DROID_PLUGIN_ROOT, FACTORY_PROJECT_DIR, or a safe inline resolver', () => {
       const hooksPath = path.join(__dirname, '..', '..', 'hooks', 'hooks.json');
       const hooks = JSON.parse(fs.readFileSync(hooksPath, 'utf8'));
 
@@ -2318,10 +2320,11 @@ async function runTests() {
           for (const hook of entry.hooks) {
             if (hook.type === 'command' && hook.command.includes('scripts/hooks/')) {
               const usesInlineResolver = hook.command.startsWith('node -e') && hook.command.includes('run-with-flags.js');
-              const hasPluginRoot = hook.command.includes('${FACTORY_PROJECT_DIR}')
+              const hasPluginRoot = hook.command.includes('${DROID_PLUGIN_ROOT}')
+                || hook.command.includes('${FACTORY_PROJECT_DIR}')
                 || hook.command.includes('$FACTORY_PROJECT_DIR')
                 || usesInlineResolver;
-              assert.ok(hasPluginRoot, `Script paths should use FACTORY_PROJECT_DIR: ${hook.command.substring(0, 80)}...`);
+              assert.ok(hasPluginRoot, `Script paths should use a plugin/project root variable: ${hook.command.substring(0, 80)}...`);
             }
           }
         }
@@ -2756,9 +2759,11 @@ async function runTests() {
   console.log('\nShell wrapper portability:');
 
   if (
-    test('run-with-flags-shell resolves plugin root when FACTORY_PROJECT_DIR is unset', () => {
+    test('run-with-flags-shell resolves plugin root from DROID_PLUGIN_ROOT, FACTORY_PROJECT_DIR, or its script path', () => {
       const wrapperSource = fs.readFileSync(path.join(scriptsDir, 'run-with-flags-shell.sh'), 'utf8');
-      assert.ok(wrapperSource.includes('PLUGIN_ROOT="${FACTORY_PROJECT_DIR:-'), 'Shell wrapper should derive PLUGIN_ROOT from its own script path');
+      assert.ok(wrapperSource.includes('DROID_PLUGIN_ROOT'), 'Shell wrapper should consult DROID_PLUGIN_ROOT first');
+      assert.ok(wrapperSource.includes('FACTORY_PROJECT_DIR'), 'Shell wrapper should retain FACTORY_PROJECT_DIR fallback support');
+      assert.ok(wrapperSource.includes('SCRIPT_DIR'), 'Shell wrapper should derive PLUGIN_ROOT from its own script path');
     })
   )
     passed++;

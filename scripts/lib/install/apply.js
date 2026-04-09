@@ -26,7 +26,9 @@ function replacePluginRootPlaceholders(value, pluginRoot) {
   }
 
   if (typeof value === 'string') {
-    return value.split('${FACTORY_PROJECT_DIR}').join(pluginRoot);
+    return value
+      .split('${DROID_PLUGIN_ROOT}').join(pluginRoot)
+      .split('${FACTORY_PROJECT_DIR}').join(pluginRoot);
   }
 
   if (Array.isArray(value)) {

@@ -6,7 +6,9 @@
  * target-specific mutation logic into testable Node code.
  */
 
+const fs = require('fs');
 const os = require('os');
+const path = require('path');
 const {
   SUPPORTED_INSTALL_TARGETS,
   listLegacyCompatibilityLanguages,
@@ -94,6 +96,49 @@ function printHumanPlan(plan, dryRun) {
   }
 }
 
+function normalizeExistingPath(inputPath) {
+  const resolvedPath = path.resolve(inputPath);
+  if (!fs.existsSync(resolvedPath)) {
+    return resolvedPath;
+  }
+
+  try {
+    return fs.realpathSync.native(resolvedPath);
+  } catch (_error) {
+    return resolvedPath;
+  }
+}
+
+function isWithinPath(candidatePath, parentPath) {
+  const resolvedCandidate = normalizeExistingPath(candidatePath);
+  const resolvedParent = normalizeExistingPath(parentPath);
+  return resolvedCandidate === resolvedParent || resolvedCandidate.startsWith(`${resolvedParent}${path.sep}`);
+}
+
+function assertProjectInstallRootIsNotPluginBundle(projectRoot, homeDir) {
+  if (!projectRoot || !homeDir) {
+    return;
+  }
+
+  const factoryDir = path.join(homeDir, '.factory');
+  const blockedRoots = [
+    path.join(factoryDir, 'plugins', 'everything-factory-droid'),
+    path.join(factoryDir, 'plugins', 'everything-factory-droid@everything-factory-droid'),
+    path.join(factoryDir, 'plugins', 'marketplace', 'everything-factory-droid'),
+    path.join(factoryDir, 'plugins', 'marketplaces', 'everything-factory-droid'),
+    path.join(factoryDir, 'plugins', 'cache', 'everything-factory-droid'),
+  ];
+
+  const matchedRoot = blockedRoots.find(blockedRoot => isWithinPath(projectRoot, blockedRoot));
+  if (!matchedRoot) {
+    return;
+  }
+
+  throw new Error(
+    `Refusing to install into the plugin bundle/cache directory (${projectRoot}). Run install.sh from your target project root instead, for example: cd /path/to/project && bash /path/to/install.sh typescript`
+  );
+}
+
 function main() {
   try {
     const options = parseInstallArgs(process.argv);
@@ -118,9 +163,12 @@ function main() {
       ...options,
       config,
     });
+    const projectRoot = process.cwd();
+    const homeDir = process.env.HOME || os.homedir();
+    assertProjectInstallRootIsNotPluginBundle(projectRoot, homeDir);
     const plan = createInstallPlanFromRequest(request, {
-      projectRoot: process.cwd(),
-      homeDir: process.env.HOME || os.homedir(),
+      projectRoot,
+      homeDir,
       rulesDir: process.env.FACTORY_RULES_DIR || process.env.CLAUDE_RULES_DIR || null,
     });
 

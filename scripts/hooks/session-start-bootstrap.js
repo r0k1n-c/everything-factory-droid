@@ -21,9 +21,9 @@
  *      or a set of well-known fallback paths).
  *   3. Delegates to `scripts/hooks/run-with-flags.js` with the `session:start`
  *      event, which applies hook-profile gating and then runs session-start.js.
- *   4. Passes stdout/stderr through and forwards the child exit code.
- *   5. If the plugin root cannot be found, emits a warning and passes stdin
- *      through unchanged so Factory Droid can continue normally.
+ *   4. Passes meaningful stdout/stderr through and forwards the child exit code.
+ *   5. If the plugin root cannot be found, emits a warning and exits quietly
+ *      so Factory Droid can continue normally without injecting raw hook JSON.
  */
 
 const fs = require('fs');
@@ -59,6 +59,11 @@ function hasRunnerRoot(candidate) {
  * @returns {string}
  */
 function resolvePluginRoot() {
+  const pluginRoot = process.env.DROID_PLUGIN_ROOT || '';
+  if (hasRunnerRoot(pluginRoot)) {
+    return path.resolve(pluginRoot.trim());
+  }
+
   const envRoot = process.env.FACTORY_PROJECT_DIR || '';
   if (hasRunnerRoot(envRoot)) {
     return path.resolve(envRoot.trim());
@@ -74,6 +79,7 @@ function resolvePluginRoot() {
   const knownPaths = [
     path.join(factoryDir, 'plugins', 'everything-factory-droid'),
     path.join(factoryDir, 'plugins', 'everything-factory-droid@everything-factory-droid'),
+    path.join(factoryDir, 'plugins', 'marketplaces', 'everything-factory-droid'),
     path.join(factoryDir, 'plugins', 'marketplace', 'everything-factory-droid'),
   ];
 
@@ -122,8 +128,6 @@ if (fs.existsSync(script)) {
   const stdout = typeof result.stdout === 'string' ? result.stdout : '';
   if (stdout) {
     process.stdout.write(stdout);
-  } else {
-    process.stdout.write(raw);
   }
 
   if (result.stderr) {
@@ -146,4 +150,4 @@ if (fs.existsSync(script)) {
 process.stderr.write(
   '[SessionStart] WARNING: could not resolve EFD plugin root; skipping session-start hook\n'
 );
-process.stdout.write(raw);
+process.exit(0);

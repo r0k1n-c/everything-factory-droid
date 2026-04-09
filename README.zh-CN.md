@@ -110,7 +110,7 @@ cp -r everything-factory-droid/rules/perl ~/.factory/rules/
 droid plugin list
 ```
 
-**完成！** 你现在可以使用 47 个代理、171 个技能和 79 个命令。
+**完成！** 你现在可以使用 47 个代理、172 个技能和 79 个命令。
 
 ### multi-* 命令需要额外配置
 

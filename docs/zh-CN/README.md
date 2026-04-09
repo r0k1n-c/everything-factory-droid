@@ -17,7 +17,7 @@
 ![Perl](https://img.shields.io/badge/-Perl-39457E?logo=perl\&logoColor=white)
 ![Markdown](https://img.shields.io/badge/-Markdown-000000?logo=markdown\&logoColor=white)
 
-> **Factory Droid 专注** | **47 个 agents** | **171 项 skills** | **79 个 commands** | **跨平台安装器**
+> **Factory Droid 专注** | **47 个 agents** | **172 项 skills** | **79 个 commands** | **跨平台安装器**
 
 ***
 
@@ -157,7 +157,7 @@ bash ~/everything-factory-droid/install.sh typescript
 droid plugin list
 ```
 
-**搞定！** 你现在可以使用 47 个智能体、171 项技能和 79 个命令了。
+**搞定！** 你现在可以使用 47 个智能体、172 项技能和 79 个命令了。
 
 ***
 
@@ -174,7 +174,7 @@ droid plugin list
 |-----------|---------|-------|
 | 智能体 | 47 个 | Factory Droid |
 | 命令 | 79 个 | Factory Droid |
-| 技能 | 171 项 | Factory Droid |
+| 技能 | 172 项 | Factory Droid |
 
 ## 包含内容
 

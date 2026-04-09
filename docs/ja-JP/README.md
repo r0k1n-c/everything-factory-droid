@@ -102,7 +102,7 @@ cp -r everything-factory-droid/rules/golang ~/.factory/rules/
 
 ```bash
 # コマンドを試す（プラグインはネームスペース形式）
-/everything-factory-droid:plan "ユーザー認証を追加"
+/plan "ユーザー認証を追加"
 
 # 手動インストール（オプション2）は短縮形式：
 # /plan "ユーザー認証を追加"

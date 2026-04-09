@@ -57,7 +57,7 @@ flowchart LR
 
 ```
 # 插件安装形式
-/everything-factory-droid:plan "为 Express API 添加 JWT 身份验证"
+/plan "为 Express API 添加 JWT 身份验证"
 
 # 手动安装形式
 /plan "为 Express API 添加 JWT 身份验证"

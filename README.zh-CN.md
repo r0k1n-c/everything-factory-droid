@@ -101,7 +101,7 @@ cp -r everything-factory-droid/rules/perl ~/.factory/rules/
 
 ```bash
 # 尝试一个命令（插件安装使用命名空间形式）
-/everything-factory-droid:plan "添加用户认证"
+/plan "添加用户认证"
 
 # 手动安装（选项2）使用简短形式：
 # /plan "添加用户认证"

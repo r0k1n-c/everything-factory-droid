@@ -89,7 +89,7 @@ cp -r everything-factory-droid/rules/* ~/.factory/rules/
 
 ```bash
 # 嘗試一個指令（外掛安裝使用命名空間形式）
-/everything-factory-droid:plan "新增使用者認證"
+/plan "新增使用者認證"
 
 # 手動安裝（選項2）使用簡短形式：
 # /plan "新增使用者認證"

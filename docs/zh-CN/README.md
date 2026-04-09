@@ -150,7 +150,7 @@ bash ~/everything-factory-droid/install.sh typescript
 
 ```bash
 # Try a command (plugin install uses namespaced form)
-/everything-factory-droid:plan "Add user authentication"
+/plan "Add user authentication"
 
 # Manual install (Option 2) uses the shorter form:
 # /plan "Add user authentication"
@@ -670,8 +670,8 @@ rules/
 
 | 我想要... | 使用此命令 | 使用的智能体 |
 |--------------|-----------------|------------|
-| 规划新功能 | `/everything-factory-droid:plan "Add auth"` | planner |
-| 设计系统架构 | `/everything-factory-droid:plan` + architect agent | architect |
+| 规划新功能 | `/plan "Add auth"` | planner |
+| 设计系统架构 | `/plan` + architect agent | architect |
 | 先写测试再写代码 | `/tdd` | tdd-guide |
 | 评审我刚写的代码 | `/code-review` | code-reviewer |
 | 修复失败的构建 | `/build-fix` | build-error-resolver |
@@ -689,7 +689,7 @@ rules/
 **开始新功能：**
 
 ```
-/everything-factory-droid:plan "使用 OAuth 添加用户身份验证"
+/plan "使用 OAuth 添加用户身份验证"
                                               → 规划器创建实现蓝图
 /tdd                                          → tdd-guide 强制执行先写测试
 /code-review                                  → 代码审查员检查你的工作

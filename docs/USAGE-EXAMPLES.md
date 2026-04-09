@@ -57,7 +57,7 @@ Paste a feature description into a Factory Droid session. The plugin form uses t
 
 ```
 # Plugin install
-/everything-factory-droid:plan "Add JWT authentication to the Express API"
+/plan "Add JWT authentication to the Express API"
 
 # Manual install
 /plan "Add JWT authentication to the Express API"

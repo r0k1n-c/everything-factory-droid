@@ -134,7 +134,7 @@ Não execute `install.sh` dentro de `~/.factory/plugins/...` nem dentro do repos
 
 ```bash
 # Experimente um comando (a instalação do plugin usa forma com namespace)
-/everything-factory-droid:plan "Adicionar autenticação de usuário"
+/plan "Adicionar autenticação de usuário"
 
 # Instalação manual (Opção 2) usa a forma mais curta:
 # /plan "Adicionar autenticação de usuário"
@@ -362,8 +362,8 @@ Regras são diretrizes sempre seguidas, organizadas em `common/` (agnóstico à 
 
 | Quero... | Use este comando | Agente usado |
 |----------|-----------------|--------------|
-| Planejar um novo recurso | `/everything-factory-droid:plan "Adicionar auth"` | planner |
-| Projetar arquitetura de sistema | `/everything-factory-droid:plan` + agente architect | architect |
+| Planejar um novo recurso | `/plan "Adicionar auth"` | planner |
+| Projetar arquitetura de sistema | `/plan` + agente architect | architect |
 | Escrever código com testes primeiro | `/tdd` | tdd-guide |
 | Revisar código que acabei de escrever | `/code-review` | code-reviewer |
 | Corrigir build com falha | `/build-fix` | build-error-resolver |
@@ -378,7 +378,7 @@ Regras são diretrizes sempre seguidas, organizadas em `common/` (agnóstico à 
 
 **Começando um novo recurso:**
 ```
-/everything-factory-droid:plan "Adicionar autenticação de usuário com OAuth"
+/plan "Adicionar autenticação de usuário com OAuth"
                                               → planner cria blueprint de implementação
 /tdd                                          → tdd-guide aplica escrita de testes primeiro
 /code-review                                  → code-reviewer verifica seu trabalho

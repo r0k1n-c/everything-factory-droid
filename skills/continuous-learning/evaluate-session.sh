@@ -48,7 +48,7 @@ mkdir -p "$LEARNED_SKILLS_PATH"
 stdin_data=$(cat)
 transcript_path=$(echo "$stdin_data" | grep -o '"transcript_path":"[^"]*"' | head -1 | cut -d'"' -f4)
 if [ -z "$transcript_path" ]; then
-  transcript_path="${CLAUDE_TRANSCRIPT_PATH:-}"
+  transcript_path="${FACTORY_TRANSCRIPT_PATH:-${CLAUDE_TRANSCRIPT_PATH:-}}"
 fi
 
 if [ -z "$transcript_path" ] || [ ! -f "$transcript_path" ]; then

@@ -1,9 +1,5 @@
 {
   "model": "claude-sonnet-4-6",
   "alwaysThinkingEnabled": true,
-  "disabledMcpServers": [
-    "supabase",
-    "railway",
-    "vercel"
-  ]
+  "disabledMcpServers": []
 }

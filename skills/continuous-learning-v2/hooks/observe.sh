@@ -72,6 +72,7 @@ except(KeyError, TypeError, ValueError):
 # If cwd was provided in stdin, use it for project detection
 if [ -n "$STDIN_CWD" ] && [ -d "$STDIN_CWD" ]; then
   _GIT_ROOT=$(git -C "$STDIN_CWD" rev-parse --show-toplevel 2>/dev/null || true)
+  export FACTORY_PROJECT_DIR="${_GIT_ROOT:-$STDIN_CWD}"
   export CLAUDE_PROJECT_DIR="${_GIT_ROOT:-$STDIN_CWD}"
 fi
 
@@ -102,7 +103,7 @@ fi
 # sdk-ts: Agent SDK sessions can be human-interactive (e.g. via Happy).
 # Non-interactive SDK automation is still filtered by Layers 2-5 below
 # (EFD_HOOK_PROFILE=minimal, EFD_SKIP_OBSERVE=1, agent_id, path exclusions).
-case "${CLAUDE_CODE_ENTRYPOINT:-cli}" in
+case "${FACTORY_ENTRYPOINT:-${CLAUDE_CODE_ENTRYPOINT:-cli}}" in
   cli|sdk-ts) ;;
   *) exit 0 ;;
 esac

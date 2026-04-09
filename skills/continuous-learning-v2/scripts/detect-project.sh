@@ -281,9 +281,10 @@ _clv2_detect_project() {
   local project_id=""
   local source_hint=""
 
-  # 1. Try CLAUDE_PROJECT_DIR env var
-  if [ -n "$CLAUDE_PROJECT_DIR" ] && [ -d "$CLAUDE_PROJECT_DIR" ]; then
-    project_root="$CLAUDE_PROJECT_DIR"
+  # 1. Try FACTORY_PROJECT_DIR env var (primary), fall back to CLAUDE_PROJECT_DIR (legacy)
+  local _env_project_dir="${FACTORY_PROJECT_DIR:-${CLAUDE_PROJECT_DIR:-}}"
+  if [ -n "$_env_project_dir" ] && [ -d "$_env_project_dir" ]; then
+    project_root="$_env_project_dir"
     source_hint="env"
   fi
 

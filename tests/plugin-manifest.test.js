@@ -46,7 +46,7 @@ test('.factory/settings.json stores project-level config instead of mirrored hoo
 
 test('.factory/package-manager.json declares the repo package manager', () => {
   const packageManager = JSON.parse(fs.readFileSync(packageManagerPath, 'utf8'));
-  assert.strictEqual(packageManager.packageManager, 'yarn');
+  assert.strictEqual(packageManager.packageManager, 'npm');
 });
 
 test('.factory/identity.json exists', () => {

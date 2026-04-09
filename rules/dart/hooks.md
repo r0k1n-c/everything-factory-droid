@@ -25,7 +25,7 @@ Configure in `~/.factory/settings.json`:
       {
         "matcher": { "tool_name": "Edit", "file_paths": ["**/*.dart"] },
         "hooks": [
-          { "type": "command", "command": "dart format $CLAUDE_FILE_PATHS" }
+          { "type": "command", "command": "dart format ${FACTORY_FILE_PATHS:-$CLAUDE_FILE_PATHS}" }
         ]
       }
     ]

@@ -74,7 +74,7 @@ mkdir tasks
 Execute agents against your tasks:
 
 ```bash
-agent-eval run --task tasks/add-retry-logic.yaml --agent claude-code --agent aider --runs 3
+agent-eval run --task tasks/add-retry-logic.yaml --agent factory-droid --agent aider --runs 3
 ```
 
 Each run:
@@ -96,7 +96,7 @@ Task: add-retry-logic (3 runs each)
 ┌──────────────┬───────────┬────────┬────────┬─────────────┐
 │ Agent        │ Pass Rate │ Cost   │ Time   │ Consistency │
 ├──────────────┼───────────┼────────┼────────┼─────────────┤
-│ claude-code  │ 3/3       │ $0.12  │ 45s    │ 100%        │
+│ factory-droid│ 3/3       │ $0.12  │ 45s    │ 100%        │
 │ aider        │ 2/3       │ $0.08  │ 38s    │  67%        │
 └──────────────┴───────────┴────────┴────────┴─────────────┘
 ```

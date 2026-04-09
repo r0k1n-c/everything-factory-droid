@@ -40,7 +40,7 @@ headers = {"Authorization": f"Bearer {bearer}"}
 resp = requests.get(
     "https://api.x.com/2/tweets/search/recent",
     headers=headers,
-    params={"query": "claude code", "max_results": 10}
+    params={"query": "factory droid", "max_results": 10}
 )
 tweets = resp.json()
 ```

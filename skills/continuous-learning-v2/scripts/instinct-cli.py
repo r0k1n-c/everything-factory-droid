@@ -294,8 +294,8 @@ def detect_project() -> dict:
     """Detect current project context. Returns dict with id, name, root, project_dir."""
     project_root = None
 
-    # 1. CLAUDE_PROJECT_DIR env var
-    env_dir = os.environ.get("CLAUDE_PROJECT_DIR")
+    # 1. FACTORY_PROJECT_DIR env var (primary), CLAUDE_PROJECT_DIR (legacy fallback)
+    env_dir = os.environ.get("FACTORY_PROJECT_DIR") or os.environ.get("CLAUDE_PROJECT_DIR")
     if env_dir and os.path.isdir(env_dir):
         project_root = env_dir
 

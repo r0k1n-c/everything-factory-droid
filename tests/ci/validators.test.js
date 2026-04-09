@@ -2382,6 +2382,7 @@ function runTests() {
     const hooksFile = path.join(testDir, 'hooks.json');
     // The production hooks.json uses this wrapped format — { hooks: { ... } }
     // data.hooks is the object with event types, not data itself
+    // Tests Claude Code settings format compatibility — intentional external schema reference
     fs.writeFileSync(hooksFile, JSON.stringify({
       "$schema": "https://json.schemastore.org/claude-code-settings.json",
       hooks: {

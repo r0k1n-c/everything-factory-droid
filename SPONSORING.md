@@ -24,7 +24,7 @@ These are practical starting points and can be adjusted for partnership scope.
 
 Metrics shared monthly can include:
 
-- npm downloads (`efd-universal`, `efd-agentshield`)
+- npm downloads (`@r0k1n-c/efd-install`, `efd-agentshield`)
 - Repository adoption (stars, forks, contributors)
 - GitHub App install trend
 - Release cadence and reliability milestones

@@ -24,7 +24,7 @@ EFD 作为一个开源的 Factory Droid 工作流系统进行维护。
 
 每月分享的指标可能包括：
 
-* npm 下载量（`efd-universal`、`efd-agentshield`）
+* npm 下载量（`@r0k1n-c/efd-install`、`efd-agentshield`）
 * 仓库采用情况（星标、分叉、贡献者）
 * GitHub 应用安装趋势
 * 发布节奏和可靠性里程碑

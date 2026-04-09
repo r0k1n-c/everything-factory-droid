@@ -33,7 +33,7 @@ Sponsorluğunuz şunlara yardımcı olur:
 
 Sponsor konuşmalarında bu kanıt noktalarını kullanın:
 
-- `efd-universal` ve `efd-agentshield` için canlı npm kurulum/indirme metrikleri
+- `@r0k1n-c/efd-install` ve `efd-agentshield` için canlı npm kurulum/indirme metrikleri
 - Marketplace kurulumları aracılığıyla GitHub App dağıtımı
 - Genel benimseme sinyalleri: yıldızlar, fork'lar, katkıda bulunanlar, sürüm ritmi
 - Factory Droid dağıtımı: agent'lar, skill'ler, command'lar ve GitHub App kurulumları

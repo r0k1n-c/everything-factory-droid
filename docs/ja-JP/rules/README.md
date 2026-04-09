@@ -32,12 +32,12 @@ rules/
 cd /path/to/your-project
 
 # 推奨: 公開 CLI でインストール
-npx efd-install typescript
-npx efd-install python
-npx efd-install golang
+npx @r0k1n-c/efd-install typescript
+npx @r0k1n-c/efd-install python
+npx @r0k1n-c/efd-install golang
 
 # 複数の言語を一度にインストール
-npx efd-install typescript python
+npx @r0k1n-c/efd-install typescript python
 
 # または、このリポジトリを別の場所に clone した場合でも、
 # cwd は対象プロジェクトのルートのままにしてください:

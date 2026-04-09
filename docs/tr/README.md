@@ -3,7 +3,7 @@
 [![Stars](https://img.shields.io/github/stars/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/stargazers)
 [![Forks](https://img.shields.io/github/forks/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/network/members)
 [![Contributors](https://img.shields.io/github/contributors/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/graphs/contributors)
-[![npm efd-universal](https://img.shields.io/npm/dw/efd-universal?label=efd-universal%20haftalık%20indirme&logo=npm)](https://www.npmjs.com/package/efd-universal)
+[![npm efd-install](https://img.shields.io/npm/dw/%40r0k1n-c%2Fefd-install?label=efd-install%20haftalık%20indirme&logo=npm)](https://www.npmjs.com/package/@r0k1n-c/efd-install)
 [![npm efd-agentshield](https://img.shields.io/npm/dw/efd-agentshield?label=efd-agentshield%20haftalık%20indirme&logo=npm)](https://www.npmjs.com/package/efd-agentshield)
 [![GitHub App Install](https://img.shields.io/badge/GitHub%20App-150%20kurulum-2ea44f?logo=github)](https://github.com/marketplace/efd-tools)
 [![License](https://img.shields.io/badge/lisans-MIT-blue.svg)](../../LICENSE)
@@ -100,22 +100,22 @@ droid plugin install everything-factory-droid@everything-factory-droid
 cd /projenizin/yolu
 
 # Önerilen: repo klonlamadan
-npx efd-install --profile full
+npx @r0k1n-c/efd-install --profile full
 
 # Veya yalnızca ihtiyacınız olanları kurun
-npx efd-install typescript    # veya python veya golang veya swift veya php
-# npx efd-install typescript python golang swift php
-# npx efd-install --profile developer
-# npx efd-install --with lang:typescript --with capability:security
+npx @r0k1n-c/efd-install typescript    # veya python veya golang veya swift veya php
+# npx @r0k1n-c/efd-install typescript python golang swift php
+# npx @r0k1n-c/efd-install --profile developer
+# npx @r0k1n-c/efd-install --with lang:typescript --with capability:security
 ```
 
 ```powershell
 # Windows PowerShell — yine HEDEF PROJE kök dizininde
 Set-Location C:\projenizin\yolu
-npx efd-install --profile full
-# npx efd-install typescript
-# npx efd-install --profile developer
-# npx efd-install --with lang:typescript --with capability:security
+npx @r0k1n-c/efd-install --profile full
+# npx @r0k1n-c/efd-install typescript
+# npx @r0k1n-c/efd-install --profile developer
+# npx @r0k1n-c/efd-install --with lang:typescript --with capability:security
 ```
 
 ```bash
@@ -152,7 +152,7 @@ droid plugin list
 
 Bu proje yalnızca **Factory Droid** uyumlu yüzeyi korur:
 
-- `./install.sh`, `npx efd` ve `npx efd-install` Factory Droid hedefini çözer.
+- `./install.sh`, `npx efd` ve `npx @r0k1n-c/efd-install` Factory Droid hedefini çözer.
 - Proje içi kurulumlar `.factory/` altına yazılır.
 - Paketlenen içerik Factory Droid droid/skill/command varlıkları ve `settings.json` ile sınırlıdır.
 - Cursor/Codex/OpenCode/Antigravity kurulum dökümanları bu projeden bilerek çıkarıldı.

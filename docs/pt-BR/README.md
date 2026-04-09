@@ -5,7 +5,7 @@
 [![Stars](https://img.shields.io/github/stars/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/stargazers)
 [![Forks](https://img.shields.io/github/forks/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/network/members)
 [![Contributors](https://img.shields.io/github/contributors/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/graphs/contributors)
-[![npm efd-universal](https://img.shields.io/npm/dw/efd-universal?label=efd-universal%20weekly%20downloads&logo=npm)](https://www.npmjs.com/package/efd-universal)
+[![npm efd-install](https://img.shields.io/npm/dw/%40r0k1n-c%2Fefd-install?label=efd-install%20weekly%20downloads&logo=npm)](https://www.npmjs.com/package/@r0k1n-c/efd-install)
 [![npm efd-agentshield](https://img.shields.io/npm/dw/efd-agentshield?label=efd-agentshield%20weekly%20downloads&logo=npm)](https://www.npmjs.com/package/efd-agentshield)
 [![GitHub App Install](https://img.shields.io/badge/GitHub%20App-150%20installs-2ea44f?logo=github)](https://github.com/marketplace/efd-tools)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](../../LICENSE)
@@ -101,22 +101,22 @@ droid plugin install everything-factory-droid@everything-factory-droid
 cd /caminho/do/seu-projeto
 
 # Recomendado: sem clonar o repositório
-npx efd-install --profile full
+npx @r0k1n-c/efd-install --profile full
 
 # Ou instale só o que precisar
-npx efd-install typescript    # ou python ou golang ou swift ou php
-# npx efd-install typescript python golang swift php
-# npx efd-install --profile developer
-# npx efd-install --with lang:typescript --with capability:security
+npx @r0k1n-c/efd-install typescript    # ou python ou golang ou swift ou php
+# npx @r0k1n-c/efd-install typescript python golang swift php
+# npx @r0k1n-c/efd-install --profile developer
+# npx @r0k1n-c/efd-install --with lang:typescript --with capability:security
 ```
 
 ```powershell
 # Windows PowerShell — também na RAIZ DO PROJETO de destino
 Set-Location C:\caminho\do\seu-projeto
-npx efd-install --profile full
-# npx efd-install typescript
-# npx efd-install --profile developer
-# npx efd-install --with lang:typescript --with capability:security
+npx @r0k1n-c/efd-install --profile full
+# npx @r0k1n-c/efd-install typescript
+# npx @r0k1n-c/efd-install --profile developer
+# npx @r0k1n-c/efd-install --with lang:typescript --with capability:security
 ```
 
 ```bash
@@ -151,7 +151,7 @@ droid plugin list
 
 Este projeto mantém apenas a superfície compatível com o **Factory Droid**:
 
-- `./install.sh`, `npx efd` e `npx efd-install` resolvem para o alvo Factory Droid.
+- `./install.sh`, `npx efd` e `npx @r0k1n-c/efd-install` resolvem para o alvo Factory Droid.
 - Instalações locais no projeto gravam em `.factory/`.
 - Os artefatos empacotados ficam limitados a droids, skills, commands e `settings.json` do Factory Droid.
 - A documentação de Cursor/Codex/OpenCode/Antigravity foi removida intencionalmente deste projeto.
@@ -279,8 +279,8 @@ Ou adicione diretamente ao seu `~/.factory/settings.json`:
 >
 > ```bash
 > cd /caminho/do/seu-projeto
-> npx efd-install typescript
-> # npx efd-install --profile full
+> npx @r0k1n-c/efd-install typescript
+> # npx @r0k1n-c/efd-install --profile full
 > #
 > # Ou, se você clonou este repo em outro lugar:
 > # bash /caminho/para/everything-factory-droid/install.sh typescript

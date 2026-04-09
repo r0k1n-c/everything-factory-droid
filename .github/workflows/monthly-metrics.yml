@@ -37,7 +37,7 @@ jobs:
 
             async function getNpmDownloads(range, pkg) {
               try {
-                const res = await fetch(`https://api.npmjs.org/downloads/point/${range}/${pkg}`);
+                const res = await fetch(`https://api.npmjs.org/downloads/point/${range}/${encodeURIComponent(pkg)}`);
                 if (!res.ok) return null;
                 const data = await res.json();
                 return data.downloads ?? null;
@@ -96,9 +96,9 @@ jobs:
               views14d,
               clones14d
             ] = await Promise.all([
-              getNpmDownloads("last-week", "efd-universal"),
+              getNpmDownloads("last-week", "@r0k1n-c/efd-install"),
               getNpmDownloads("last-week", "efd-agentshield"),
-              getNpmDownloads("last-month", "efd-universal"),
+              getNpmDownloads("last-month", "@r0k1n-c/efd-install"),
               getNpmDownloads("last-month", "efd-agentshield"),
               github.rest.repos.get({ owner, repo }),
               getContributorsCount(),
@@ -111,7 +111,7 @@ jobs:
             const forks = repoData.data.forks_count;
 
             const tableHeader = [
-              "| Month (UTC) | efd-universal (week) | efd-agentshield (week) | efd-universal (30d) | efd-agentshield (30d) | Stars | Forks | Contributors | GitHub App installs (manual) | Views (14d) | Clones (14d) | Releases |",
+              "| Month (UTC) | @r0k1n-c/efd-install (week) | efd-agentshield (week) | @r0k1n-c/efd-install (30d) | efd-agentshield (30d) | Stars | Forks | Contributors | GitHub App installs (manual) | Views (14d) | Clones (14d) | Releases |",
               "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|"
             ].join("\n");
 

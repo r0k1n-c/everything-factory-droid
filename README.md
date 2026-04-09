@@ -7,7 +7,7 @@
 [![Stars](https://img.shields.io/github/stars/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/stargazers)
 [![Forks](https://img.shields.io/github/forks/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/network/members)
 [![Contributors](https://img.shields.io/github/contributors/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/graphs/contributors)
-[![npm efd-universal](https://img.shields.io/npm/dw/efd-universal?label=efd-universal%20weekly%20downloads&logo=npm)](https://www.npmjs.com/package/efd-universal)
+[![npm efd-install](https://img.shields.io/npm/dw/%40r0k1n-c%2Fefd-install?label=efd-install%20weekly%20downloads&logo=npm)](https://www.npmjs.com/package/@r0k1n-c/efd-install)
 [![npm efd-agentshield](https://img.shields.io/npm/dw/efd-agentshield?label=efd-agentshield%20weekly%20downloads&logo=npm)](https://www.npmjs.com/package/efd-agentshield)
 [![GitHub App Install](https://img.shields.io/badge/GitHub%20App-150%20installs-2ea44f?logo=github)](https://github.com/marketplace/efd-tools)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -92,8 +92,8 @@ Get up and running in under 2 minutes:
 droid plugin marketplace add https://github.com/r0k1n-c/everything-factory-droid
 droid plugin install everything-factory-droid@everything-factory-droid
 cd /path/to/your-project
-npx efd-install --profile full
-# or: npx efd-install typescript
+npx @r0k1n-c/efd-install --profile full
+# or: npx @r0k1n-c/efd-install typescript
 ```
 
 Do not run the installer inside `~/.factory/plugins/...`, `~/.factory/plugins/cache/...`, or the cloned `everything-factory-droid/` repo unless that directory is the project you want to configure.
@@ -117,13 +117,13 @@ droid plugin install everything-factory-droid@everything-factory-droid
 cd /path/to/your-project
 
 # Recommended: no clone needed
-npx efd-install --profile full
+npx @r0k1n-c/efd-install --profile full
 
 # Or install only what you need
-npx efd-install typescript    # or python or golang or swift or php
-# npx efd-install typescript python golang swift php
-# npx efd-install --profile developer
-# npx efd-install --with lang:typescript --with capability:security
+npx @r0k1n-c/efd-install typescript    # or python or golang or swift or php
+# npx @r0k1n-c/efd-install typescript python golang swift php
+# npx @r0k1n-c/efd-install --profile developer
+# npx @r0k1n-c/efd-install --with lang:typescript --with capability:security
 ```
 
 ```powershell
@@ -131,13 +131,13 @@ npx efd-install typescript    # or python or golang or swift or php
 Set-Location C:\path\to\your-project
 
 # Recommended: no clone needed
-npx efd-install --profile full
+npx @r0k1n-c/efd-install --profile full
 
 # Or install only what you need
-npx efd-install typescript   # or python or golang or swift or php
-# npx efd-install typescript python golang swift php
-# npx efd-install --profile developer
-# npx efd-install --with lang:typescript --with capability:security
+npx @r0k1n-c/efd-install typescript   # or python or golang or swift or php
+# npx @r0k1n-c/efd-install typescript python golang swift php
+# npx @r0k1n-c/efd-install --profile developer
+# npx @r0k1n-c/efd-install --with lang:typescript --with capability:security
 ```
 
 ```bash
@@ -582,8 +582,8 @@ This gives you instant access to all commands, agents, skills, and hooks.
 >
 > ```bash
 > cd /path/to/your-project
-> npx efd-install typescript
-> # npx efd-install --profile full
+> npx @r0k1n-c/efd-install typescript
+> # npx @r0k1n-c/efd-install --profile full
 > #
 > # Or, if you cloned this repo elsewhere:
 > # bash /path/to/everything-factory-droid/install.sh typescript
@@ -905,7 +905,7 @@ Please contribute! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 This project keeps only the Factory Droid-compatible surface:
 
-- `./install.sh`, `npx efd`, and `npx efd-install` all resolve to the Factory Droid target.
+- `./install.sh`, `npx efd`, and `npx @r0k1n-c/efd-install` all resolve to the Factory Droid target.
 - Project-local installs write to `.factory/`.
 - Hook runtime files remain in `./hooks/` and `./scripts/` so installed settings can invoke them by project-relative path.
 - Packaged assets are limited to Factory Droid droids, skills, commands, and settings.

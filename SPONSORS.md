@@ -33,7 +33,7 @@ Your sponsorship helps:
 
 Use these proof points in sponsor conversations:
 
-- Live npm install/download metrics for `efd-universal` and `efd-agentshield`
+- Live npm install/download metrics for `@r0k1n-c/efd-install` and `efd-agentshield`
 - GitHub App distribution via Marketplace installs
 - Public adoption signals: stars, forks, contributors, release cadence
 - Factory Droid distribution: agents, skills, commands, and GitHub App installs

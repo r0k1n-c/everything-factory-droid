@@ -34,15 +34,15 @@ rules/
 cd /path/to/your-project
 
 # Recommended: install with the published CLI
-npx efd-install typescript
-npx efd-install python
-npx efd-install golang
-npx efd-install web
-npx efd-install swift
-npx efd-install php
+npx @r0k1n-c/efd-install typescript
+npx @r0k1n-c/efd-install python
+npx @r0k1n-c/efd-install golang
+npx @r0k1n-c/efd-install web
+npx @r0k1n-c/efd-install swift
+npx @r0k1n-c/efd-install php
 
 # Install multiple languages at once
-npx efd-install typescript python
+npx @r0k1n-c/efd-install typescript python
 
 # Or, if you cloned this repo elsewhere, keep your cwd in the target project:
 # bash /path/to/everything-factory-droid/install.sh typescript

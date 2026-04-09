@@ -24,7 +24,7 @@ Bunlar pratik başlangıç noktalarıdır ve ortaklık kapsamına göre ayarlana
 
 Aylık paylaşılan metrikler şunları içerebilir:
 
-- npm indirmeleri (`efd-universal`, `efd-agentshield`)
+- npm indirmeleri (`@r0k1n-c/efd-install`, `efd-agentshield`)
 - Repository benimseme (yıldızlar, fork'lar, katkıda bulunanlar)
 - GitHub App kurulum trendi
 - Sürüm ritmi ve güvenilirlik kilometre taşları

@@ -5,7 +5,7 @@
 [![Stars](https://img.shields.io/github/stars/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/stargazers)
 [![Forks](https://img.shields.io/github/forks/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/network/members)
 [![Contributors](https://img.shields.io/github/contributors/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/graphs/contributors)
-[![npm efd-universal](https://img.shields.io/npm/dw/efd-universal?label=efd-universal%20weekly%20downloads\&logo=npm)](https://www.npmjs.com/package/efd-universal)
+[![npm efd-install](https://img.shields.io/npm/dw/%40r0k1n-c%2Fefd-install?label=efd-install%20weekly%20downloads\&logo=npm)](https://www.npmjs.com/package/@r0k1n-c/efd-install)
 [![npm efd-agentshield](https://img.shields.io/npm/dw/efd-agentshield?label=efd-agentshield%20weekly%20downloads\&logo=npm)](https://www.npmjs.com/package/efd-agentshield)
 [![GitHub App Install](https://img.shields.io/badge/GitHub%20App-150%20installs-2ea44f?logo=github)](https://github.com/marketplace/efd-tools)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](../../LICENSE)
@@ -89,8 +89,8 @@
 droid plugin marketplace add https://github.com/r0k1n-c/everything-factory-droid
 droid plugin install everything-factory-droid@everything-factory-droid
 cd /path/to/your-project
-npx efd-install --profile full
-# 或：npx efd-install typescript
+npx @r0k1n-c/efd-install --profile full
+# 或：npx @r0k1n-c/efd-install typescript
 ```
 
 不要在 `~/.factory/plugins/...`、`~/.factory/plugins/cache/...`，或克隆出来的 `everything-factory-droid/` 仓库目录里运行安装器，除非那个目录本身就是你要配置的项目。
@@ -114,22 +114,22 @@ droid plugin install everything-factory-droid@everything-factory-droid
 cd /path/to/your-project
 
 # 推荐：无需克隆仓库
-npx efd-install --profile full
+npx @r0k1n-c/efd-install --profile full
 
 # 或只安装你需要的语言/能力
-npx efd-install typescript    # 或 python / golang / swift / php
-# npx efd-install typescript python golang swift php
-# npx efd-install --profile developer
-# npx efd-install --with lang:typescript --with capability:security
+npx @r0k1n-c/efd-install typescript    # 或 python / golang / swift / php
+# npx @r0k1n-c/efd-install typescript python golang swift php
+# npx @r0k1n-c/efd-install --profile developer
+# npx @r0k1n-c/efd-install --with lang:typescript --with capability:security
 ```
 
 ```powershell
 # Windows PowerShell —— 同样要在“目标项目根目录”执行
 Set-Location C:\path\to\your-project
-npx efd-install --profile full
-# npx efd-install typescript
-# npx efd-install --profile developer
-# npx efd-install --with lang:typescript --with capability:security
+npx @r0k1n-c/efd-install --profile full
+# npx @r0k1n-c/efd-install typescript
+# npx @r0k1n-c/efd-install --profile developer
+# npx @r0k1n-c/efd-install --with lang:typescript --with capability:security
 ```
 
 ```bash
@@ -165,7 +165,7 @@ droid plugin list
 
 这个项目只保留 **Factory Droid** 兼容面：
 
-* `./install.sh`、`npx efd` 和 `npx efd-install` 都面向 Factory Droid 目标。
+* `./install.sh`、`npx efd` 和 `npx @r0k1n-c/efd-install` 都面向 Factory Droid 目标。
 * 项目本地安装写入 `.factory/`。
 * 打包产物只包含 Factory Droid 的 droids、skills、commands 和 `settings.json`。
 * Cursor/Codex/OpenCode/Antigravity 的安装文档已从此项目中有意移除。
@@ -529,8 +529,8 @@ droid plugin install everything-factory-droid@everything-factory-droid
 >
 > ```bash
 > cd /path/to/your-project
-> npx efd-install typescript
-> # npx efd-install --profile full
+> npx @r0k1n-c/efd-install typescript
+> # npx @r0k1n-c/efd-install --profile full
 > #
 > # 或者，如果你已经把仓库克隆到别处：
 > # bash /path/to/everything-factory-droid/install.sh typescript

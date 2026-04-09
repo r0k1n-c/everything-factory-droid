@@ -34,14 +34,14 @@ rules/
 cd /path/to/your-project
 
 # 推荐：使用已发布的 CLI 安装
-npx efd-install typescript
-npx efd-install python
-npx efd-install golang
-npx efd-install swift
-npx efd-install php
+npx @r0k1n-c/efd-install typescript
+npx @r0k1n-c/efd-install python
+npx @r0k1n-c/efd-install golang
+npx @r0k1n-c/efd-install swift
+npx @r0k1n-c/efd-install php
 
 # 一次安装多种语言
-npx efd-install typescript python
+npx @r0k1n-c/efd-install typescript python
 
 # 或者，如果你把仓库克隆到了别处，也要保持 cwd 在目标项目根目录：
 # bash /path/to/everything-factory-droid/install.sh typescript

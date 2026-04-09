@@ -40,7 +40,7 @@ Current repo inventory:
 | Tests | 102 test files |
 | Install profiles | `core`, `developer`, `security`, `research`, `full` |
 | Supported target | Factory Droid only |
-| Install entrypoints | `install.sh`, `install.ps1`, `npx efd`, `npx efd-install` |
+| Install entrypoints | `install.sh`, `install.ps1`, `npx efd`, `npx @r0k1n-c/efd-install` |
 
 ---
 

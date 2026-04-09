@@ -1,6 +1,6 @@
 {
-  "name": "efd-universal",
-  "version": "1.9.0",
+  "name": "@r0k1n-c/efd-install",
+  "version": "1.0.0",
   "description": "Complete collection of Factory Droid configs — droids, skills, hooks, rules, and command shims for modern engineering workflows.",
   "keywords": [
     "factory-droid",
@@ -20,8 +20,7 @@
     "best-practices"
   ],
   "author": {
-    "name": "Affaan Mustafa",
-    "url": "https://x.com/affaanmustafa"
+    "name": "r0k1nch4n"
   },
   "license": "MIT",
   "repository": {
@@ -31,6 +30,9 @@
   "homepage": "https://github.com/r0k1n-c/everything-factory-droid#readme",
   "bugs": {
     "url": "https://github.com/r0k1n-c/everything-factory-droid/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "files": [
     ".factory/settings.json",
@@ -80,7 +82,7 @@
     "efd-install": "scripts/install-apply.js"
   },
   "scripts": {
-    "postinstall": "echo '\n  efd-universal installed!\n  Run: npx efd typescript\n  Compat: npx efd-install --profile core\n  Docs: https://github.com/r0k1n-c/everything-factory-droid\n'",
+    "postinstall": "echo '\n  @r0k1n-c/efd-install installed!\n  Run: npx @r0k1n-c/efd-install --profile core\n  Docs: https://github.com/r0k1n-c/everything-factory-droid\n'",
     "catalog:check": "node scripts/ci/catalog.js --text",
     "catalog:sync": "node scripts/ci/catalog.js --write --text",
     "lint": "eslint . && markdownlint '**/*.md' --ignore node_modules",

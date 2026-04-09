@@ -170,7 +170,7 @@ function hasFileWithExtension(rootDir, relativeDir, extensions) {
 
 function detectTargetMode(rootDir) {
   const packageJson = safeParseJson(safeRead(rootDir, 'package.json'));
-  if (packageJson?.name === 'everything-factory-droid' || packageJson?.name === 'efd-universal') {
+  if (packageJson?.name === 'everything-factory-droid' || packageJson?.name === 'efd-install' || packageJson?.name === '@r0k1n-c/efd-install') {
     return 'repo';
   }
 

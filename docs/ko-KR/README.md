@@ -5,7 +5,7 @@
 [![Stars](https://img.shields.io/github/stars/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/stargazers)
 [![Forks](https://img.shields.io/github/forks/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/network/members)
 [![Contributors](https://img.shields.io/github/contributors/r0k1n-c/everything-factory-droid?style=flat)](https://github.com/r0k1n-c/everything-factory-droid/graphs/contributors)
-[![npm efd-universal](https://img.shields.io/npm/dw/efd-universal?label=efd-universal%20weekly%20downloads&logo=npm)](https://www.npmjs.com/package/efd-universal)
+[![npm efd-install](https://img.shields.io/npm/dw/%40r0k1n-c%2Fefd-install?label=efd-install%20weekly%20downloads&logo=npm)](https://www.npmjs.com/package/@r0k1n-c/efd-install)
 [![npm efd-agentshield](https://img.shields.io/npm/dw/efd-agentshield?label=efd-agentshield%20weekly%20downloads&logo=npm)](https://www.npmjs.com/package/efd-agentshield)
 [![GitHub App Install](https://img.shields.io/badge/GitHub%20App-150%20installs-2ea44f?logo=github)](https://github.com/marketplace/efd-tools)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](../../LICENSE)
@@ -95,14 +95,14 @@ droid plugin install everything-factory-droid@everything-factory-droid
 cd /path/to/your-project
 
 # 권장: 저장소를 클론하지 않고 바로 설치
-npx efd-install --profile full
+npx @r0k1n-c/efd-install --profile full
 
 # 또는 필요한 항목만 설치
-npx efd-install typescript    # 또는 python, golang
+npx @r0k1n-c/efd-install typescript    # 또는 python, golang
 # 여러 언어를 한번에 설치할 수 있습니다:
-# npx efd-install typescript python golang
-# npx efd-install --profile developer
-# npx efd-install --with lang:typescript --with capability:security
+# npx @r0k1n-c/efd-install typescript python golang
+# npx @r0k1n-c/efd-install --profile developer
+# npx @r0k1n-c/efd-install --with lang:typescript --with capability:security
 ```
 
 ```bash
@@ -367,8 +367,8 @@ droid plugin install everything-factory-droid@everything-factory-droid
 >
 > ```bash
 > cd /path/to/your-project
-> npx efd-install typescript
-> # npx efd-install --profile full
+> npx @r0k1n-c/efd-install typescript
+> # npx @r0k1n-c/efd-install --profile full
 > #
 > # 또는 이 저장소를 다른 위치에 클론했다면:
 > # bash /path/to/everything-factory-droid/install.sh typescript

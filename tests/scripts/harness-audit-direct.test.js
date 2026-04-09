@@ -141,7 +141,7 @@ if (test('detectTargetMode and findPluginInstall cover repo, consumer, direct, p
   const rootDir = createTempDir('efd-harness-audit-direct-');
   const previousHome = process.env.HOME;
   try {
-    fs.writeFileSync(path.join(rootDir, 'package.json'), JSON.stringify({ name: 'efd-universal' }, null, 2));
+    fs.writeFileSync(path.join(rootDir, 'package.json'), JSON.stringify({ name: '@r0k1n-c/efd-install' }, null, 2));
     assert.strictEqual(internals.detectTargetMode(rootDir), 'repo');
 
     fs.writeFileSync(path.join(rootDir, 'package.json'), JSON.stringify({ name: 'consumer-app' }, null, 2));

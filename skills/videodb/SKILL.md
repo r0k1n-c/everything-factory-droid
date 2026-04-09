@@ -1,9 +1,10 @@
 ---
 name: videodb
-description: See, Understand, Act on video and audio. See- ingest from local files, URLs, RTSP/live feeds, or live record desktop; return realtime context and playable stream links. Understand- extract frames, build visual/semantic/temporal indexes, and search moments with timestamps and auto-clips. Act- transcode and normalize (codec, fps, resolution, aspect ratio), perform timeline edits (subtitles, text/image overlays, branding, audio overlays, dubbing, translation), generate media assets (image, audio, video), and create real time alerts for events from live streams or desktop capture.
+description: Video and audio processing: ingest, index, search, transcode, edit timelines, generate media assets, and monitor live streams.
 origin: EFD
 allowed-tools: Read Grep Glob Bash(python:*)
 argument-hint: "[task description]"
+disable-model-invocation: true
 ---
 
 # VideoDB Skill

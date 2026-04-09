@@ -2,6 +2,7 @@
 name: jira-integration
 description: Use this skill when retrieving Jira tickets, analyzing requirements, updating ticket status, adding comments, or transitioning issues. Provides Jira API patterns via MCP or direct REST calls.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Jira Integration Skill

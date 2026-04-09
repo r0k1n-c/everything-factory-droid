@@ -1,7 +1,8 @@
 ---
 name: security-scan
-description: Scan your Factory Droid configuration (.factory/ directory) for security vulnerabilities, misconfigurations, and injection risks using AgentShield. Checks AGENTS.md, settings.json, MCP servers, hooks, and agent definitions.
+description: Scan .factory/ directory for security vulnerabilities, misconfigurations, and injection risks in AGENTS.md, settings, MCP servers, and agents.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Security Scan Skill

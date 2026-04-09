@@ -1,12 +1,6 @@
 ---
 name: carrier-relationship-management
-description: >
-  Codified expertise for managing carrier portfolios, negotiating freight rates,
-  tracking carrier performance, allocating freight, and maintaining strategic
-  carrier relationships. Informed by transportation managers with 15+ years
-  experience. Includes scorecarding frameworks, RFP processes, market intelligence,
-  and compliance vetting. Use when managing carriers, negotiating rates, evaluating
-  carrier performance, or building freight strategies.
+description: Carrier portfolio management: freight rate negotiation, performance scorecarding, RFP processes, freight allocation, and compliance vetting.
 license: Apache-2.0
 version: 1.0.0
 homepage: https://github.com/r0k1n-c/everything-factory-droid
@@ -15,6 +9,7 @@ metadata:
   author: evos
   clawdbot:
     emoji: ""
+disable-model-invocation: true
 ---
 
 # Carrier Relationship Management

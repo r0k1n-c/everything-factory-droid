@@ -2,6 +2,7 @@
 name: verification-loop
 description: "A comprehensive verification system for Factory Droid sessions."
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Verification Loop Skill

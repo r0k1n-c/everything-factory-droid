@@ -1,7 +1,8 @@
 ---
 name: investor-materials
-description: Create and update pitch decks, one-pagers, investor memos, accelerator applications, financial models, and fundraising materials. Use when the user needs investor-facing documents, projections, use-of-funds tables, milestone plans, or materials that must stay internally consistent across multiple fundraising assets.
+description: Create and update pitch decks, one-pagers, investor memos, financial models, and fundraising materials with cross-asset consistency.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Investor Materials

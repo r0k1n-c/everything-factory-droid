@@ -1,7 +1,8 @@
 ---
 name: frontend-design
-description: Create distinctive, production-grade frontend interfaces with high design quality. Use when the user asks to build web components, pages, or applications and the visual direction matters as much as the code quality.
+description: Build distinctive, production-grade frontend interfaces where visual direction matters. For web components, pages, or applications needing design quality.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Frontend Design

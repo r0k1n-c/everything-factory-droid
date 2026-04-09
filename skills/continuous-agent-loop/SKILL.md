@@ -2,6 +2,7 @@
 name: continuous-agent-loop
 description: Patterns for continuous autonomous agent loops with quality gates, evals, and recovery controls.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Continuous Agent Loop

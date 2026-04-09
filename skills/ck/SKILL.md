@@ -1,10 +1,11 @@
 ---
 name: ck
-description: Persistent per-project memory for Factory Droid. Auto-loads project context on session start, tracks sessions with git activity, and writes to native memory. Commands run deterministic Node.js scripts — behavior is consistent across model versions.
+description: Persistent per-project memory for Factory Droid. Auto-loads context on session start, tracks sessions with git via deterministic Node.js scripts.
 origin: community
 version: 2.0.0
 author: sreedhargs89
 repo: https://github.com/sreedhargs89/context-keeper
+disable-model-invocation: true
 ---
 
 # ck — Context Keeper

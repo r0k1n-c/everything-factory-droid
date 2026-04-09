@@ -1,7 +1,8 @@
 ---
 name: deep-research
-description: Multi-source deep research using firecrawl and exa MCPs. Searches the web, synthesizes findings, and delivers cited reports with source attribution. Use when the user wants thorough research on any topic with evidence and citations.
+description: Multi-source deep research via firecrawl and exa MCPs. Synthesizes findings into cited reports with source attribution.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Deep Research

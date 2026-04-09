@@ -1,7 +1,8 @@
 ---
 name: architecture-decision-records
-description: Capture architectural decisions made during Factory Droid sessions as structured ADRs. Auto-detects decision moments, records context, alternatives considered, and rationale. Maintains an ADR log so future developers understand why the codebase is shaped the way it is.
+description: Capture architectural decisions as structured ADRs with context, alternatives, and rationale. Maintains a log for future developer understanding.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Architecture Decision Records

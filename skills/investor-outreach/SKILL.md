@@ -1,7 +1,8 @@
 ---
 name: investor-outreach
-description: Draft cold emails, warm intro blurbs, follow-ups, update emails, and investor communications for fundraising. Use when the user wants outreach to angels, VCs, strategic investors, or accelerators and needs concise, personalized, investor-facing messaging.
+description: Draft cold emails, warm intros, follow-ups, and investor communications for fundraising across angels, VCs, and accelerators.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Investor Outreach

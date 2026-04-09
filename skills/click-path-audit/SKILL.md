@@ -1,7 +1,8 @@
 ---
 name: click-path-audit
-description: "Trace every user-facing button/touchpoint through its full state change sequence to find bugs where functions individually work but cancel each other out, produce wrong final state, or leave the UI in an inconsistent state. Use when: systematic debugging found no bugs but users report broken buttons, or after any major refactor touching shared state stores."
+description: Trace UI touchpoints through state change sequences to find bugs where functions cancel each other out or leave inconsistent state. Use after refactors touching shared state.
 origin: community
+disable-model-invocation: true
 ---
 
 # /click-path-audit — Behavioural Flow Audit

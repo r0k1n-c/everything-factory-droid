@@ -1,13 +1,6 @@
 ---
 name: customs-trade-compliance
-description: >
-  Codified expertise for customs documentation, tariff classification, duty
-  optimization, restricted party screening, and regulatory compliance across
-  multiple jurisdictions. Informed by trade compliance specialists with 15+
-  years experience. Includes HS classification logic, Incoterms application,
-  FTA utilization, and penalty mitigation. Use when handling customs clearance,
-  tariff classification, trade compliance, import/export documentation, or
-  duty optimization.
+description: Customs and trade compliance: tariff classification, duty optimization, restricted party screening, HS codes, Incoterms, FTA utilization, and multi-jurisdiction compliance.
 license: Apache-2.0
 version: 1.0.0
 homepage: https://github.com/r0k1n-c/everything-factory-droid
@@ -16,6 +9,7 @@ metadata:
   author: evos
   clawdbot:
     emoji: ""
+disable-model-invocation: true
 ---
 
 # Customs & Trade Compliance

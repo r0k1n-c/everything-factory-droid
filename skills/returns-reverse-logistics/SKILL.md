@@ -1,13 +1,6 @@
 ---
 name: returns-reverse-logistics
-description: >
-  Codified expertise for returns authorization, receipt and inspection,
-  disposition decisions, refund processing, fraud detection, and warranty
-  claims management. Informed by returns operations managers with 15+ years
-  experience. Includes grading frameworks, disposition economics, fraud
-  pattern recognition, and vendor recovery processes. Use when handling
-  product returns, reverse logistics, refund decisions, return fraud
-  detection, or warranty claims.
+description: Returns and reverse logistics: authorization, inspection, disposition, refund processing, fraud detection, warranty claims, and vendor recovery processes.
 license: Apache-2.0
 version: 1.0.0
 homepage: https://github.com/r0k1n-c/everything-factory-droid
@@ -16,6 +9,7 @@ metadata:
   author: evos
   clawdbot:
     emoji: ""
+disable-model-invocation: true
 ---
 
 # Returns & Reverse Logistics

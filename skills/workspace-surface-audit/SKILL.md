@@ -1,7 +1,8 @@
 ---
 name: workspace-surface-audit
-description: Audit the active repo, MCP servers, plugins, connectors, env surfaces, and harness setup, then recommend the highest-value EFD-native skills, hooks, agents, and operator workflows. Use when the user wants help setting up Factory Droid or understanding what capabilities are actually available in their environment.
+description: Audit repo, MCP servers, plugins, and env surfaces, then recommend EFD-native skills, hooks, agents, and workflows for the environment.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Workspace Surface Audit

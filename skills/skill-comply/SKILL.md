@@ -1,8 +1,9 @@
 ---
 name: skill-comply
-description: Visualize whether skills, rules, and agent definitions are actually followed — auto-generates scenarios at 3 prompt strictness levels, runs agents, classifies behavioral sequences, and reports compliance rates with full tool call timelines
+description: Test whether skills, rules, and agents are followed by auto-generating scenarios, running agents, and reporting compliance rates with tool call timelines.
 origin: EFD
 tools: Read, Bash
+disable-model-invocation: true
 ---
 
 # skill-comply: Automated Compliance Measurement

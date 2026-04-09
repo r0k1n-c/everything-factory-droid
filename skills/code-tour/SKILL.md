@@ -1,7 +1,8 @@
 ---
 name: code-tour
-description: Create CodeTour `.tour` files — persona-targeted, step-by-step walkthroughs with real file and line anchors. Use for onboarding tours, architecture walkthroughs, PR tours, RCA tours, and structured "explain how this works" requests.
+description: Create CodeTour .tour files with persona-targeted walkthroughs and real file/line anchors. For onboarding, architecture, PR, and RCA tours.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Code Tour

@@ -3,6 +3,7 @@ name: eval-harness
 description: Formal evaluation framework for Factory Droid sessions implementing eval-driven development (EDD) principles
 origin: EFD
 tools: Read, Write, Edit, Bash, Grep, Glob
+disable-model-invocation: true
 ---
 
 # Eval Harness Skill

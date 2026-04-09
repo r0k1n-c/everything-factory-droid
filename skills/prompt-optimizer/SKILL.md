@@ -1,21 +1,11 @@
 ---
 name: prompt-optimizer
-description: >-
-  Analyze raw prompts, identify intent and gaps, match EFD components
-  (skills/commands/agents/hooks), and output a ready-to-paste optimized
-  prompt. Advisory role only — never executes the task itself.
-  TRIGGER when: user says "optimize prompt", "improve my prompt",
-  "how to write a prompt for", "help me prompt", "rewrite this prompt",
-  or explicitly asks to enhance prompt quality. Also triggers on Chinese
-  equivalents: "优化prompt", "改进prompt", "怎么写prompt", "帮我优化这个指令".
-  DO NOT TRIGGER when: user wants the task executed directly, or says
-  "just do it" / "直接做". DO NOT TRIGGER when user says "优化代码",
-  "优化性能", "optimize performance", "optimize this code" — those are
-  refactoring/performance tasks, not prompt optimization.
+description: Analyze and optimize prompts, match EFD components, output ready-to-paste results. Advisory only — never executes. Triggers on "optimize/improve/rewrite prompt". Not for "optimize code/performance".
 origin: community
 metadata:
   author: YannJY02
   version: "1.0.0"
+disable-model-invocation: true
 ---
 
 # Prompt Optimizer

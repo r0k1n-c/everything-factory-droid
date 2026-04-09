@@ -1,7 +1,8 @@
 ---
 name: configure-efd
-description: Interactive installer for Everything Factory Droid — guides users through selecting and installing skills and rules to user-level or project-level directories, verifies paths, and optionally optimizes installed files.
+description: Interactive EFD installer: select and install skills and rules to user or project directories, verify paths, and optionally optimize installed files.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Configure Everything Factory Droid (EFD)

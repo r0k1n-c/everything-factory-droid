@@ -2,6 +2,7 @@
 name: context-budget
 description: Audits Factory Droid context window consumption across agents, skills, MCP servers, and rules. Identifies bloat, redundant components, and produces prioritized token-savings recommendations.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Context Budget

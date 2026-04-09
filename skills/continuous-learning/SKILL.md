@@ -2,6 +2,7 @@
 name: continuous-learning
 description: Automatically extract reusable patterns from Factory Droid sessions and save them as learned skills for future use.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Continuous Learning Skill

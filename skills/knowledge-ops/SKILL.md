@@ -1,7 +1,8 @@
 ---
 name: knowledge-ops
-description: Knowledge base management, ingestion, sync, and retrieval across multiple storage layers (local files, MCP memory, vector stores, Git repos). Use when the user wants to save, organize, sync, deduplicate, or search across their knowledge systems.
+description: Knowledge base management across local files, MCP memory, vector stores, and Git repos. Save, organize, sync, deduplicate, or search knowledge.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Knowledge Operations

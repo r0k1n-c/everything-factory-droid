@@ -1,7 +1,8 @@
 ---
 name: product-capability
-description: Translate PRD intent, roadmap asks, or product discussions into an implementation-ready capability plan that exposes constraints, invariants, interfaces, and unresolved decisions before multi-service work starts. Use when the user needs an EFD-native PRD-to-SRS lane instead of vague planning prose.
+description: Translate PRDs and roadmap asks into implementation-ready capability plans exposing constraints, invariants, interfaces, and unresolved decisions.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Product Capability

@@ -2,6 +2,7 @@
 name: autonomous-loops
 description: "Patterns and architectures for autonomous Factory Droid loops — from simple sequential pipelines to RFC-driven multi-agent DAG systems."
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Autonomous Loops Skill

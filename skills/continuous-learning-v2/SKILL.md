@@ -1,8 +1,9 @@
 ---
 name: continuous-learning-v2
-description: Instinct-based learning system that observes sessions via hooks, creates atomic instincts with confidence scoring, and evolves them into skills/commands/agents. v2.1 adds project-scoped instincts to prevent cross-project contamination.
+description: Instinct-based learning: observe sessions, create atomic instincts with confidence scoring, evolve into skills/commands/agents. v2.1 adds project-scoped isolation.
 origin: EFD
 version: 2.1.0
+disable-model-invocation: true
 ---
 
 # Continuous Learning v2.1 - Instinct

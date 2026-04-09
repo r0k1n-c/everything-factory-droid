@@ -2,6 +2,7 @@
 name: product-lens
 description: Use this skill to validate the "why" before building, run product diagnostics, and convert vague ideas into specs.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Product Lens — Think Before You Build

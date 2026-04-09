@@ -1,7 +1,8 @@
 ---
 name: crosspost
-description: Multi-platform content distribution across X, LinkedIn, Threads, and Bluesky. Adapts content per platform using content-engine patterns. Never posts identical content cross-platform. Use when the user wants to distribute content across social platforms.
+description: Distribute content across X, LinkedIn, Threads, and Bluesky with per-platform adaptation. Never posts identical content cross-platform.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Crosspost

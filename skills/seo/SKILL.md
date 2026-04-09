@@ -1,7 +1,8 @@
 ---
 name: seo
-description: Audit, plan, and implement SEO improvements across technical SEO, on-page optimization, structured data, Core Web Vitals, and content strategy. Use when the user wants better search visibility, SEO remediation, schema markup, sitemap/robots work, or keyword mapping.
+description: SEO audit and implementation: technical SEO, on-page optimization, structured data, Core Web Vitals, schema markup, and content strategy.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # SEO

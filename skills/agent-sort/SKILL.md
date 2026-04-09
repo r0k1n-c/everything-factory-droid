@@ -1,7 +1,8 @@
 ---
 name: agent-sort
-description: Build an evidence-backed EFD install plan for a specific repo by sorting skills, commands, rules, hooks, and extras into DAILY vs LIBRARY buckets using parallel repo-aware review passes. Use when EFD should be trimmed to what a project actually needs instead of loading the full bundle.
+description: Build evidence-backed EFD install plans by sorting skills/commands/rules/hooks into DAILY vs LIBRARY buckets. Trims EFD to what a project needs.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Agent Sort

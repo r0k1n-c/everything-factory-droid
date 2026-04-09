@@ -2,6 +2,7 @@
 name: benchmark
 description: Use this skill to measure performance baselines, detect regressions before/after PRs, and compare stack alternatives.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Benchmark — Performance Baseline & Regression Detection

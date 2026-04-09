@@ -2,6 +2,7 @@
 name: canary-watch
 description: Use this skill to monitor a deployed URL for regressions after deploys, merges, or dependency upgrades.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Canary Watch — Post-Deploy Monitoring

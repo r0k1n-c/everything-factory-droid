@@ -2,6 +2,7 @@
 name: strategic-compact
 description: Suggests manual context compaction at logical intervals to preserve context through task phases rather than arbitrary auto-compaction.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Strategic Compact Skill

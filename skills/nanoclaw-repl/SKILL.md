@@ -2,6 +2,7 @@
 name: nanoclaw-repl
 description: Operate and extend NanoClaw v2, EFD's zero-dependency session-aware REPL built on droid exec.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # NanoClaw REPL

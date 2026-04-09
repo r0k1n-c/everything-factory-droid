@@ -1,7 +1,8 @@
 ---
 name: article-writing
-description: Write articles, guides, blog posts, tutorials, newsletter issues, and other long-form content in a distinctive voice derived from supplied examples or brand guidance. Use when the user wants polished written content longer than a paragraph, especially when voice consistency, structure, and credibility matter.
+description: Write long-form content (articles, guides, tutorials, newsletters) in a distinctive voice from supplied examples. Use when voice consistency matters.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Article Writing

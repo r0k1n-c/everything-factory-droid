@@ -1,7 +1,8 @@
 ---
 name: autonomous-agent-harness
-description: Transform Factory Droid into a fully autonomous agent system with persistent memory, scheduled operations, computer use, and task queuing. Replaces standalone agent frameworks (Hermes, AutoGPT) by leveraging Factory Droid's native crons, dispatch, MCP tools, and memory. Use when the user wants continuous autonomous operation, scheduled tasks, or a self-directing agent loop.
+description: Transform Factory Droid into a fully autonomous agent with persistent memory, scheduled operations, and task queuing using native crons, dispatch, and MCP tools.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Autonomous Agent Harness

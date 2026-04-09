@@ -1,6 +1,7 @@
 ---
 name: visa-doc-translate
 description: Translate visa application documents (images) to English and create a bilingual PDF with original and translation
+disable-model-invocation: true
 ---
 
 You are helping translate visa application documents for visa applications.

@@ -1,7 +1,8 @@
 ---
 name: codebase-onboarding
-description: Analyze an unfamiliar codebase and generate a structured onboarding guide with architecture map, key entry points, conventions, and a starter AGENTS.md. Use when joining a new project or setting up Factory Droid for the first time in a repo.
+description: Analyze an unfamiliar codebase and generate a structured onboarding guide with architecture map, entry points, conventions, and starter AGENTS.md.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Codebase Onboarding

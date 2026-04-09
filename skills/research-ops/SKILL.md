@@ -1,7 +1,8 @@
 ---
 name: research-ops
-description: Evidence-first current-state research workflow for EFD. Use when the user wants fresh facts, comparisons, enrichment, or a recommendation built from current public evidence and any supplied local context.
+description: Evidence-first current-state research workflow. Use for fresh facts, comparisons, enrichment, or recommendations from public evidence and local context.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # Research Ops

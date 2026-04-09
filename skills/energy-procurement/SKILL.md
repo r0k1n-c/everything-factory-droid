@@ -1,13 +1,6 @@
 ---
 name: energy-procurement
-description: >
-  Codified expertise for electricity and gas procurement, tariff optimization,
-  demand charge management, renewable PPA evaluation, and multi-facility energy
-  cost management. Informed by energy procurement managers with 15+ years
-  experience at large commercial and industrial consumers. Includes market
-  structure analysis, hedging strategies, load profiling, and sustainability
-  reporting frameworks. Use when procuring energy, optimizing tariffs, managing
-  demand charges, evaluating PPAs, or developing energy strategies.
+description: Electricity and gas procurement expertise: tariff optimization, demand charges, PPA evaluation, hedging, load profiling, and sustainability reporting for multi-facility operations.
 license: Apache-2.0
 version: 1.0.0
 homepage: https://github.com/r0k1n-c/everything-factory-droid
@@ -16,6 +9,7 @@ metadata:
   author: evos
   clawdbot:
     emoji: ""
+disable-model-invocation: true
 ---
 
 # Energy Procurement

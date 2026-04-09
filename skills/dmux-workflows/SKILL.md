@@ -1,7 +1,8 @@
 ---
 name: dmux-workflows
-description: Multi-agent orchestration using dmux (tmux pane manager for AI agents). Patterns for parallel agent workflows across Factory Droid, Codex, OpenCode, and other harnesses. Use when running multiple agent sessions in parallel or coordinating multi-agent development workflows.
+description: Multi-agent orchestration via dmux (tmux pane manager). Run parallel agent sessions across Factory Droid, Codex, OpenCode, and other harnesses.
 origin: EFD
+disable-model-invocation: true
 ---
 
 # dmux Workflows

@@ -80,6 +80,8 @@ This repo is the raw code only. The guides explain everything.
 | Parallelization | Git worktrees, cascade method, when to scale instances |
 | Subagent Orchestration | The context problem, iterative retrieval pattern |
 
+**New to EFD?** Start with the [Usage Examples guide](docs/USAGE-EXAMPLES.md) — end-to-end walkthroughs from first `/plan` to multi-agent orchestration.
+
 ---
 
 ## Quick Start

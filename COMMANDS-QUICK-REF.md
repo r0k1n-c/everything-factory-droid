@@ -64,6 +64,11 @@
 | `/plan` | Implementation plan with risk assessment |
 | `/orchestrate` | Guide for tmux/worktree multi-agent orchestration |
 | `/devfleet` | Orchestrate parallel Factory Droid agents via DevFleet |
+| `/prp-prd` | Interactive PRD generator with hypothesis-driven questioning |
+| `/prp-plan` | Comprehensive implementation plan with codebase analysis |
+| `/prp-implement` | Execute plan with continuous validation loops |
+| `/prp-commit` | Smart commit with natural language file targeting |
+| `/prp-pr` | Create GitHub PR with template discovery and artifact linking |
 
 ---
 

@@ -3,6 +3,9 @@ name: code-simplifier
 description: Simplifies and refines code for clarity, consistency, and maintainability while preserving behavior. Focus on recently modified code unless instructed otherwise.
 model: claude-sonnet-4-6
 tools: [Read, Write, Edit, Bash, Grep, Glob]
+capabilities: [refactoring, simplification, maintainability]
+domain: refactoring
+worktree-safe: true
 ---
 
 # Code Simplifier Agent

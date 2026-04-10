@@ -15,7 +15,7 @@
 ![Perl](https://img.shields.io/badge/-Perl-39457E?logo=perl&logoColor=white)
 ![Markdown](https://img.shields.io/badge/-Markdown-000000?logo=markdown&logoColor=white)
 
-> **Factory Droid odaklı** | **47 agent** | **177 skill** | **75 command** | **Çapraz platform installer'lar**
+> **Factory Droid odaklı** | **47 agent** | **178 skill** | **75 command** | **Çapraz platform installer'lar**
 
 ---
 
@@ -144,7 +144,7 @@ Manuel kopyalama kurulum talimatları için `rules/` klasöründeki README'ye ba
 droid plugin list
 ```
 
-**Bu kadar!** Artık 47 agent, 177 skill ve 75 command'a erişiminiz var.
+**Bu kadar!** Artık 47 agent, 178 skill ve 75 command'a erişiminiz var.
 
 ---
 

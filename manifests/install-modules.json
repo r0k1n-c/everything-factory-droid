@@ -399,6 +399,7 @@
         "skills/dag-task-graph",
         "skills/data-scraper-agent",
         "skills/enterprise-agent-ops",
+        "skills/mission-dispatcher",
         "skills/nanoclaw-repl",
         "skills/prompt-optimizer",
         "skills/ralphinho-rfc-pipeline",

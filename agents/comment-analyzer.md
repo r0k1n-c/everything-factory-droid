@@ -3,6 +3,9 @@ name: comment-analyzer
 description: Analyze code comments for accuracy, completeness, maintainability, and comment rot risk.
 model: claude-sonnet-4-6
 tools: [Read, Grep, Glob, Bash]
+capabilities: [code-review, documentation, comment-quality]
+domain: analysis
+worktree-safe: true
 ---
 
 # Comment Analyzer Agent

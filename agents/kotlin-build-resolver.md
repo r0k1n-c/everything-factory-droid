@@ -3,6 +3,9 @@ name: kotlin-build-resolver
 description: Kotlin/Gradle build, compilation, and dependency error resolution specialist. Fixes build errors, Kotlin compiler errors, and Gradle issues with minimal changes. Use when Kotlin builds fail.
 tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
 model: claude-sonnet-4-6
+capabilities: [kotlin, gradle, build-errors, debugging]
+domain: build
+worktree-safe: true
 ---
 
 # Kotlin Build Error Resolver

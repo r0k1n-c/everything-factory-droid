@@ -3,6 +3,9 @@ name: go-build-resolver
 description: Go build, vet, and compilation error resolution specialist. Fixes build errors, go vet issues, and linter warnings with minimal changes. Use when Go builds fail.
 tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
 model: claude-sonnet-4-6
+capabilities: [go, golang, build-errors, debugging]
+domain: build
+worktree-safe: true
 ---
 
 # Go Build Error Resolver

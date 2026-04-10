@@ -4,6 +4,9 @@ description: Analyze and improve the local agent harness configuration for relia
 tools: ["Read", "Grep", "Glob", "Bash", "Edit"]
 model: claude-sonnet-4-6
 color: teal
+capabilities: [agent-harness, configuration, optimization]
+domain: tooling
+worktree-safe: false
 ---
 
 You are the harness optimizer.

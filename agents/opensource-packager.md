@@ -3,6 +3,9 @@ name: opensource-packager
 description: Generate complete open-source packaging for a sanitized project. Produces AGENTS.md, setup.sh, README.md, LICENSE, CONTRIBUTING.md, and GitHub issue templates. Makes any repo immediately usable with Factory Droid. Third stage of the opensource-pipeline skill.
 tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
 model: claude-sonnet-4-6
+capabilities: [documentation, packaging, setup]
+domain: opensource
+worktree-safe: true
 ---
 
 # Open-Source Packager

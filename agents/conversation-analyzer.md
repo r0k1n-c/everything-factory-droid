@@ -3,6 +3,9 @@ name: conversation-analyzer
 description: Use this agent when analyzing conversation transcripts to find behaviors worth preventing with hooks. Triggered by /hookify without arguments.
 model: claude-sonnet-4-6
 tools: [Read, Grep]
+capabilities: [analysis, transcript, pattern-detection]
+domain: analysis
+worktree-safe: true
 ---
 
 # Conversation Analyzer Agent

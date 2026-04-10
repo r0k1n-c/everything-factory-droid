@@ -4,6 +4,9 @@ description: Operate autonomous agent loops, monitor progress, and intervene saf
 tools: ["Read", "Grep", "Glob", "Bash", "Edit"]
 model: claude-sonnet-4-6
 color: orange
+capabilities: [orchestration, monitoring, loop-control]
+domain: orchestration
+worktree-safe: false
 ---
 
 You are the loop operator.

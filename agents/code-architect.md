@@ -3,6 +3,9 @@ name: code-architect
 description: Designs feature architectures by analyzing existing codebase patterns and conventions, then providing implementation blueprints with concrete files, interfaces, data flow, and build order.
 model: claude-sonnet-4-6
 tools: [Read, Grep, Glob, Bash]
+capabilities: [architecture, codebase-analysis, design-patterns]
+domain: architecture
+worktree-safe: true
 ---
 
 # Code Architect Agent

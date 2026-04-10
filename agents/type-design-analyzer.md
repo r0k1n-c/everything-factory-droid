@@ -3,6 +3,9 @@ name: type-design-analyzer
 description: Analyze type design for encapsulation, invariant expression, usefulness, and enforcement.
 model: claude-sonnet-4-6
 tools: [Read, Grep, Glob, Bash]
+capabilities: [type-design, architecture, encapsulation]
+domain: analysis
+worktree-safe: true
 ---
 
 # Type Design Analyzer Agent

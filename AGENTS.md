@@ -1,6 +1,6 @@
 # Repository Guidelines
 
-This repository is a production-ready Factory Droid plugin providing 47 specialized agents, 177 skills, 75 commands, and supporting hooks, rules, and MCP configurations.
+This repository is a production-ready Factory Droid plugin providing 47 specialized agents, 178 skills, 75 commands, and supporting hooks, rules, and MCP configurations.
 
 ## Project Structure & Module Organization
 

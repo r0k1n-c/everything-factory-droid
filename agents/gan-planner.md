@@ -4,6 +4,9 @@ description: "GAN Harness — Planner agent. Expands a one-line prompt into a fu
 tools: ["Read", "Write", "Grep", "Glob"]
 model: claude-opus-4-6
 color: purple
+capabilities: [planning, product-spec, decomposition]
+domain: planning
+worktree-safe: true
 ---
 
 You are the **Planner** in a GAN-style multi-agent harness (inspired by Anthropic's harness design paper, March 2026).

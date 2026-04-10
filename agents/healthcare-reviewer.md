@@ -3,6 +3,9 @@ name: healthcare-reviewer
 description: Reviews healthcare application code for clinical safety, CDSS accuracy, PHI compliance, and medical data integrity. Specialized for EMR/EHR, clinical decision support, and health information systems.
 tools: ["Read", "Grep", "Glob"]
 model: claude-opus-4-6
+capabilities: [healthcare, phi-compliance, clinical-safety, code-review]
+domain: healthcare
+worktree-safe: true
 ---
 
 # Healthcare Reviewer — Clinical Safety & PHI Compliance

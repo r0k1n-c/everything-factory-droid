@@ -3,6 +3,9 @@ name: pr-test-analyzer
 description: Review pull request test coverage quality and completeness, with emphasis on behavioral coverage and real bug prevention.
 model: claude-sonnet-4-6
 tools: [Read, Grep, Glob, Bash]
+capabilities: [testing, code-review, coverage-analysis]
+domain: testing
+worktree-safe: true
 ---
 
 # PR Test Analyzer Agent

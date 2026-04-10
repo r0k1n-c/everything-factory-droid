@@ -3,6 +3,9 @@ name: code-explorer
 description: Deeply analyzes existing codebase features by tracing execution paths, mapping architecture layers, and documenting dependencies to inform new development.
 model: claude-sonnet-4-6
 tools: [Read, Grep, Glob, Bash]
+capabilities: [codebase-analysis, flow-tracing, debugging]
+domain: analysis
+worktree-safe: true
 ---
 
 # Code Explorer Agent

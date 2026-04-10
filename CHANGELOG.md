@@ -10,7 +10,16 @@
 - `autonomous-task-claiming` skill — Controlled task queue protocol with safety limits and conflict resolution (S11)
 - `git-worktree-isolation` skill — Per-task git worktree isolation for parallel agent execution (S12)
 
-Current catalog: 47 agents, 177 skills, 75 commands.
+Current catalog: 47 agents, 178 skills, 75 commands.
+
+## 2026-04-10 — Mission Dispatcher & Agent Capability Registry
+
+**Added**
+
+- `mission-dispatcher` skill — Unified DAG-to-agent dispatch: decomposes missions into task graphs, matches tasks to agents by capability, isolates in worktrees, tracks progress, and merges results back
+- Agent capability frontmatter — All 47 agents now declare `capabilities`, `domain`, and `worktree-safe` fields for automatic task matching
+
+Current catalog: 47 agents, 178 skills, 75 commands.
 
 ## 2026-04-10
 

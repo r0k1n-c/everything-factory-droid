@@ -13,7 +13,7 @@
 ![Java](https://img.shields.io/badge/-Java-ED8B00?logo=openjdk&logoColor=white)
 ![Markdown](https://img.shields.io/badge/-Markdown-000000?logo=markdown&logoColor=white)
 
-> **Factory Droid専用** | **47 agents** | **177 skills** | **75 commands** | **クロスプラットフォーム対応**
+> **Factory Droid専用** | **47 agents** | **178 skills** | **75 commands** | **クロスプラットフォーム対応**
 
 ---
 

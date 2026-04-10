@@ -16,7 +16,7 @@
 ![Java](https://img.shields.io/badge/-Java-ED8B00?logo=openjdk&logoColor=white)
 ![Markdown](https://img.shields.io/badge/-Markdown-000000?logo=markdown&logoColor=white)
 
-> **Foco em Factory Droid** | **47 agentes** | **171 skills** | **74 comandos** | **Instaladores multiplataforma**
+> **Foco em Factory Droid** | **47 agentes** | **172 skills** | **75 comandos** | **Instaladores multiplataforma**
 
 ---
 
@@ -143,7 +143,7 @@ Não execute `install.sh` dentro de `~/.factory/plugins/...` nem dentro do repos
 droid plugin list
 ```
 
-**Pronto!** Você agora tem acesso a 47 agentes, 171 skills e 74 comandos.
+**Pronto!** Você agora tem acesso a 47 agentes, 172 skills e 75 comandos.
 
 ---
 

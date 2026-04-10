@@ -81,6 +81,8 @@ Compatibility:
   efd help <command> Show help for a specific command
 
 Examples:
+  efd install                     Launch interactive install wizard
+  efd install --interactive       Explicitly launch interactive wizard
   efd typescript
   efd install --profile developer --target factory-droid
   efd plan --profile core --target factory-droid

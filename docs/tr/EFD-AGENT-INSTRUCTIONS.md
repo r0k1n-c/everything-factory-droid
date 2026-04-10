@@ -4,7 +4,7 @@ Bu dosya, Factory Droid'un bu depoda çalışırken uyması gereken standart reh
 
 ## Projeye Genel Bakış
 
-Bu depo, **Factory Droid** için hazırlanmış üretim kalitesinde bir eklenti deposudur. Şu anda 47 özel agent, 171 skill, 74 command ve bunları destekleyen hook, rule ve MCP yapılandırmaları içerir. Depo, çoklu harness uyumluluğu için değil, yeniden kullanılabilir Factory Droid iş akışları sunmak için düzenlenmiştir.
+Bu depo, **Factory Droid** için hazırlanmış üretim kalitesinde bir eklenti deposudur. Şu anda 47 özel agent, 172 skill, 75 command ve bunları destekleyen hook, rule ve MCP yapılandırmaları içerir. Depo, çoklu harness uyumluluğu için değil, yeniden kullanılabilir Factory Droid iş akışları sunmak için düzenlenmiştir.
 
 ## Proje Yapısı ve Modül Organizasyonu
 

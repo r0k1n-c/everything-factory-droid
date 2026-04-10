@@ -27,11 +27,13 @@ Usage: install.sh [--target <${LEGACY_INSTALL_TARGETS.join('|')}>] [--dry-run] [
        install.sh [--target <${SUPPORTED_INSTALL_TARGETS.join('|')}>] [--dry-run] [--json] --profile <name> [--with <component>]... [--without <component>]...
        install.sh [--target <${SUPPORTED_INSTALL_TARGETS.join('|')}>] [--dry-run] [--json] --modules <id,id,...> [--with <component>]... [--without <component>]...
        install.sh [--dry-run] [--json] --config <path>
+       install.sh --interactive
 
 Targets:
   factory-droid (default) - Install rules, droids, skills, commands, and settings to ./.factory/ plus hook runtime files to ./hooks/ and ./scripts/
 
 Options:
+  --interactive, -i   Launch the interactive install wizard
   --profile <name>    Resolve and install a manifest profile
   --modules <ids>     Resolve and install explicit module IDs
   --with <component>  Include a user-facing install component
@@ -139,8 +141,100 @@ function assertProjectInstallRootIsNotPluginBundle(projectRoot, homeDir) {
   );
 }
 
-function main() {
+function shouldLaunchInteractive(argv) {
+  const args = argv.slice(2);
+
+  if (args.includes('--interactive') || args.includes('-i')) {
+    return process.stdin.isTTY === true;
+  }
+
+  if (args.includes('--help') || args.includes('-h')) {
+    return false;
+  }
+
+  if (!process.stdin.isTTY) {
+    return false;
+  }
+
+  const selectionFlags = ['--profile', '--modules', '--config', '--with'];
+  const hasSelectionFlag = selectionFlags.some(flag => args.includes(flag));
+  const hasPositionalArgs = args.some(a => !a.startsWith('-'));
+
+  return !hasSelectionFlag && !hasPositionalArgs;
+}
+
+function getPassthroughFlags(argv) {
+  const args = argv.slice(2);
+  return {
+    dryRun: args.includes('--dry-run'),
+    json: args.includes('--json')
+  };
+}
+
+async function runInteractiveFlow() {
+  const { runInteractiveInstall } = require('./lib/install/interactive');
+  const { applyInstallPlan } = require('./lib/install-executor');
+  const { createInstallPlanFromRequest } = require('./lib/install/runtime');
+  const projectRoot = process.cwd();
+  const homeDir = process.env.HOME || os.homedir();
+  const flags = getPassthroughFlags(process.argv);
+
+  assertProjectInstallRootIsNotPluginBundle(projectRoot, homeDir);
+
+  let wizardResult;
   try {
+    wizardResult = await runInteractiveInstall({ projectRoot, homeDir });
+  } catch (err) {
+    if (err.isTtyError || /force closed/i.test(err.message || '')) {
+      process.exit(0);
+    }
+    throw err;
+  }
+
+  if (!wizardResult) {
+    console.log('Installation cancelled.');
+    process.exit(0);
+  }
+
+  const request = normalizeInstallRequest({
+    target: wizardResult.target || 'factory-droid',
+    profileId: wizardResult.profile || null,
+    moduleIds: [],
+    includeComponentIds: wizardResult.includeComponents || [],
+    excludeComponentIds: wizardResult.excludeComponents || [],
+    languages: []
+  });
+
+  const plan = createInstallPlanFromRequest(request, {
+    projectRoot,
+    homeDir,
+    rulesDir: process.env.FACTORY_RULES_DIR || process.env.CLAUDE_RULES_DIR || null
+  });
+
+  if (flags.dryRun) {
+    if (flags.json) {
+      console.log(JSON.stringify({ dryRun: true, plan }, null, 2));
+    } else {
+      printHumanPlan(plan, true);
+    }
+    return;
+  }
+
+  const result = applyInstallPlan(plan);
+  if (flags.json) {
+    console.log(JSON.stringify({ dryRun: false, result }, null, 2));
+  } else {
+    printHumanPlan(result, false);
+  }
+}
+
+async function main() {
+  try {
+    if (shouldLaunchInteractive(process.argv)) {
+      await runInteractiveFlow();
+      return;
+    }
+
     const options = parseInstallArgs(process.argv);
 
     if (options.help) {
@@ -193,4 +287,7 @@ function main() {
   }
 }
 
-main();
+main().catch(error => {
+  process.stderr.write(`Error: ${error.message}\n`);
+  process.exit(1);
+});

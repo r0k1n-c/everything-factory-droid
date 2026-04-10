@@ -1,14 +1,14 @@
 # Repository Guidelines
 
-This repository is a production-ready Factory Droid plugin providing 47 specialized agents, 171 skills, 74 commands, and supporting hooks, rules, and MCP configurations.
+This repository is a production-ready Factory Droid plugin providing 47 specialized agents, 172 skills, 75 commands, and supporting hooks, rules, and MCP configurations.
 
 ## Project Structure & Module Organization
 
 This repo packages reusable Factory Droid workflows. Core directories:
 
 agents/ — 47 specialized subagents
-skills/ — 171 workflow skills and domain knowledge
-commands/ — 74 slash commands
+skills/ — 172 workflow skills and domain knowledge
+commands/ — 75 slash commands
 
 Runtime and validation logic lives in `scripts/`; automated tests live in `tests/`; examples and reference assets live in `examples/` and `assets/`. Prefer adding new workflows to `skills/` first and only touch `commands/` when a compatibility shim is still needed.
 

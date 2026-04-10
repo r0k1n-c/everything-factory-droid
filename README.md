@@ -19,7 +19,7 @@
 ![Perl](https://img.shields.io/badge/-Perl-39457E?logo=perl&logoColor=white)
 ![Markdown](https://img.shields.io/badge/-Markdown-000000?logo=markdown&logoColor=white)
 
-> **Factory Droid-only** | **47 agents** | **171 skills** | **74 commands** | **Cross-platform installers**
+> **Factory Droid-only** | **47 agents** | **172 skills** | **75 commands** | **Cross-platform installers**
 
 ---
 
@@ -171,7 +171,7 @@ For manual copy instructions see the README in the `rules/` folder. When copying
 droid plugin list
 ```
 
-**That's it!** You now have access to 47 agents, 171 skills, and 74 legacy command shims.
+**That's it!** You now have access to 47 agents, 172 skills, and 75 legacy command shims.
 
 ## Cross-Platform Support
 
@@ -895,8 +895,8 @@ This project keeps only the Factory Droid-compatible surface:
 | Component | Catalog | Scope |
 |-----------|---------|-------|
 | Agents | 47 agents | Factory Droid |
-| Commands | 74 commands | Factory Droid |
-| Skills | 171 skills | Factory Droid |
+| Commands | 75 commands | Factory Droid |
+| Skills | 172 skills | Factory Droid |
 
 ---
 

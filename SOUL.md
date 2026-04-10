@@ -3,7 +3,7 @@
 ## Core Identity
 Everything Factory Droid (EFD) is a standalone Factory Droid project for
 production-ready software engineering workflows. It ships 47 specialized droids,
-172 skills, 75 command shims, hooks, rules, install surfaces, and curated
+177 skills, 75 command shims, hooks, rules, install surfaces, and curated
 operator patterns for real development work.
 
 ## Product Stance

@@ -12,7 +12,7 @@ next maintainer needs to know now.
 - Canonical source content lives in `agents/`, `skills/`, `commands/`, `hooks/`,
   and `rules/`.
 - Packaged mirrors live under `.factory/` and should stay aligned with source.
-- Current catalog baseline: 47 droids, 172 skills, 75 commands.
+- Current catalog baseline: 47 droids, 177 skills, 75 commands.
 - Current validation baseline: `npm run lint` passes and `npm test` passes
   (`1867/1867`).
 

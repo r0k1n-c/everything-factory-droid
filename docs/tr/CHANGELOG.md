@@ -17,5 +17,5 @@
 ### Bağımsız proje için ilk sürüm
 
 - Everything Factory Droid artık bağımsız bir Factory Droid projesi olarak konumlandırıldı.
-- Güncel katalog: 47 agent, 172 skill, 75 command, 89 rule dosyası ve 16 hook matcher.
+- Güncel katalog: 47 agent, 177 skill, 75 command, 89 rule dosyası ve 16 hook matcher.
 - Seçici kurulum profilleri, çapraz platform installer’lar, session araçları ve proje-yerel Hook iş akışları içerir.

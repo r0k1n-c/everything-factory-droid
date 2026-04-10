@@ -343,7 +343,8 @@
         "scripts/orchestrate-codex-worker.sh",
         "scripts/orchestrate-worktrees.js",
         "scripts/orchestration-status.js",
-        "skills/dmux-workflows"
+        "skills/dmux-workflows",
+        "skills/git-worktree-isolation"
       ],
       "targets": [
         "factory-droid"
@@ -384,14 +385,18 @@
       "description": "Agentic engineering, autonomous loops, agent harness construction, and LLM pipeline optimization skills.",
       "paths": [
         "skills/agent-harness-construction",
+        "skills/agent-messaging-protocol",
         "skills/agentic-engineering",
         "skills/ai-first-engineering",
         "skills/autonomous-loops",
+        "skills/autonomous-task-claiming",
+        "skills/background-job-injection",
         "skills/blueprint",
         "skills/claude-devfleet",
         "skills/content-hash-cache-pattern",
         "skills/continuous-agent-loop",
         "skills/cost-aware-llm-pipeline",
+        "skills/dag-task-graph",
         "skills/data-scraper-agent",
         "skills/enterprise-agent-ops",
         "skills/nanoclaw-repl",

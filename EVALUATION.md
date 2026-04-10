@@ -127,7 +127,7 @@ Run:
 efd install --profile full
 ```
 
-This resolves the repo's full classified install surface, including all **47 agents**, **172 skills**, and **75 command shims**, plus the shipped template/support assets referenced by those skills.
+This resolves the repo's full classified install surface, including all **47 agents**, **177 skills**, and **75 command shims**, plus the shipped template/support assets referenced by those skills.
 
 ### Hook adoption
 If you want the biggest day-to-day improvement, adopt the repo hook system first:

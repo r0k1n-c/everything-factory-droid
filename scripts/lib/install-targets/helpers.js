@@ -2,6 +2,12 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
+const IGNORED_FILE_NAMES = new Set(['.DS_Store', 'Thumbs.db']);
+
+function isOSMetadataFile(name) {
+  return IGNORED_FILE_NAMES.has(name) || name.startsWith('._');
+}
+
 function normalizeRelativePath(relativePath) {
   return String(relativePath || '')
     .replace(/\\/g, '/')
@@ -51,7 +57,9 @@ function listRelativeFiles(dirPath, prefix = '') {
     if (entry.isDirectory()) {
       files.push(...listRelativeFiles(absolutePath, entryPrefix));
     } else if (entry.isFile()) {
-      files.push(normalizeRelativePath(entryPrefix));
+      if (!isOSMetadataFile(entry.name)) {
+        files.push(normalizeRelativePath(entryPrefix));
+      }
     }
   }
 
@@ -132,6 +140,9 @@ function createNamespacedFlatRuleOperations(adapter, moduleId, sourceRelativePat
   ));
 
   for (const entry of entries) {
+    if (isOSMetadataFile(entry.name)) {
+      continue;
+    }
     const namespace = entry.name;
     const entryPath = path.join(sourceRoot, entry.name);
 
@@ -174,6 +185,9 @@ function createFlatRuleOperations({ moduleId, repoRoot, sourceRelativePath, dest
   ));
 
   for (const entry of entries) {
+    if (isOSMetadataFile(entry.name)) {
+      continue;
+    }
     const namespace = entry.name;
     const entryPath = path.join(sourceRoot, entry.name);
 

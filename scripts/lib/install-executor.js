@@ -89,6 +89,12 @@ const IGNORED_DIRECTORY_NAMES = new Set([
   '.git',
 ]);
 
+const IGNORED_FILE_NAMES = new Set(['.DS_Store', 'Thumbs.db']);
+
+function isOSMetadataFile(name) {
+  return IGNORED_FILE_NAMES.has(name) || name.startsWith('._');
+}
+
 function listFilesRecursive(dirPath) {
   if (!fs.existsSync(dirPath)) {
     return [];
@@ -108,7 +114,9 @@ function listFilesRecursive(dirPath) {
         files.push(path.join(entry.name, childFile));
       }
     } else if (entry.isFile()) {
-      files.push(entry.name);
+      if (!isOSMetadataFile(entry.name)) {
+        files.push(entry.name);
+      }
     }
   }
 

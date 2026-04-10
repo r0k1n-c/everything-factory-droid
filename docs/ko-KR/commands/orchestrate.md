@@ -1,172 +1,105 @@
+---
+description: 멀티 에이전트 오케스트레이션 — 순차 핸드오프, 병렬 에이전트, 워크트리 격리, 컨트롤 플레인 스냅샷
+---
+
 # Orchestrate 커맨드
 
-복잡한 작업을 위한 순차적 에이전트 워크플로우입니다.
-
-## 사용법
-
-`/orchestrate [workflow-type] [task-description]`
+복잡한 작업을 위한 멀티 에이전트 워크플로우를 조율합니다. 순차적 에이전트 핸드오프, 병렬 실행, 워크트리 격리, 운영자 수준의 세션 관리를 지원합니다.
 
 ## 워크플로우 유형
 
-### feature
-전체 기능 구현 워크플로우:
-```
-planner -> tdd-guide -> code-reviewer -> security-reviewer
-```
+$ARGUMENTS:
+- `feature <description>` — 전체 기능 워크플로우
+- `bugfix <description>` — 버그 수정 워크플로우
+- `refactor <description>` — 리팩토링 워크플로우
+- `security <description>` — 보안 리뷰 워크플로우
+- `custom <agents> <description>` — 사용자 정의 에이전트 순서
 
-### bugfix
-버그 조사 및 수정 워크플로우:
-```
-planner -> tdd-guide -> code-reviewer
-```
+### 사용자 정의 워크플로우 예시
 
-### refactor
-안전한 리팩토링 워크플로우:
 ```
-architect -> code-reviewer -> tdd-guide
+/orchestrate custom "architect,tdd-guide,code-reviewer" "Redesign caching layer"
 ```
 
-### security
-보안 중심 리뷰:
-```
-security-reviewer -> code-reviewer -> architect
-```
+## 에이전트 핸드오프 파이프라인
 
-## 실행 패턴
+에이전트를 순차적으로 연결하여 각 단계 간에 구조화된 컨텍스트를 전달합니다. 각 에이전트는 이전 에이전트의 출력을 받아 자신의 결과를 추가한 뒤 다음으로 넘깁니다.
 
-워크플로우의 각 에이전트에 대해:
-
-1. 이전 에이전트의 컨텍스트로 **에이전트 호출**
-2. 구조화된 핸드오프 문서로 **출력 수집**
-3. 체인의 **다음 에이전트에 전달**
-4. **결과를 종합**하여 최종 보고서 작성
-
-## 핸드오프 문서 형식
-
-에이전트 간에 핸드오프 문서를 생성합니다:
+Security Reviewer 템플릿:
 
 ```markdown
-## HANDOFF: [이전-에이전트] -> [다음-에이전트]
+Security Reviewer: [summary]
 
-### Context
-[수행된 작업 요약]
+### FILES CHANGED
 
-### Findings
-[주요 발견 사항 또는 결정 사항]
+[List all files modified]
 
-### Files Modified
-[수정된 파일 목록]
+### TEST RESULTS
 
-### Open Questions
-[다음 에이전트를 위한 미해결 항목]
+[Test pass/fail summary]
 
-### Recommendations
-[제안하는 다음 단계]
-```
+### SECURITY STATUS
 
-## 예시: Feature 워크플로우
+[Security findings]
 
-```
-/orchestrate feature "Add user authentication"
-```
+### RECOMMENDATION
 
-실행 순서:
-
-1. **Planner 에이전트**
-   - 요구사항 분석
-   - 구현 계획 작성
-   - 의존성 식별
-   - 출력: `HANDOFF: planner -> tdd-guide`
-
-2. **TDD Guide 에이전트**
-   - planner 핸드오프 읽기
-   - 테스트 먼저 작성
-   - 테스트를 통과하도록 구현
-   - 출력: `HANDOFF: tdd-guide -> code-reviewer`
-
-3. **Code Reviewer 에이전트**
-   - 구현 리뷰
-   - 이슈 확인
-   - 개선사항 제안
-   - 출력: `HANDOFF: code-reviewer -> security-reviewer`
-
-4. **Security Reviewer 에이전트**
-   - 보안 감사
-   - 취약점 점검
-   - 최종 승인
-   - 출력: 최종 보고서
-
-## 최종 보고서 형식
-
-```
-ORCHESTRATION REPORT
-====================
-Workflow: feature
-Task: Add user authentication
-Agents: planner -> tdd-guide -> code-reviewer -> security-reviewer
-
-SUMMARY
--------
-[한 단락 요약]
-
-AGENT OUTPUTS
--------------
-Planner: [요약]
-TDD Guide: [요약]
-Code Reviewer: [요약]
-Security Reviewer: [요약]
-
-FILES CHANGED
--------------
-[수정된 모든 파일 목록]
-
-TEST RESULTS
-------------
-[테스트 통과/실패 요약]
-
-SECURITY STATUS
----------------
-[보안 발견 사항]
-
-RECOMMENDATION
---------------
 [SHIP / NEEDS WORK / BLOCKED]
 ```
 
 ## 병렬 실행
 
-독립적인 검사에 대해서는 에이전트를 병렬로 실행합니다:
+tmux 패인과 격리된 git 워크트리를 활용한 병렬 에이전트 실행을 위해, 이 커맨드는 `dmux-workflows` 스킬을 사용합니다. 다음 항목에 대한 전체 문서는 해당 스킬을 참고하세요:
+
+- tmux 패인 오케스트레이션 패턴
+- 워크트리 기반 병렬 작업을 위한 `node scripts/orchestrate-worktrees.js` 헬퍼
+- 워크트리 간 로컬 파일 공유를 위한 `seedPaths` 설정
+
+지속적인 자율 루프, 스케줄링 및 거버넌스에 대해서는 `autonomous-agent-harness` 스킬을 참고하세요.
+
+## 컨트롤 플레인 스냅샷
+
+실행 중인 tmux/워크트리 세션의 컨트롤 플레인 스냅샷을 내보내려면 다음을 실행하세요:
+
+```bash
+node scripts/orchestration-status.js .factory/plan/workflow-visual-proof.json
+```
+
+스냅샷에는 세션 활동, tmux 패인 메타데이터, 워커 상태, 목표, 시드된 오버레이, 최근 핸드오프 요약이 JSON 형식으로 포함됩니다.
+
+## 운영자 커맨드 센터 핸드오프
+
+워크플로우가 여러 세션, 워크트리 또는 tmux 패인에 걸쳐 있을 때, 최종 핸드오프에 컨트롤 플레인 블록을 추가하세요:
 
 ```markdown
-### Parallel Phase
-동시에 실행:
-- code-reviewer (품질)
-- security-reviewer (보안)
-- architect (설계)
+CONTROL PLANE
+-------------
+Sessions:
+- active session ID or alias
+- branch + worktree path for each active worker
+- tmux pane or detached session name when applicable
 
-### Merge Results
-출력을 단일 보고서로 통합
+Diffs:
+- git status summary
+- git diff --stat for touched files
+- merge/conflict risk notes
+
+Approvals:
+- pending user approvals
+- blocked steps awaiting confirmation
+
+Telemetry:
+- last activity timestamp or idle signal
+- estimated token or cost drift
+- policy events raised by hooks or reviewers
 ```
 
-## 인자
-
-$ARGUMENTS:
-- `feature <description>` - 전체 기능 워크플로우
-- `bugfix <description>` - 버그 수정 워크플로우
-- `refactor <description>` - 리팩토링 워크플로우
-- `security <description>` - 보안 리뷰 워크플로우
-- `custom <agents> <description>` - 사용자 정의 에이전트 순서
-
-## 사용자 정의 워크플로우 예시
-
-```
-/orchestrate custom "architect,tdd-guide,code-reviewer" "Redesign caching layer"
-```
+이를 통해 planner, implementer, reviewer, loop worker가 운영자 화면에서 명확하게 파악됩니다.
 
 ## 팁
 
 1. 복잡한 기능에는 **planner부터 시작**하세요
 2. merge 전에는 **항상 code-reviewer를 포함**하세요
 3. 인증/결제/개인정보 처리에는 **security-reviewer를 사용**하세요
-4. **핸드오프는 간결하게** 유지하세요 - 다음 에이전트에 필요한 것에 집중
+4. **핸드오프는 간결하게** 유지하세요 — 다음 에이전트에 필요한 것에 집중
 5. 필요한 경우 에이전트 사이에 **검증을 실행**하세요

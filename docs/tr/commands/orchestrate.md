@@ -1,186 +1,75 @@
 ---
-description: Multi-agent iş akışları için sıralı ve tmux/worktree orkestrasyon rehberi.
+description: Çoklu agent orkestrasyonu — sıralı handoff'lar, paralel agentlar, worktree izolasyonu ve kontrol düzlemi snapshot'ları
 ---
 
 # Orchestrate Komutu
 
-Karmaşık görevler için sıralı agent iş akışı.
-
-## Kullanım
-
-`/orchestrate [workflow-type] [task-description]`
+Karmaşık görevler için çoklu agent iş akışlarını koordine edin. Sıralı agent handoff'larını, paralel yürütmeyi, worktree izolasyonunu ve operatör düzeyinde session yönetimini destekler.
 
 ## Workflow Tipleri
 
-### feature
-Tam özellik implementasyon iş akışı:
-```
-planner -> tdd-guide -> code-reviewer -> security-reviewer
-```
+$ARGUMENTS:
+- `feature <description>` — Tam özellik iş akışı
+- `bugfix <description>` — Bug düzeltme iş akışı
+- `refactor <description>` — Refactoring iş akışı
+- `security <description>` — Güvenlik review iş akışı
+- `custom <agents> <description>` — Özel agent dizisi
 
-### bugfix
-Bug araştırma ve düzeltme iş akışı:
-```
-planner -> tdd-guide -> code-reviewer
-```
+### Özel Workflow Örneği
 
-### refactor
-Güvenli refactoring iş akışı:
 ```
-architect -> code-reviewer -> tdd-guide
+/orchestrate custom "architect,tdd-guide,code-reviewer" "Caching katmanını yeniden tasarla"
 ```
 
-### security
-Güvenlik odaklı review:
-```
-security-reviewer -> code-reviewer -> architect
-```
+## Agent Handoff Pipeline
 
-## Execution Pattern
+Agentları sıralı olarak zincirleyin ve her adım arasında yapılandırılmış bağlam aktarın. Her agent, önceki agentın çıktısını alır ve kendi çıktısını ekleyerek bir sonrakine devreder.
 
-İş akışındaki her agent için:
-
-1. **Agent'ı çağır** önceki agent'tan gelen context ile
-2. **Çıktıyı topla** yapılandırılmış handoff dokümanı olarak
-3. **Sonraki agent'a geçir** zincirde
-4. **Sonuçları topla** nihai rapora
-
-## Handoff Doküman Formatı
-
-Agent'lar arasında, handoff dokümanı oluştur:
+Security Reviewer şablonu:
 
 ```markdown
-## HANDOFF: [previous-agent] -> [next-agent]
-
-### Context
-[Yapılanların özeti]
-
-### Findings
-[Anahtar keşifler veya kararlar]
-
-### Files Modified
-[Dokunulan dosyaların listesi]
-
-### Open Questions
-[Sonraki agent için çözülmemiş öğeler]
-
-### Recommendations
-[Önerilen sonraki adımlar]
-```
-
-## Örnek: Feature Workflow
-
-```
-/orchestrate feature "Add user authentication"
-```
-
-Çalıştırır:
-
-1. **Planner Agent**
-   - Requirement'ları analiz eder
-   - Implementation planı oluşturur
-   - Bağımlılıkları tanımlar
-   - Çıktı: `HANDOFF: planner -> tdd-guide`
-
-2. **TDD Guide Agent**
-   - Planner handoff'unu okur
-   - Önce test'leri yazar
-   - Test'leri geçirmek için implement eder
-   - Çıktı: `HANDOFF: tdd-guide -> code-reviewer`
-
-3. **Code Reviewer Agent**
-   - Implementation'ı gözden geçirir
-   - Sorunları kontrol eder
-   - İyileştirmeler önerir
-   - Çıktı: `HANDOFF: code-reviewer -> security-reviewer`
-
-4. **Security Reviewer Agent**
-   - Güvenlik denetimi
-   - Güvenlik açığı kontrolü
-   - Nihai onay
-   - Çıktı: Final Report
-
-## Nihai Rapor Formatı
-
-```
-ORCHESTRATION REPORT
-====================
-Workflow: feature
-Task: Add user authentication
-Agents: planner -> tdd-guide -> code-reviewer -> security-reviewer
-
-SUMMARY
--------
-[Bir paragraf özet]
-
-AGENT OUTPUTS
--------------
-Planner: [özet]
-TDD Guide: [özet]
-Code Reviewer: [özet]
 Security Reviewer: [özet]
 
-FILES CHANGED
--------------
+### FILES CHANGED
+
 [Değiştirilen tüm dosyaların listesi]
 
-TEST RESULTS
-------------
+### TEST RESULTS
+
 [Test geçti/başarısız özeti]
 
-SECURITY STATUS
----------------
+### SECURITY STATUS
+
 [Güvenlik bulguları]
 
-RECOMMENDATION
---------------
+### RECOMMENDATION
+
 [SHIP / NEEDS WORK / BLOCKED]
 ```
 
-## Parallel Execution
+## Paralel Yürütme
 
-Bağımsız kontroller için, agent'ları parallel çalıştır:
+Tmux pane'leri ve izole git worktree'leri arasında paralel agent yürütmesi için bu komut `dmux-workflows` skillini kullanır. Aşağıdaki konular hakkında tam dokümantasyon için o skilli inceleyin:
 
-```markdown
-### Parallel Phase
-Eş zamanlı çalıştır:
-- code-reviewer (kalite)
-- security-reviewer (güvenlik)
-- architect (tasarım)
+- Tmux pane orkestrasyon kalıpları
+- Worktree tabanlı paralel çalışma için `node scripts/orchestrate-worktrees.js` yardımcısı
+- Worktree'ler arasında yerel dosya paylaşımı için `seedPaths` yapılandırması
 
-### Merge Results
-Çıktıları tek rapora birleştir
-```
+Kalıcı otonom döngüler, zamanlama ve yönetişim için `autonomous-agent-harness` skilline bakın.
 
-Ayrı git worktree'leri olan harici tmux-pane worker'ları için, `node scripts/orchestrate-worktrees.js plan.json --execute` kullan. Built-in orkestrasyon pattern'i in-process kalır; helper uzun süren session'lar için.
+## Kontrol Düzlemi Snapshot'ları
 
-Worker'ların ana checkout'tan kirli veya izlenmeyen yerel dosyaları görmesi gerektiğinde, plan dosyasına `seedPaths` ekle. EFD sadece seçilen bu yolları `git worktree add`'den sonra her worker worktree'sine overlay eder; bu branch'ı izole tutarken devam eden yerel script'leri, planları veya dokümanları gösterir.
-
-```json
-{
-  "sessionName": "workflow-e2e",
-  "seedPaths": [
-    "scripts/orchestrate-worktrees.js",
-    "scripts/lib/tmux-worktree-orchestrator.js",
-    ".factory/plan/workflow-e2e-test.json"
-  ],
-  "workers": [
-    { "name": "docs", "task": "Orkestrasyon dokümanlarını güncelle." }
-  ]
-}
-```
-
-Canlı bir tmux/worktree session için kontrol düzlemi snapshot'ı dışa aktarmak için şunu çalıştır:
+Canlı bir tmux/worktree session için kontrol düzlemi snapshot'ı dışa aktarmak için şunu çalıştırın:
 
 ```bash
 node scripts/orchestration-status.js .factory/plan/workflow-visual-proof.json
 ```
 
-Snapshot session aktivitesi, tmux pane metadata'sı, worker state'leri, hedefleri, seed overlay'leri ve son handoff özetlerini JSON formatında içerir.
+Snapshot; session aktivitesi, tmux pane metadata'sı, worker state'leri, hedefler, seed overlay'leri ve son handoff özetlerini JSON formatında içerir.
 
 ## Operatör Command-Center Handoff
 
-İş akışı birden fazla session, worktree veya tmux pane'e yayıldığında, nihai handoff'a bir kontrol düzlemi bloğu ekle:
+İş akışı birden fazla session, worktree veya tmux pane'e yayıldığında, nihai handoff'a bir kontrol düzlemi bloğu ekleyin:
 
 ```markdown
 CONTROL PLANE
@@ -205,27 +94,12 @@ Telemetry:
 - hook'lar veya reviewer'lar tarafından bildirilen policy olayları
 ```
 
-Bu planner, implementer, reviewer ve loop worker'larını operatör yüzeyinden anlaşılır tutar.
-
-## Argümanlar
-
-$ARGUMENTS:
-- `feature <description>` - Tam özellik iş akışı
-- `bugfix <description>` - Bug düzeltme iş akışı
-- `refactor <description>` - Refactoring iş akışı
-- `security <description>` - Güvenlik review iş akışı
-- `custom <agents> <description>` - Özel agent dizisi
-
-## Özel Workflow Örneği
-
-```
-/orchestrate custom "architect,tdd-guide,code-reviewer" "Caching katmanını yeniden tasarla"
-```
+Bu; planner, implementer, reviewer ve loop worker'larını operatör yüzeyinden anlaşılır tutar.
 
 ## İpuçları
 
-1. **Karmaşık özellikler için planner ile başla**
-2. **Merge'den önce her zaman code-reviewer dahil et**
-3. **Auth/ödeme/PII için security-reviewer kullan**
-4. **Handoff'ları kısa tut** - sonraki agent'ın ihtiyaç duyduğu şeye odaklan
-5. **Gerekirse agent'lar arasında doğrulama çalıştır**
+1. **Karmaşık özellikler için planner ile başlayın**
+2. **Merge'den önce her zaman code-reviewer dahil edin**
+3. **Auth/ödeme/PII için security-reviewer kullanın**
+4. **Handoff'ları kısa tutun** — sonraki agentın ihtiyaç duyduğu şeye odaklanın
+5. **Gerekirse agentlar arasında doğrulama çalıştırın**

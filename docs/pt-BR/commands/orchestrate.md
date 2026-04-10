@@ -1,175 +1,65 @@
 ---
-description: Orientação de orquestração sequencial e tmux/worktree para fluxos multiagente.
+description: Orquestração multiagente — handoffs sequenciais, agentes paralelos, isolamento por worktree e snapshots do plano de controle
 ---
 
 # Comando Orchestrate
 
-Fluxo sequencial de agentes para tarefas complexas.
-
-## Uso
-
-`/orchestrate [workflow-type] [task-description]`
+Coordene workflows multiagente para tarefas complexas. Suporta handoffs sequenciais entre agentes, execução paralela, isolamento por worktree e gerenciamento de sessão em nível de operador.
 
 ## Tipos de Workflow
 
-### feature
-Workflow completo de implementação de feature:
-```
-planner -> tdd-guide -> code-reviewer -> security-reviewer
-```
+$ARGUMENTS:
+- `feature <description>` — Workflow completo de feature
+- `bugfix <description>` — Workflow de correção de bug
+- `refactor <description>` — Workflow de refatoração
+- `security <description>` — Workflow de revisão de segurança
+- `custom <agents> <description>` — Sequência customizada de agentes
 
-### bugfix
-Workflow de investigação e correção de bug:
-```
-planner -> tdd-guide -> code-reviewer
-```
+### Exemplo de Workflow Customizado
 
-### refactor
-Workflow de refatoração segura:
 ```
-architect -> code-reviewer -> tdd-guide
+/orchestrate custom "architect,tdd-guide,code-reviewer" "Redesign caching layer"
 ```
 
-### security
-Revisão focada em segurança:
-```
-security-reviewer -> code-reviewer -> architect
-```
+## Pipeline de Handoff entre Agentes
 
-## Padrão de Execução
+Encadeie agentes sequencialmente, passando contexto estruturado entre cada etapa. Cada agente recebe a saída do agente anterior e adiciona a sua própria antes de passar adiante.
 
-Para cada agente no workflow:
-
-1. **Invoque o agente** com contexto do agente anterior
-2. **Colete saída** como documento estruturado de handoff
-3. **Passe para o próximo agente** na cadeia
-4. **Agregue resultados** em um relatório final
-
-## Formato do Documento de Handoff
-
-Entre agentes, crie um documento de handoff:
+Template do Security Reviewer:
 
 ```markdown
-## HANDOFF: [previous-agent] -> [next-agent]
-
-### Context
-[Summary of what was done]
-
-### Findings
-[Key discoveries or decisions]
-
-### Files Modified
-[List of files touched]
-
-### Open Questions
-[Unresolved items for next agent]
-
-### Recommendations
-[Suggested next steps]
-```
-
-## Exemplo: Workflow de Feature
-
-```
-/orchestrate feature "Add user authentication"
-```
-
-Executa:
-
-1. **Planner Agent**
-   - Analisa requisitos
-   - Cria plano de implementação
-   - Identifica dependências
-   - Saída: `HANDOFF: planner -> tdd-guide`
-
-2. **TDD Guide Agent**
-   - Lê handoff do planner
-   - Escreve testes primeiro
-   - Implementa para passar testes
-   - Saída: `HANDOFF: tdd-guide -> code-reviewer`
-
-3. **Code Reviewer Agent**
-   - Revisa implementação
-   - Verifica problemas
-   - Sugere melhorias
-   - Saída: `HANDOFF: code-reviewer -> security-reviewer`
-
-4. **Security Reviewer Agent**
-   - Auditoria de segurança
-   - Verificação de vulnerabilidades
-   - Aprovação final
-   - Saída: Relatório Final
-
-## Formato do Relatório Final
-
-```
-ORCHESTRATION REPORT
-====================
-Workflow: feature
-Task: Add user authentication
-Agents: planner -> tdd-guide -> code-reviewer -> security-reviewer
-
-SUMMARY
--------
-[One paragraph summary]
-
-AGENT OUTPUTS
--------------
-Planner: [summary]
-TDD Guide: [summary]
-Code Reviewer: [summary]
 Security Reviewer: [summary]
 
-FILES CHANGED
--------------
+### FILES CHANGED
+
 [List all files modified]
 
-TEST RESULTS
-------------
+### TEST RESULTS
+
 [Test pass/fail summary]
 
-SECURITY STATUS
----------------
+### SECURITY STATUS
+
 [Security findings]
 
-RECOMMENDATION
---------------
+### RECOMMENDATION
+
 [SHIP / NEEDS WORK / BLOCKED]
 ```
 
 ## Execução Paralela
 
-Para verificações independentes, rode agentes em paralelo:
+Para execução paralela de agentes em panes tmux e git worktrees isolados, este comando utiliza a skill `dmux-workflows`. Consulte essa skill para documentação completa sobre:
 
-```markdown
-### Fase Paralela
-Executar simultaneamente:
-- code-reviewer (qualidade)
-- security-reviewer (segurança)
-- architect (design)
+- Padrões de orquestração com panes tmux
+- Helper `node scripts/orchestrate-worktrees.js` para trabalho paralelo baseado em worktrees
+- Configuração `seedPaths` para compartilhar arquivos locais entre worktrees
 
-### Mesclar Resultados
-Combinar saídas em um único relatório
+Para loops autônomos persistentes, agendamento e governança, consulte a skill `autonomous-agent-harness`.
 
-Para workers externos em tmux panes com git worktrees separados, use `node scripts/orchestrate-worktrees.js plan.json --execute`. O padrão embutido de orquestração permanece no processo atual; o helper é para sessões longas.
+## Snapshots do Plano de Controle
 
-Quando os workers precisarem enxergar arquivos locais sujos ou não rastreados do checkout principal, adicione `seedPaths` ao arquivo de plano. O EFD faz overlay apenas desses caminhos selecionados em cada worktree do worker após `git worktree add`, mantendo o branch isolado e ainda expondo scripts, planos ou docs em andamento.
-
-```json
-{
-  "sessionName": "workflow-e2e",
-  "seedPaths": [
-    "scripts/orchestrate-worktrees.js",
-    "scripts/lib/tmux-worktree-orchestrator.js",
-    ".factory/plan/workflow-e2e-test.json"
-  ],
-  "workers": [
-    { "name": "docs", "task": "Update orchestration docs." }
-  ]
-}
-```
-
-Para exportar um snapshot do control plane para uma sessão tmux/worktree ao vivo, rode:
+Para exportar um snapshot do plano de controle de uma sessão tmux/worktree ao vivo, rode:
 
 ```bash
 node scripts/orchestration-status.js .factory/plan/workflow-visual-proof.json
@@ -177,9 +67,9 @@ node scripts/orchestration-status.js .factory/plan/workflow-visual-proof.json
 
 O snapshot inclui atividade da sessão, metadados de pane do tmux, estado dos workers, objetivos, overlays semeados e resumos recentes de handoff em formato JSON.
 
-## Handoff de Command Center do Operador
+## Handoff do Command Center do Operador
 
-Quando o workflow atravessar múltiplas sessões, worktrees ou panes tmux, acrescente um bloco de control plane ao handoff final:
+Quando o workflow atravessar múltiplas sessões, worktrees ou panes tmux, acrescente um bloco de plano de controle ao handoff final:
 
 ```markdown
 CONTROL PLANE
@@ -206,25 +96,10 @@ Telemetry:
 
 Isso mantém planner, implementador, revisor e loop workers legíveis pela superfície de operação.
 
-## Argumentos
-
-$ARGUMENTS:
-- `feature <description>` - Workflow completo de feature
-- `bugfix <description>` - Workflow de correção de bug
-- `refactor <description>` - Workflow de refatoração
-- `security <description>` - Workflow de revisão de segurança
-- `custom <agents> <description>` - Sequência customizada de agentes
-
-## Exemplo de Workflow Customizado
-
-```
-/orchestrate custom "architect,tdd-guide,code-reviewer" "Redesign caching layer"
-```
-
 ## Dicas
 
 1. **Comece com planner** para features complexas
 2. **Sempre inclua code-reviewer** antes do merge
 3. **Use security-reviewer** para auth/pagamento/PII
-4. **Mantenha handoffs concisos** - foque no que o próximo agente precisa
+4. **Mantenha handoffs concisos** — foque no que o próximo agente precisa
 5. **Rode verificação** entre agentes quando necessário

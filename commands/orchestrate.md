@@ -1,27 +1,33 @@
 ---
-description: Legacy slash-entry shim for dmux-workflows and autonomous-agent-harness. Prefer the skills directly.
+description: Multi-agent orchestration — sequential handoffs, parallel agents, worktree isolation, and control-plane snapshots
 ---
 
-# Orchestrate Command (Legacy Shim)
+# Orchestrate Command
 
-Use this only if you still invoke `/orchestrate`. The maintained orchestration guidance lives in `skills/dmux-workflows/SKILL.md` and `skills/autonomous-agent-harness/SKILL.md`.
+Coordinate multi-agent workflows for complex tasks. Supports sequential agent handoffs, parallel execution, worktree isolation, and operator-level session management.
 
-## Canonical Surface
+## Workflow Types
 
-- Prefer `dmux-workflows` for parallel panes, worktrees, and multi-agent splits.
-- Prefer `autonomous-agent-harness` for longer-running loops, governance, scheduling, and control-plane style execution.
-- Keep this file only as a compatibility entry point.
+$ARGUMENTS:
+- `feature <description>` — Full feature workflow
+- `bugfix <description>` — Bug fix workflow
+- `refactor <description>` — Refactoring workflow
+- `security <description>` — Security review workflow
+- `custom <agents> <description>` — Custom agent sequence
 
-## Arguments
+### Custom Workflow Example
 
-`$ARGUMENTS`
+```
+/orchestrate custom "architect,tdd-guide,code-reviewer" "Redesign caching layer"
+```
 
-## Delegation
+## Agent Handoff Pipeline
 
-Apply the orchestration skills instead of maintaining a second workflow spec here.
-- Start with `dmux-workflows` for split/parallel execution.
-- Pull in `autonomous-agent-harness` when the user is really asking for persistent loops, governance, or operator-layer behavior.
-- Keep handoffs structured, but let the skills define the maintained sequencing rules.
+Chain agents sequentially, passing structured context between each step. Each agent receives the previous agent's output and adds its own before handing off.
+
+Security Reviewer template:
+
+```markdown
 Security Reviewer: [summary]
 
 ### FILES CHANGED
@@ -43,36 +49,15 @@ Security Reviewer: [summary]
 
 ## Parallel Execution
 
-For independent checks, run agents in parallel:
+For parallel agent execution across tmux panes and isolated git worktrees, this command leverages the `dmux-workflows` skill. See that skill for full documentation on:
 
-```markdown
-### Parallel Phase
-Run simultaneously:
-- code-reviewer (quality)
-- security-reviewer (security)
-- architect (design)
+- Tmux pane orchestration patterns
+- `node scripts/orchestrate-worktrees.js` helper for worktree-based parallel work
+- `seedPaths` configuration for sharing local files across worktrees
 
-### Merge Results
-Combine outputs into single report
-```
+For persistent autonomous loops, scheduling, and governance, see the `autonomous-agent-harness` skill.
 
-For external tmux-pane workers with separate git worktrees, use `node scripts/orchestrate-worktrees.js plan.json --execute`. The built-in orchestration pattern stays in-process; the helper is for long-running sessions.
-
-When workers need to see dirty or untracked local files from the main checkout, add `seedPaths` to the plan file. EFD overlays only those selected paths into each worker worktree after `git worktree add`, which keeps the branch isolated while still exposing in-flight local scripts, plans, or docs.
-
-```json
-{
-  "sessionName": "workflow-e2e",
-  "seedPaths": [
-    "scripts/orchestrate-worktrees.js",
-    "scripts/lib/tmux-worktree-orchestrator.js",
-    ".factory/plan/workflow-e2e-test.json"
-  ],
-  "workers": [
-    { "name": "docs", "task": "Update orchestration docs." }
-  ]
-}
-```
+## Control-Plane Snapshots
 
 To export a control-plane snapshot for a live tmux/worktree session, run:
 
@@ -111,25 +96,10 @@ Telemetry:
 
 This keeps planner, implementer, reviewer, and loop workers legible from the operator surface.
 
-## Workflow Arguments
-
-$ARGUMENTS:
-- `feature <description>` - Full feature workflow
-- `bugfix <description>` - Bug fix workflow
-- `refactor <description>` - Refactoring workflow
-- `security <description>` - Security review workflow
-- `custom <agents> <description>` - Custom agent sequence
-
-## Custom Workflow Example
-
-```
-/orchestrate custom "architect,tdd-guide,code-reviewer" "Redesign caching layer"
-```
-
 ## Tips
 
 1. **Start with planner** for complex features
 2. **Always include code-reviewer** before merge
 3. **Use security-reviewer** for auth/payment/PII
-4. **Keep handoffs concise** - focus on what next agent needs
+4. **Keep handoffs concise** — focus on what the next agent needs
 5. **Run verification** between agents if needed

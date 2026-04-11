@@ -1,14 +1,22 @@
 {
+  "$schema": "https://factory.ai/marketplace.schema.json",
   "name": "everything-factory-droid",
-  "description": "Everything Factory Droid plugin marketplace",
+  "description": "Complete Factory Droid workflow system — 47 agents, 178 skills, 76 commands, hooks, rules, and MCP configurations",
   "owner": {
     "name": "r0k1n-c"
   },
   "plugins": [
     {
       "name": "everything-factory-droid",
-      "description": "Complete Factory Droid workflow system",
-      "source": "."
+      "description": "47 agents, 178 skills, 76 commands covering code review, TDD, security, multi-language support, orchestration, and session management",
+      "version": "1.1.1",
+      "author": {
+        "name": "r0k1n-c"
+      },
+      "source": "./",
+      "category": "productivity",
+      "homepage": "https://github.com/r0k1n-c/everything-factory-droid",
+      "tags": ["agents", "skills", "commands", "hooks", "code-review", "tdd", "security", "orchestration"]
     }
   ]
 }

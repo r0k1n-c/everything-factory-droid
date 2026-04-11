@@ -1,6 +1,6 @@
 {
   "name": "@r0k1n-c/efd-install",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Complete collection of Factory Droid configs — droids, skills, hooks, rules, and command shims for modern engineering workflows.",
   "keywords": [
     "factory-droid",

@@ -12,6 +12,25 @@
 
 Current catalog: 47 agents, 178 skills, 75 commands.
 
+## 2026-04-11 — Native Command Conflict Fixes & Todo Completion Hook
+
+**Added**
+
+- `stop:todo-check` Stop hook — detects forgotten `[in_progress]` todos and reminds agent to close them before responding
+- `commands/efd-sessions.md` — renamed from `sessions.md` to avoid name clash with native `/sessions` UI
+
+**Fixed**
+
+- `commands/sessions.md` — now a disambiguation shim routing to native `/sessions` or `/efd-sessions`
+- `skills/blueprint` — excludes `/plan`, `/orchestrate`, `/missions` triggers to prevent double planning
+- `skills/mission-dispatcher` — defers to native `/missions` when available
+- `commands/orchestrate.md` — spec mode ExitSpecMode called exactly once; sub-agent prompt prefix prevents re-invocation; mission worker guard added
+- `commands/plan.md` + `commands/feature-dev.md` — spec mode awareness
+- `scripts/hooks/stop-dispatch.js` — skips `stop:todo-check` and `stop:session-end` inside `/missions` workers (`FACTORY_MISSION_ID`)
+- Bilingual (zh-CN/EN) notes added to all affected command files
+
+Current catalog: 47 agents, 178 skills, 76 commands.
+
 ## 2026-04-10 — Mission Dispatcher & Agent Capability Registry
 
 **Added**

@@ -1,7 +1,7 @@
 {
   "name": "everything-factory-droid",
-  "description": "A complete Factory Droid workflow system with 47 droids, 178 skills, 75 commands, and supporting hooks, rules, and MCP configurations.",
-  "version": "1.0.0",
+  "description": "A complete Factory Droid workflow system with 47 droids, 178 skills, 76 commands, and supporting hooks, rules, and MCP configurations.",
+  "version": "1.1.0",
   "author": {
     "name": "r0k1n-c"
   },

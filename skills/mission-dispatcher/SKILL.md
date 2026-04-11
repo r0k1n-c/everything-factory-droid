@@ -23,6 +23,7 @@ Mission Dispatcher connects `dag-task-graph` (decomposition), `autonomous-task-c
 
 | Instead | Use |
 | --- | --- |
+| **Factory Droid native Missions is available** | `/missions` (or `/enter-mission`) — the platform-native system supersedes this skill for all mission-scale work. It provides the same DAG planning, worker dispatch, and milestone tracking natively, plus configuration inheritance (skills, hooks, droids, MCP). Use this skill only when the native `/missions` feature is unavailable or you need fine-grained control over individual AO-Pack primitives. |
 | Simple sequential handoff | `/orchestrate` command |
 | One-shot sub-agent delegation | Task tool directly |
 | External DevFleet orchestration | `claude-devfleet` skill |

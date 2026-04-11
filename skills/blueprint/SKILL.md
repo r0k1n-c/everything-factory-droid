@@ -18,6 +18,12 @@ Turn a one-line objective into a step-by-step construction plan that any coding 
 
 **Do not use** for tasks completable in a single PR, fewer than 3 tool calls, or when the user says "just do it."
 
+**Do not use** when the user invokes `/plan` — `/plan` already invokes the planner agent directly; adding blueprint on top produces two competing plans.
+
+**Do not use** when the user invokes `/orchestrate` — orchestrate manages its own multi-agent planning pipeline and calling blueprint simultaneously causes double planning, especially in spec mode.
+
+**Do not use** when the user invokes `/missions`, `/mission`, or `/enter-mission` — Factory Droid's native Missions system has its own collaborative planning phase; blueprint is redundant and will compete with the mission's plan construction.
+
 ## How It Works
 
 Blueprint runs a 5-phase pipeline:

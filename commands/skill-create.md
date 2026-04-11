@@ -4,6 +4,10 @@ description: Analyze local git history to extract coding patterns and generate S
 allowed_tools: ["Bash", "Read", "Write", "Grep", "Glob"]
 ---
 
+> **与原生 /create-skill 的区别 / vs native /create-skill**
+> 原生 **/create-skill** 从当前 session 对话提取技能。本命令分析 git 提交历史，挖掘团队编码模式生成 SKILL.md 文件。
+> Factory's native **/create-skill** extracts a skill from the current session. This command mines git commit history to generate SKILL.md files from team coding patterns.
+
 # /skill-create - Local Skill Generation
 
 Analyze your repository's git history to extract coding patterns and generate SKILL.md files that teach Droid your team's practices.

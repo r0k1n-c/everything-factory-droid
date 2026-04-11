@@ -91,6 +91,15 @@ Agent (planner):
 **WAITING FOR CONFIRMATION**: Proceed with this plan? (yes/no/modify)
 ```
 
+## Spec Mode 行为 / Spec Mode Behavior
+
+> **Spec mode 激活时 / When spec mode is active**
+> 本命令不调用 `ExitSpecMode`，由 spec mode 框架负责呈现和审批。planner agent 直接输出 markdown 计划文本即可，框架会将其包装为审批 UI。一次审批，一份计划。
+> This command does not call `ExitSpecMode`. The spec mode framework handles presentation and approval. The planner agent outputs its plan as plain markdown; the framework wraps it in the approval UI. One approval, one plan.
+
+- Do **not** call `ExitSpecMode` — spec mode handles this automatically.
+- After the user approves, proceed directly to implementation without presenting the plan again.
+
 ## Important Notes
 
 **CRITICAL**: The planner agent will **NOT** write any code until you explicitly confirm the plan with "yes" or "proceed" or similar affirmative response.

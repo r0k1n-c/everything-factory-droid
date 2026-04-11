@@ -4,6 +4,12 @@ description: Guided feature development with codebase understanding and architec
 
 A structured feature-development workflow that emphasizes understanding existing code before writing new code.
 
+> **与原生 Spec Mode 的区别 / vs native Spec Mode**
+> 原生 Spec Mode（Shift+Tab）适合范围明确的任务，自动规划后直接实现。本命令适合需要先做深度代码库探索（Phase 2：`code-explorer`）和独立架构设计（Phase 4：`code-architect`）的复杂功能。
+> Native Spec Mode (Shift+Tab) suits well-scoped tasks with automatic planning. Use `/feature-dev` when you need deep codebase exploration first and a dedicated architecture design step.
+>
+> **Spec mode 激活时 / In spec mode**: Phase 4 不单独调用 `ExitSpecMode`，整个 feature-dev 流程共享一次 spec mode 审批。 Phase 4 must not call `ExitSpecMode` separately — the entire workflow shares one spec mode approval.
+
 ## Phases
 
 ### 1. Discovery

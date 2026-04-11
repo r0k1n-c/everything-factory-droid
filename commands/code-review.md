@@ -3,6 +3,10 @@ description: Code review — local uncommitted changes or GitHub PR (pass PR num
 argument-hint: [pr-number | pr-url | blank for local review]
 ---
 
+> **与原生 /review 的区别 / vs native /review**
+> 原生 **/review** 提供交互式 4 模式审查 UI，适合快速审查。本命令生成结构化报告到 `.factory/PRPs/reviews/`，运行验证命令，并通过 `gh` CLI 发布 GitHub 行内评论。
+> Factory's native **/review** is an interactive 4-mode UI for quick reviews. This command produces structured reports, runs validation, and posts inline GitHub comments.
+
 # Code Review
 
 > PR review mode adapted from PRPs-agentic-eng by Wirasm. Part of the PRP workflow series.

@@ -4,6 +4,10 @@ description: Save current session state to a dated file in ~/.factory/session-da
 
 # Save Session Command
 
+> **与原生会话管理的区别 / vs native session management**
+> 原生 **/sessions**、**/compress**、**/fork** 管理 Factory 平台内置的会话历史。本命令在 `~/.factory/session-data/` 生成可移植的 markdown 快照，记录 branch、worktree、已完成任务和后续步骤，跨机器和上下文重置后仍可恢复。
+> Factory's native **/sessions**, **/compress**, and **/fork** manage the platform's built-in session history. This command creates a portable markdown snapshot in `~/.factory/session-data/` capturing branch, worktree, completed tasks, and next steps — surviving across machines and context resets.
+
 Capture everything that happened in this session — what was built, what worked, what failed, what's left — and write it to a dated file so the next session can pick up exactly where this one left off.
 
 ## When to Use

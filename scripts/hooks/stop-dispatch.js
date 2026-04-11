@@ -21,6 +21,7 @@ const STOP_HOOK_PIPELINE = [
   { id: 'stop:hookify', profiles: 'standard,strict', relativePath: 'scripts/hooks/hookify-runtime.js' },
   { id: 'stop:format-typecheck', profiles: 'standard,strict', relativePath: 'scripts/hooks/stop-format-typecheck.js' },
   { id: 'stop:check-console-log', profiles: 'standard,strict', relativePath: 'scripts/hooks/check-console-log.js' },
+  { id: 'stop:todo-check', profiles: 'standard,strict', relativePath: 'scripts/hooks/stop-todo-check.js' },
   { id: 'stop:session-end', profiles: 'minimal,standard,strict', relativePath: 'scripts/hooks/session-end.js' },
 ];
 
@@ -112,13 +113,33 @@ function appendMessage(buffer, message) {
   return buffer ? `${buffer}\n${text}` : text;
 }
 
+/**
+ * Detect whether this Stop event is firing inside a Factory Droid Mission worker.
+ * When running inside a mission, Mission Control manages session tracking and
+ * todo state — skip EFD's own session-end and todo-check hooks to avoid
+ * creating session file fragments and blocking worker responses.
+ *
+ * Factory Droid Missions (research preview) may set FACTORY_MISSION_ID or
+ * DROID_MISSION_ID. We check both to be forward-compatible.
+ */
+function isMissionWorker() {
+  return !!(process.env.FACTORY_MISSION_ID || process.env.DROID_MISSION_ID);
+}
+
+const MISSION_WORKER_SKIP_IDS = new Set(['stop:todo-check', 'stop:session-end']);
+
 function run(rawInput) {
   const raw = typeof rawInput === 'string' ? rawInput : JSON.stringify(rawInput || {});
   let stderr = '';
   let stdout = '';
+  const inMission = isMissionWorker();
 
   for (const hook of STOP_HOOK_PIPELINE) {
     if (!isHookEnabled(hook.id, { profiles: hook.profiles })) {
+      continue;
+    }
+
+    if (inMission && MISSION_WORKER_SKIP_IDS.has(hook.id)) {
       continue;
     }
 
@@ -161,7 +182,9 @@ if (require.main === module) {
 
 module.exports = {
   STOP_HOOK_PIPELINE,
+  MISSION_WORKER_SKIP_IDS,
   normalizeStructuredResult,
+  isMissionWorker,
   run,
   runHookScript,
 };

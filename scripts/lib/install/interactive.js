@@ -3,7 +3,6 @@
 const inquirer = require('inquirer');
 const {
   loadInstallManifests,
-  listInstallComponents,
   resolveInstallPlan
 } = require('../install-manifests');
 

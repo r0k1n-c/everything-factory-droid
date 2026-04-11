@@ -1,20 +1,14 @@
 ---
-description: "与原生命令区分 / Disambiguation: 原生 /sessions 打开平台会话 UI；EFD 的 /efd-sessions 管理 ~/.factory/session-data/ 下的 markdown 文件。"
+description: Manage EFD session history files (list, load, alias). For Factory's built-in session UI use native /sessions — this command manages the separate ~/.factory/session-data/ markdown files written by EFD's Stop hook.
 ---
 
-# Sessions — 命令区分 / Disambiguation
+> **与原生 /sessions 的区别 / vs native /sessions**
+> 原生 **/sessions** 打开 Factory 内置会话 UI。本命令管理 EFD Stop 钩子写入的 `~/.factory/session-data/` markdown 文件，用于跨会话上下文延续，与原生系统数据不互通。
+> Factory's native **/sessions** opens the platform session UI. This command manages the `~/.factory/session-data/` markdown files written by EFD's Stop hook for cross-session context continuity. The two systems do not share data.
 
-> **原生命令冲突提示 / Native command conflict**
-> 原生 **/sessions** 打开 Factory 内置会话列表 UI（切换对话、fork、compress）。
-> EFD 的 **/efd-sessions** 管理 `~/.factory/session-data/` 下由 Stop 钩子写入的 markdown 快照文件，两套系统数据不互通。
->
-> Factory's native **/sessions** opens the built-in session list UI (switch conversations, fork, compress).
-> EFD's **/efd-sessions** manages markdown snapshot files in `~/.factory/session-data/` written by the Stop hook. The two systems do not share data.
+# EFD Sessions Command
 
-请告诉我你需要哪一个 / Tell me which you need:
-
-- **平台会话 UI / Platform session UI** → 使用原生 **/sessions**、**/fork**、**/compress**
-- **EFD 会话文件 / EFD session files** → 使用 `/efd-sessions [list|load|alias|info]`
+Manage Factory Droid session history - list, load, alias, and edit sessions stored in `~/.factory/session-data/`.
 
 ## Usage
 

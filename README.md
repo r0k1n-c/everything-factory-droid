@@ -171,7 +171,7 @@ For manual copy instructions see the README in the `rules/` folder. When copying
 droid plugin list
 ```
 
-**That's it!** You now have access to 47 agents, 178 skills, and 75 legacy command shims.
+**That's it!** You now have access to 47 agents, 178 skills, and 76 legacy command shims.
 
 ## Cross-Platform Support
 
@@ -895,7 +895,7 @@ This project keeps only the Factory Droid-compatible surface:
 | Component | Catalog | Scope |
 |-----------|---------|-------|
 | Agents | 47 agents | Factory Droid |
-| Commands | 75 commands | Factory Droid |
+| Commands | 76 commands | Factory Droid |
 | Skills | 178 skills | Factory Droid |
 
 ---

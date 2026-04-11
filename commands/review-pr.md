@@ -2,6 +2,10 @@
 description: Comprehensive PR review using specialized agents
 ---
 
+> **与原生 /review 的区别 / vs native /review**
+> 原生 **/review** 的 "base branch" 模式适合单次 PR 审查。本命令并行调用 6 个专用 agent，去重后按严重程度输出，覆盖面更广。
+> Factory's native **/review** base-branch mode covers single-pass PR review. This command chains 6 specialized agents in parallel and deduplicates findings across all perspectives.
+
 Run a comprehensive multi-perspective review of a pull request.
 
 ## Usage

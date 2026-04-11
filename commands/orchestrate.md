@@ -106,26 +106,40 @@ In a mission worker, implement directly using `/tdd`, `/code-review`, or individ
 
 ## Spec Mode 行为 / Spec Mode Behavior
 
-> **Spec mode 激活时只调用一次 ExitSpecMode / Call ExitSpecMode exactly once**
-> 用 ExitSpecMode 呈现完整编排方案（agent 序列、workflow 类型、每步产出）。审批后直接执行，不再调用 ExitSpecMode。子 agent 的 Task prompt 必须包含"已通过 spec mode 审批，直接执行任务"的前缀，防止子 agent 再次触发 ExitSpecMode。
-> Call `ExitSpecMode` once with the full orchestration plan (agent sequence, workflow type, outputs per step). After approval, proceed without calling it again. Each sub-agent's Task prompt must include the prefix below to prevent the sub-agent from triggering `ExitSpecMode` itself.
+> **两个阶段，规则不同 / Two phases, different rules**
+> 规划迭代阶段：可以多次调用 ExitSpecMode，每次基于**原始用户需求**重新生成方案，不读取任何已保存的 spec 文件。
+> 执行阶段（用户审批后）：不再调用 ExitSpecMode，子 agent 也不调用。
+>
+> Planning phase: `ExitSpecMode` may be called multiple times as the user iterates. Each call must regenerate from the **original user request**, not from any saved spec file.
+> Execution phase (after approval): never call `ExitSpecMode` again — neither the orchestrator nor any sub-agent.
 
 When spec mode is active (system message says "Spec mode is active"):
 
-- Call `ExitSpecMode` **exactly once** with the full orchestration plan: agent sequence, workflow type, handoff steps, and what each agent will produce. Example plan content:
+### 规划阶段 / Planning phase
 
-  ```
-  Workflow: feature — "build auth system"
-  Agent pipeline:
-    1. planner      → implementation plan with phases and file list
-    2. tdd-guide    → code written test-first, 80%+ coverage
-    3. code-reviewer → review findings, SHIP/NEEDS WORK verdict
-  Handoff format: structured markdown passed between each step.
-  ```
+- Generate the orchestration plan from the **original user request** directly — the agent sequence, workflow type, handoff steps, and what each agent will produce.
+- Call `ExitSpecMode` to present this plan.
+- If the user requests changes or re-planning ("modify", "re-plan", "change the approach"):
+  - Regenerate the plan from the **original user request** plus the user's feedback.
+  - Do **not** read `.factory/docs/`, `.factory/specs/`, or any previously saved spec file as the starting point — doing so creates a circular dependency where the plan iterates on itself instead of the requirement.
+  - Call `ExitSpecMode` again with the revised plan.
+- Repeat until the user approves.
 
-- After the user approves, proceed with execution — do **not** call `ExitSpecMode` again at any point during execution.
+Example plan content for `ExitSpecMode`:
+```
+Workflow: feature — "build auth system"
+Agent pipeline:
+  1. planner      → implementation plan with phases and file list
+  2. tdd-guide    → code written test-first, 80%+ coverage
+  3. code-reviewer → review findings, SHIP/NEEDS WORK verdict
+Handoff format: structured markdown passed between each step.
+```
 
-- **Sub-agents must not call `ExitSpecMode`.** When constructing the Task prompt for every sub-agent in the pipeline, prepend the following block verbatim:
+### 执行阶段 / Execution phase
+
+- Once the user approves, begin executing the pipeline immediately.
+- Do **not** call `ExitSpecMode` again at any point during execution.
+- When constructing the Task prompt for every sub-agent, prepend this block verbatim:
 
   ```
   ORCHESTRATION CONTEXT: You are a worker inside an approved orchestration
@@ -134,7 +148,7 @@ When spec mode is active (system message says "Spec mode is active"):
   the task described below.
   ```
 
-- Do **not** invoke the `blueprint` skill separately — the orchestration plan presented via `ExitSpecMode` IS the spec.
+- Do **not** invoke the `blueprint` skill — the approved plan IS the spec.
 
 ## Tips
 

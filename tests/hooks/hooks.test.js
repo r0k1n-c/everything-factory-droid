@@ -2376,7 +2376,7 @@ async function runTests() {
       assert.strictEqual(plugin.name, 'everything-factory-droid');
       assert.strictEqual(marketplace.name, 'everything-factory-droid');
       assert.ok(
-        marketplace.plugins.some(entry => entry.name === 'everything-factory-droid' && entry.source === '.'),
+        marketplace.plugins.some(entry => entry.name === 'everything-factory-droid' && (entry.source === '.' || entry.source === './')),
         'Marketplace manifest should expose the root plugin'
       );
     })

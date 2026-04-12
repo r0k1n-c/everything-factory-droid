@@ -19,12 +19,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${DROID_PLUGIN_ROOT}/scripts/hooks/run-with-flags.js\" \"pre:execute:hookify\" \"scripts/hooks/hookify-runtime.js\" \"standard,strict\"",
-            "timeout": 5
+            "command": "node \"${DROID_PLUGIN_ROOT}/scripts/hooks/pre-execute-dispatch.js\"",
+            "timeout": 10
           }
         ],
-        "description": "Apply user-defined Hookify bash rules",
-        "id": "pre:execute:hookify"
+        "description": "Execute pre-checks: hookify rules, auto-tmux-dev, commit quality",
+        "id": "pre:execute:dispatch"
       },
       {
         "matcher": "Edit|Create|MultiEdit",
@@ -37,28 +37,6 @@
         ],
         "description": "Apply user-defined Hookify file rules",
         "id": "pre:file:hookify"
-      },
-      {
-        "matcher": "Execute",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"${DROID_PLUGIN_ROOT}/scripts/hooks/auto-tmux-dev.js\""
-          }
-        ],
-        "description": "Auto-start dev servers in tmux with directory-based session names",
-        "id": "pre:execute:auto-tmux-dev"
-      },
-      {
-        "matcher": "Execute",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"${DROID_PLUGIN_ROOT}/scripts/hooks/run-with-flags.js\" \"pre:execute:commit-quality\" \"scripts/hooks/pre-bash-commit-quality.js\" \"strict\""
-          }
-        ],
-        "description": "Pre-command quality reminder before destructive git actions",
-        "id": "pre:execute:commit-quality"
       },
       {
         "matcher": "Edit|Create",

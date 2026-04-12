@@ -276,7 +276,7 @@ async function runTests() {
     const hookCommand = getHookCommandByDescription(
       hooks,
       'PreToolUse',
-      'Auto-start dev servers in tmux'
+      'Execute pre-checks: hookify rules, auto-tmux-dev, commit quality'
     );
     const result = await runHookCommand(hookCommand, {
       tool_input: { command: 'npm run dev' }
@@ -402,7 +402,7 @@ async function runTests() {
     const hookCommand = getHookCommandByDescription(
       hooks,
       'PreToolUse',
-      'Auto-start dev servers in tmux'
+      'Execute pre-checks: hookify rules, auto-tmux-dev, commit quality'
     );
     const result = await runHookCommand(hookCommand, {
       tool_input: { command: 'yarn dev' }
